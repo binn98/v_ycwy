@@ -48,10 +48,10 @@
 }
 .SecTabs{
   /* display: flex !important;
-  width: 100%; */
-  /* justify-content: space-between !important; */
-  /* align-items: center !important; */
-  /* padding: 0 15rpx; */
+  width: 100%;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 15rpx; */
 }
 
 
