@@ -2,6 +2,7 @@
 const app = getApp()
 const isTel = (value) => !/^1[34578]\d{9}$/.test(value)
 import data from './data'
+// 高德地图js
 var amapFile = require("../../lib/amap-wx");
 Page({
 
