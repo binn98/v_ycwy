@@ -45,9 +45,9 @@
 .SecTabs{
   display: flex !important;
   width: 100%;
-  justify-content: space-between !important;
+  /* justify-content: space-between !important; */
   align-items: center !important;
-  padding: 0 15rpx;
+  /* padding: 0 15rpx; */
 }
 
 
