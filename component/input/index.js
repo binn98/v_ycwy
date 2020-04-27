@@ -162,8 +162,6 @@ baseComponent({
         },
         onChange(e) {
             const { value } = e.detail
-          console.log(233)
-
             if (!this.data.controlled) {
                 this.updated(value)
             }

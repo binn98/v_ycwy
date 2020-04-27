@@ -44,9 +44,12 @@ Page({
         //成功回调
         const addres = data[0].regeocodeData
         // console.log(data);
-        console.log(addres.addressComponent);
+        // console.log(addres.addressComponent);
         _that.setData({
-          ['city.value']:addres.addressComponent.province +' '+ addres.addressComponent.city +' '+addres.addressComponent.district
+          ['city.value']:addres.addressComponent.province +' '+ addres.addressComponent.city +' '+addres.addressComponent.district,
+          ['form.province']:addres.addressComponent.province,
+          ['form.city']:addres.addressComponent.city,
+          ['form.area']:addres.addressComponent.district
         })
       }
     })
@@ -150,7 +153,7 @@ Page({
         vaild = false
       }
     }
-    console.log(_that.data.form);
+    // console.log(_that.data.form);
     if (vaild) {
       _that.setData({
         btn: true
@@ -192,8 +195,8 @@ Page({
     let all = this.data.city.value
     this.setData({
       ['form.province']: all.split(' ')[0],
-      ['form.city']: all.split(' ')[1],
-      ['form.area']: all.split(' ')[2]
+      ['form.city']:     all.split(' ')[1],
+      ['form.area']:     all.split(' ')[2]
     })
   },
   radioChange(e) {
