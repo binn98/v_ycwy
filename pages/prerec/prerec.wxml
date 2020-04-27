@@ -1,0 +1,144 @@
+<!--pages/prerec/prerec.wxml-->
+<view class="ycwy-container">
+  <wux-tabs defaultCurrent="{{ tab }}" bind:change="tabChange" class="tabs" data-tab="tab">
+    <wux-tab key="10">预约回收<text class="iconfont icon-wenhao mgl_20" style="font-size: 36rpx;" bindtap="rulesToggle"></text></wux-tab>
+    <wux-tab key="20" title="自行寄送"></wux-tab>
+  </wux-tabs>
+
+  <view class="address address2" wx:if="{{ address.id }}">
+    <text>收件地址</text>
+    <view class="wrap mgt_30 flex flex_cc" bindtap="listAddress">
+      <image mode="widthFix" class="mgl_30 mgr_30" style="width: 60rpx;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTc0OTkwNTI5MzUzIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE1MTciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNjk2LjgzMiA3NjAuMzJjLTExLjc3Ni0yLjA0OC0yMy4wNCA1LjEyLTI1LjA4OCAxNi44OTYtMi4wNDggMTAuNzUyIDQuMDk2IDIwLjk5MiAxNC4zMzYgMjQuNTc2IDcwLjY1NiAxOS40NTYgMTAyLjQgNDYuNTkyIDEwMi40IDY1LjUzNiAwIDE0LjMzNi0xOS40NTYgMzYuMzUyLTczLjIxNiA1NS44MDgtNTQuMjcyIDE5LjQ1Ni0xMjYuNDY0IDMwLjIwOC0yMDMuNzc2IDMwLjIwOC03Ny4zMTIgMC0xNDkuNTA0LTEwLjc1Mi0yMDMuNzc2LTMwLjIwOC01My43Ni0xOS40NTYtNzMuMjE2LTQxLjk4NC03My4yMTYtNTUuODA4IDAtMTguNDMyIDMxLjc0NC00Ni4wOCAxMDIuOTEyLTY1LjUzNiAxMS4yNjQtNC4wOTYgMTcuNDA4LTE2LjM4NCAxMy4zMTItMjcuNjQ4LTMuNTg0LTEwLjI0LTEzLjgyNC0xNi4zODQtMjQuNTc2LTE0LjMzNi04Ni41MjggMjMuNTUyLTEzNC4xNDQgNjEuNDQtMTM0LjE0NCAxMDcuMDA4IDAgMjYuNjI0IDE2Ljg5NiA0Ni41OTIgMzEuMjMyIDU4LjM2OCAxNi44OTYgMTQuMzM2IDQwLjk2IDI3LjEzNiA3MC42NTYgMzcuODg4IDU4LjM2OCAyMC45OTIgMTM2LjE5MiAzMi43NjggMjE4LjExMiAzMi43NjhzMTU5Ljc0NC0xMS43NzYgMjE4LjExMi0zMi43NjhjMjkuNjk2LTEwLjc1MiA1My43Ni0yMy41NTIgNzAuNjU2LTM3Ljg4OCAxNC4zMzYtMTIuMjg4IDMxLjIzMi0zMi4yNTYgMzEuMjMyLTU4LjM2OC0xLjAyNC00NC41NDQtNDguNjQtODIuOTQ0LTEzNS4xNjgtMTA2LjQ5NiIgZmlsbD0iIzUzOENGRiIgcC1pZD0iMTUxOCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzkuMzkyIDMzNi44OTZjMC03Ni4yODggNjEuNDQtMTM4LjI0IDEzNi4xOTItMTM4LjI0IDc1LjI2NCAwIDEzNi4xOTIgNjEuOTUyIDEzNi4xOTIgMTM4LjI0cy02MC45MjggMTM4LjI0LTEzNi4xOTIgMTM4LjI0Yy03NS4yNjQgMC0xMzYuMTkyLTYxLjk1Mi0xMzYuMTkyLTEzOC4yNCIgZmlsbD0iI0QwRDREQSIgcC1pZD0iMTUxOSI+PC9wYXRoPjxwYXRoIGQ9Ik00MjQuNDQ4IDgwOC40NDhjMjIuNTI4IDI2LjYyNCA1NC43ODQgNDEuNDcyIDg3LjU1MiA0MS40NzIgMzMuMjggMCA2NS4wMjQtMTUuMzYgODcuNTUyLTQxLjk4NCA0NC41NDQtNTAuMTc2IDg2LjAxNi0xMDIuOTEyIDEyNC40MTYtMTU3LjY5NiA4NC45OTItMTIyLjg4IDEyOC41MTItMjI1LjI4IDEyOC41MTItMzAzLjYxNiAwLTkxLjEzNi0zNS44NC0xNzkuMi05OS44NC0yNDQuMjI0LTMwLjcyLTMxLjIzMi02Ny41ODQtNTYuODMyLTEwOC41NDQtNzMuNzI4LTQxLjk4NC0xNy45Mi04Ny4wNC0yNy4xMzYtMTMyLjYwOC0yNy4xMzYtNDYuMDggMC05MC42MjQgOS4yMTYtMTMyLjYwOCAyNy4xMzYtODEuOTIgMzUuMzI4LTE0Ni45NDQgMTAxLjM3Ni0xODEuMjQ4IDE4My44MDgtMTcuOTIgNDIuNDk2LTI3LjEzNiA4OC4wNjQtMjYuNjI0IDEzNC4xNDQgMCA3OC4zMzYgNDMuNTIgMTgwLjczNiAxMjkuMDI0IDMwNC4xMjggMzcuODg4IDU1LjI5NiA3OS44NzIgMTA4LjAzMiAxMjQuNDE2IDE1Ny42OTYiIGZpbGw9IiM1MzhDRkYiIHAtaWQ9IjE1MjAiPjwvcGF0aD48cGF0aCBkPSJNNjg5LjY2NCAzOTguMzM2aC01OC4zNjh2MTIyLjg4YzAgMTcuNDA4LTMuNTg0IDI1LjA4OC0xNi44OTYgMjkuNjk2LTEyLjggNC42MDgtMzQuMzA0IDQuMDk2LTY2LjA0OCA0LjA5Ni0xLjUzNi04LjE5Mi02LjE0NC0xOS40NTYtOS43MjgtMjcuNjQ4IDI1LjA4OCAxLjAyNCA0Ny42MTYgMS4wMjQgNTQuNzg0IDEuMDI0IDYuNjU2LTEuMDI0IDguMTkyLTIuMDQ4IDguMTkyLTcuMTY4di0xMjIuODhIMzI4LjE5MnYtMjcuNjQ4aDQ4LjY0Yy0zLjA3Mi03LjE2OC04LjE5Mi0xNS4zNi0xMi4yODgtMTkuNDU2IDY5LjEyLTkuMjE2IDEwMi40LTI1LjYgMTE4Ljc4NC01My4yNDhIMzc4Ljg4di0yNC41NzZoMTEzLjY2NGMyLjA0OC03LjE2OCAzLjA3Mi0xNC44NDggNC42MDgtMjMuNTUyaDI4LjY3MmMtMS4wMjQgOC43MDQtMi41NiAxNS44NzItNC4wOTYgMjMuNTUyaDExNi43MzZ2MjQuNTc2aC0xMjMuOTA0Yy0xLjAyNCAyLjU2LTIuMDQ4IDUuMTItMy4wNzIgNy4xNjggNDUuMDU2IDExLjc3NiA5OS4zMjggMzEuNzQ0IDEyOS41MzYgNDcuMTA0bC0xMy4zMTIgMTguNDMyaDYyLjQ2NHYyNy42NDh6TTM2My41MiAyODUuNjk2aC0yOC42NzJ2LTcxLjY4aDE2Mi44MTZjLTIuNTYtOS43MjgtNi42NTYtMTkuOTY4LTEwLjc1Mi0yOC42NzJsMjkuNjk2LTYuMTQ0YzUuNjMyIDEwLjI0IDEwLjc1MiAyNC4wNjQgMTMuMzEyIDM0LjgxNmgxNTIuNTc2djcxLjY4aC0yOS42OTZWMjQwLjY0SDM2My41MnY0NS4wNTZ6IG00Mi40OTYgMjI3Ljg0djIwLjQ4aC0yOC4xNlY0MjMuNDI0aDE2NS4zNzZ2ODkuNkg0MDYuMDE2eiBtMjExLjk2OC0xNDIuMzM2Yy0yOS4xODQtMTUuMzYtNzguMzM2LTMzLjc5Mi0xMjAuODMyLTQ1LjU2OC0xOC45NDQgMjEuNTA0LTUwLjE3NiAzNi4zNTItMTAwLjM1MiA0NS41NjhoMjIxLjE4NHpNNDA2LjAxNiA0NDcuNDg4djQxLjk4NGgxMDguNTQ0di00MS45ODRINDA2LjAxNnoiIGZpbGw9IiNGRkZGRkYiIHAtaWQ9IjE1MjEiPjwvcGF0aD48L3N2Zz4="></image>
+      <!-- <text class="iconfont icon-jijiandizhi-" style="color: #538CFF"></text> -->
+      <view class="info flex flex_dt">
+        <view class="fwb">{{ address.link_name }} <text class="fwn mgl_30">{{ address.mobile }}</text></view>
+        <view class="light mgt_10">{{ address.province + address.city + address.area + address.address }}</view>
+      </view>
+      <text class="iconfont icon-bianji-" style="color: #181818; font-size: 40rpx;"></text>
+    </view>
+  </view>
+  <view class="address address_no flex flex_mc flex_cc" wx:else>
+    <view class="tap flex flex_mj flex_cc" bindtap="addAddress">
+      <text class="red"><text class="iconfont icon-dizhi"></text> 您还没有寄件地址哦，请点击添加</text>
+      <text class="iconfont icon-jiantou-right light"></text>
+    </view>
+  </view>
+
+  <view class="form">
+    <view class="label flex flex_cc">
+      <view class="ico"></view>商品订单信息
+    </view>
+    <view class="order wrap">
+      <view class="flex flex_mj">
+        <view class="tal">物品名称</view>
+        <view class="tar">{{ name }}</view>
+      </view>
+      <wux-divider show-text="{{ false }}" />
+      <view class="flex flex_mj" bindtap="dateOpen" wx:if="{{ tab == 10 }}">
+        <view class="tal">上门日期</view>
+        <view class="tar {{ date.value ? '':'light' }}">{{ date.value ? date.value:'选择日期' }} <text class="iconfont icon-jiantou-right"></text></view>
+      </view>
+      <view class="flex flex_mj" wx:else>
+        <view class="tal">物品类型</view>
+        <view class="tar">衣物</view>
+      </view>
+    </view>
+    
+    <view class="label flex flex_cc">
+      <view class="ico"></view>选择快递公司
+    </view>
+    <view class="express wrap">
+      <view class="flex flex_mj" bindtap="popUp">
+        <view class="tal">快递公司</view>
+        <view class="tar {{ cName ? '':'light' }}">{{ cName ? cName : '请选择快递公司' }} <text class="iconfont icon-jiantou-right"></text></view>
+      </view>
+      <wux-divider show-text="{{ false }}" />
+      <view class="flex flex_mj" wx:if="{{ tab == 10 }}">
+        <view class="tal">快递单号</view>
+        <view class="tar light">提交后快递收单时显示单号</view>
+      </view>
+      <view class="block" wx:else>
+        <wux-input label="快递单号" value="{{ logistic_num }}" data-name="logistic_num" placeholder="请输入快递单号" controlled type="number" bind:change="formChange" bind:blur="formChange" />
+      </view>
+      <wux-divider show-text="{{ false }}" />
+      <view class="flex flex_mj">
+        <view class="tal">运费支付</view>
+        <view class="tar red">寄送方支付（平台{{ ep }}元优惠券返还）</view>
+      </view>
+    </view>
+
+    <view class="label flex flex_cc">
+      <view class="ico"></view>衣物回收处置
+    </view>
+    <view class="set wrap">
+      <view class="flex flex_mj" bindtap="toHanble">
+        <view class="tal">处置方式</view>
+        <view class="tar">点击查看 <text class="iconfont icon-jiantou-right"></text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="address2">
+    <text>收件地址</text>
+    <view class="wrap mgt_30 flex flex_cc">
+      <image mode="widthFix" class="mgl_30 mgr_30" style="width: 60rpx;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTc0OTkwNTYxOTM4IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE2NDIiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNjk3LjAzNjggNzYwLjMyYTIxLjYwNjQgMjEuNjA2NCAwIDAgMC0xMS4xMTA0IDQxLjY3NjhjNzAuOTEyIDE5LjQ1NiAxMDIuNjU2IDQ2Ljc5NjggMTAyLjY1NiA2NS4yOCAwIDE0LjIzMzYtMTkuMiAzNi40MDMyLTczLjI2NzIgNTUuOTYxNnMtMTI2LjQxMjggMzAuMzYxNi0yMDMuNzI0OCAzMC4zNjE2LTE0OS42NTc2LTEwLjgwMzItMjAzLjgyNzItMzAuMzYxNi03My4xNjQ4LTQxLjcyOC03My4xNjQ4LTU1Ljk2MTZjMC0xOC41MzQ0IDMxLjc0NC00NS44MjQgMTAyLjc1ODQtNjUuMjhhMjEuNjA2NCAyMS42MDY0IDAgMCAwLTExLjE2MTYtNDEuNjc2OGMtODYuNTI4IDIzLjcwNTYtMTM0LjE5NTIgNjEuNDQtMTM0LjE5NTIgMTA2Ljk1NjggMCAyNi40MTkyIDE2Ljg0NDggNDYuMzg3MiAzMC43MiA1OC41MjE2YTIyOS40MjcyIDIyOS40MjcyIDAgMCAwIDcwLjUwMjQgMzguMDkyOGM1OC41NzI4IDIxLjE5NjggMTM2LjA4OTYgMzIuODcwNCAyMTguMTEyIDMyLjg3MDRzMTU5LjUzOTItMTEuNzI0OCAyMTguMDYwOC0zMi44NzA0YTIyOC4wOTYgMjI4LjA5NiAwIDAgMCA3MC41NTM2LTM4LjE0NGMxNC4xMzEyLTEyLjA4MzIgMzAuOTc2LTMyLjA1MTIgMzAuOTc2LTU4LjUyMTYgMC00NS4yMDk2LTQ3LjYxNi04My4yLTEzNC4xNDQtMTA2LjkwNTYiIGZpbGw9IiNFMzgwNUIiIHAtaWQ9IjE2NDMiPjwvcGF0aD48cGF0aCBkPSJNMzc5LjM5MiAzMzcuMDQ5NmExMzYuMzk2OCAxMzYuMzk2OCAwIDEgMSAxMzYuMzQ1NiAxMzguMjQgMTM3LjQyMDggMTM3LjQyMDggMCAwIDEtMTM2LjM0NTYtMTM4LjI0IiBmaWxsPSIjRDBENERBIiBwLWlkPSIxNjQ0Ij48L3BhdGg+PHBhdGggZD0iTTQyNC4yNDMyIDgwOC42NTI4YTExMi42NCAxMTIuNjQgMCAwIDAgMTc1LjAwMTYtMC4zMDcyIDE2OTguODY3MiAxNjk4Ljg2NzIgMCAwIDAgMTI0LjIxMTItMTU3Ljc0NzJDODA4Ljk2IDUyNy4zNiA4NTIuNDggNDI0Ljk2IDg1Mi40OCAzNDYuNjc1MkEzNDYuODI4OCAzNDYuODI4OCAwIDAgMCA3NTIuNjQgMTAyLjRhMzQwLjEyMTYgMzQwLjEyMTYgMCAwIDAtMTA4LjMzOTItNzMuODMwNEEzMzguMzgwOCAzMzguMzgwOCAwIDAgMCAzNzguODggMjguNjIwOGEzNDUuODA0OCAzNDUuODA0OCAwIDAgMC0yMDguMjMwNCAzMTguMDU0NGMwIDc4LjI4NDggNDMuNDE3NiAxODAuNjg0OCAxMjkuMTI2NCAzMDQuMDc2OEExNjk3LjQ4NDggMTY5Ny40ODQ4IDAgMCAwIDQyNC4yNDMyIDgwOC45NiIgZmlsbD0iI0UzODA1QiIgcC1pZD0iMTY0NSI+PC9wYXRoPjxwYXRoIGQ9Ik00MzAuMDggMTczLjYxOTJoMzEuMDc4NHYzODIuMjU5Mkg0MzAuMDh2LTExNy43NmMtNzcuMzYzMiAyOC40NjcyLTg5LjcwMjQgMzQuNDA2NC05Ny43OTIgNDEuMjE2QTEzNC41NTM2IDEzNC41NTM2IDAgMCAwIDMxOS40ODggNDUwLjU2YTMxLjU5MDQgMzEuNTkwNCAwIDAgMCAxNC40ODk2LTI4LjQ2NzJWMjE0LjAxNmgzMS4wMjcydjIxNS41NTJMNDMwLjA4IDQwNy45MTA0eiBtMjM1LjE2MTYgMTA1LjQ3MmMtMTEuOTI5NiA2Ny4xNzQ0LTI5LjMzNzYgMTIyLjAwOTYtNTYuMzIgMTY3LjUyNjQgMjUuMDg4IDM0Ljg2NzIgNTUuMjk2IDYzLjMzNDQgOTEuODUyOCA4MS4yMDMyYTEwNC44MDY0IDEwNC44MDY0IDAgMCAwLTIxLjcwODggMjUuOTA3MiAyNjcuMDU5MiAyNjcuMDU5MiAwIDAgMS04Ny41NTItODAuMzMyOCAyOTcuOTMyOCAyOTcuOTMyOCAwIDAgMS05Ny4yOCA4Mi40ODMyIDE0MS43MjE2IDE0MS43MjE2IDAgMCAwLTIwLjgzODQtMjUuOTU4NEEyNjAuNjU5MiAyNjAuNjU5MiAwIDAgMCA1NzMuNDQgNDQ1Ljc0NzJhNTEzLjQ4NDggNTEzLjQ4NDggMCAwIDEtNTEuMi0xMjEuMTkwNEEyOTMuNjMyIDI5My42MzIgMCAwIDEgNDg4LjcwNCAzNzguODhhMjE1LjA0IDIxNS4wNCAwIDAgMC0yMi41MjgtMjYuMzY4YzM2LjU1NjgtNDIuOTA1NiA1OC42NzUyLTExMi4yMzA0IDcwLjYwNDgtMTg1LjgwNDhsMzIuMzA3MiA1LjUyOTZjLTQuNjU5MiAyNi4zNjgtMTEuMDU5MiA1Mi4zMjY0LTE3Ljg2ODggNzYuOGgxNDUuNDA4djI5Ljc5ODR6IG0tMTI2LjMxMDQgNi4zNDg4YTUzMi43MzYgNTMyLjczNiAwIDAgMCA1MS4yIDEzMS44NGMyMC40OC0zOC4yOTc2IDMzLjk5NjgtODQuNjMzNiA0Mi45NTY4LTEzOC4yNGgtOTEuNjQ4eiIgZmlsbD0iI0ZGRkZGRiIgcC1pZD0iMTY0NiI+PC9wYXRoPjwvc3ZnPg=="></image>
+      <!-- <text class="iconfont icon-dizhi-"></text> -->
+      <view class="info flex flex_dt">
+        <view class="fwb">{{ address2.contact_name }} <text class="fwn mgl_30">{{ address2.contact_mode }}</text></view>
+        <view class="light mgt_10">{{ address2.city + address2.area + address2.address }}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer flex flex_mj">
+    <view class="mgt_5 mgl_30">
+      回收成功可获得通兑优惠券:￥<text>{{ price + ep }}</text>
+      <text class="light block">（回收价:￥{{ price }}/件 + 快递费:￥{{ ep }} ）</text>
+    </view>
+    <button class="btn btn_text" bindtap="subRec">{{ tab == 10 ? '预约上门':'确认提交' }}</button>
+  </view>
+
+  <view class="popRules" wx:if="{{ popRules }}" bindtap="rulesToggle">
+    <view class="wrap flex flex_dt flex_mc flex_cc">
+      <view class="content" catchtap>
+        <view class="title tac">回收计价规则</view>
+        <view class="text">
+          <view>平台根据用户已购买衣物订单确认收货时间开始计算，按不同回收周期对应不同额度的优惠券返还至用户的优惠券账户，可进行平台全类商品的购买抵扣，不可提现。</view>
+          <view>具体回收周期对应的优惠券返还，如下：</view>
+          <text class="cur block mgt_10">• 30天内按平台订单售价的{{ rules.percent.percent_30 }}%；
+          • 60天内按平台订单售价的{{ rules.percent.percent_60 }}%；
+          • 90天内按平台订单售价的{{ rules.percent.percent_90 }}%；
+          • 90天后按平台订单售价的{{ rules.percent.percent_100 }}%。</text>
+        </view>
+      </view>
+      <view class="close mgt_100 tac" catchtap="rulesToggle">
+        <text class="iconfont icon-jiaocha-"></text>
+      </view>
+    </view>
+  </view>
+
+  <wux-cascader visible="{{ date.visible }}" defult-value="{{ date.value }}" title="选择预约回收时间" options="{{ date.options }}" bind:close="dateClose" bind:change="dateChange" />
+
+  <wux-popup position="bottom" visible="{{ pop }}" bind:close="popClose" bind:closed="popClosed" class="company">
+    <view class="company-wrap">
+      <view class="wrap">
+        <view class="flex flex_mj">
+          <view class="tal">请选择您要寄件的快递公司</view>
+          <view class="tar light" bindtap="popClose"><text class="iconfont icon-jiaocha-"></text></view>
+        </view>
+        <block wx:for="{{ company }}" wx:for-item="item" wx:key="id">
+          <wux-divider show-text="{{ false }}" />
+          <view class="flex flex_mj" bindtap="radioChange" data-value="{{ item.id }}" data-name="{{ item.name }}">
+            <view class="tal {{ cVal == item.id ? 'cur':'' }}">{{ item.name }}</view>
+            <view class="tar">
+              <wux-selectable value="{{ item.id }}" type="default" checked="{{ cVal == item.id }}" controlled>
+                <text class="iconfont icon-dagou-" slot="icon-on" style="color: #E3805B; font-size: 40rpx;"></text>
+                <view slot="icon-off"></view>
+              </wux-selectable>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </wux-popup>
+</view>

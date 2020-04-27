@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/logs/logs",
+    "pages/prerec/prerec",
+    "pages/address/address",
+    "pages/address/edit",
+    "pages/detail/detail",
+    "pages/handle/handle",
+    "pages/user/user",
+    "pages/rules/rules",
+    "pages/logistics/logistics",
+    "pages/guide/guide",
+    "pages/intro/intro"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "新衣穿旧回收",
+    "navigationBarTextStyle": "black"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx369fe22d2a942bdc"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

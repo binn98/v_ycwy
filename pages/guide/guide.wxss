@@ -1,0 +1,49 @@
+/* pages/guide/guide.wxss */
+.ycwy-container {
+  background-size: 100% auto;
+  background-position: center center;
+  overflow: hidden;
+  /* padding-bottom: 100rpx; */
+}
+
+
+
+.logo {
+  padding-top: 8vh;
+  text-align: center;
+}
+.logo image {
+  width:  285rpx;
+}
+
+
+
+.tips {
+  color: #FF7C64;
+  font-size: 34rpx;
+  padding-top: 8vh;
+}
+
+
+.qrcode {
+  display: block;
+  padding-top: 8vh;
+  text-align: center;
+}
+.qrcode image {
+  width: 370rpx;
+  height: 370rpx;
+  padding: 20rpx;
+  border: 1rpx solid #A0A0A0;
+}
+.qrcode text {
+  color: #181818;
+  font-size: 32rpx;
+}
+
+
+
+.btn {
+  background: #FF7C64;
+  margin: 5vh 120rpx 0;
+}

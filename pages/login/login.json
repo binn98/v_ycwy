@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wux-popup": "../../component/popup/index",
+    "wux-input": "../../component/input/index"
+  }
+}

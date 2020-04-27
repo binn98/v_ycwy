@@ -1,0 +1,62 @@
+<!--index.wxml-->
+<view class="ycwy-container">
+  <view class="logo"></view>
+
+  <view class="slogan tac">官方指定旧衣物回购小程序</view>
+
+  <view class="process flex flex_mc">
+    <view class="flex flex_dt flex_cc">
+      <text class="iconfont icon-woyaohuishou- block"></text>
+      <text>我要回收</text>
+    </view>
+    <view class="line">……</view>
+    <view class="flex flex_dt flex_cc">
+      <text class="iconfont icon-jisongkuaidi"></text>
+      <text>寄送快递</text>
+    </view>
+    <view class="line">……</view>
+    <view class="flex flex_dt flex_cc">
+      <text class="iconfont icon-youhuiquan"></text>
+      <text>获得票券</text>
+    </view>
+    <view class="line">……</view>
+    <view class="flex flex_dt flex_cc">
+      <text class="iconfont icon-huangoudikou-"></text>
+      <text>换购抵扣</text>
+    </view>
+  </view>
+
+  <!-- <button type="primary" class="btn" bindtap="popUp">立即登录</button> -->
+  <button type="primary" class="btn" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback">登录衣橱无忧账户</button>
+
+  <view class="footer tac">登录代表您已同意衣橱无忧<button class="btn_text" bindtap="rulesUp" data-name="protocol">用户协议</button>、<button class="btn_text" bindtap="rulesUp" data-name="privacy">隐私协议</button></view>
+
+  <wux-popup position="bottom" visible="{{ pop }}" bind:close="popClose" bind:closed="popClosed" class="login">
+    <view class="login-wrap">
+      <view class="hd flex flex_mj">
+        <view>请使用有赞衣橱无忧手机号登录</view>
+        <view bindtap="popClose"><text class="iconfont icon-jiaocha-" style="font-size: 36rpx;"></text></view>
+      </view>
+      <view class="bd_wrap no mgt_40 flex flex_cc">
+        <wux-input label="中国 +86" value="{{ form.mobile }}" data-name="mobile" placeholder="请输入手机号" maxlength="11" controlled error="{{ vaild.mobile }}" type="number" bind:blur="formChange" bind:clear="formClear" bind:error="formError" />
+      </view>
+      <view class="bd_wrap no flex flex_me flex_cc">
+        <wux-input value="{{ form.code }}" data-name="code" placeholder="请输入验证码" maxlength="4" controlled error="{{ vaild.code }}" type="number" bind:blur="formChange" bind:clear="formClear" bind:error="formError" />
+        <button class="btn_text {{ btn.cls }}" data-cls="{{ btn.cls }}" bindtap="getMobileCode">{{ btn.text }}</button>
+      </view>
+      <button type="primary" class="btn {{ !loginBtn && 'disabled' }}" bindtap="loginIn" style="margin: 100rpx 0 120rpx;">登录</button>
+    </view>
+  </wux-popup>
+
+  <view class="popRules" wx:if="{{ popRules }}" bindtap="rulesToggle">
+    <view class="wrap flex flex_dt flex_mc flex_cc">
+      <view class="content" catchtap>
+        <rich-text style="font-size: 24rpx" nodes="{{ rules }}"></rich-text>
+        <!-- <text style="color: #999999; font-size: 26rpx;" decode="{{ true }}">{{ rules }}</text> -->
+      </view>
+      <view class="close mgt_50 tac" catchtap="rulesToggle">
+        <text class="iconfont icon-jiaocha-"></text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+@import 'assets/iconfont/iconfont.wxss'
+@import 'assets/css/common.wxss'
+
+/**app.wxss**/
+element {
+  font-family: PingFang SC;
+  font-size: 30rpx;
+  line-height: 1.5;
+}
+
+.ycwy-container {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+} 
+.btn_text {
+  display: inline-block;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: #999999;
+  font-size: 26rpx;
+  line-height: 1.5;
+  overflow: visible;
+}
+.btn_text::after {
+  content: '';
+  width: 0;
+  height: 0;
+}
+.bd_wrap {
+  height: 125rpx;
+  border: 1rpx solid #E5E5E5;
+}
+.bd_wrap.no {
+  border-left: none;
+  border-right: none;
+}
+.bd_wrap+.bd_wrap {
+  border-top: none;
+}

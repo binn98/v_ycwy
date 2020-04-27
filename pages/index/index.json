@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wux-tabs": "../../component/tabs/index",
+    "wux-tab": "../../component/tab/index",
+    "wux-divider": "../../component/divider/index",
+    "wux-refresher": "../../component/refresher/index"
+  }
+}

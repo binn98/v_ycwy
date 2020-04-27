@@ -1,0 +1,84 @@
+<!--pages/index/index.wxml-->
+<view class="ycwy-container">
+  <view class="tabWrap">
+    <wux-tabs defaultCurrent="{{ tab }}" bind:change="tabChange" class="tabs" data-tab="tab">
+      <wux-tab key="0">可回收清单<text class="iconfont icon-wenhao mgl_20" style="font-size: 36rpx;" catchtap="rulesToggle"></text></wux-tab>
+      <wux-tab key="10" title="已回收清单"></wux-tab>
+    </wux-tabs>
+    <wux-tabs defaultCurrent="{{ tab2 }}" bind:change="tabChange" class="secTabs" wux-class="{secTabs:!show,SecTabs:show}" data-tab="tab2">
+      <wux-tab key="0" title="全部"></wux-tab>
+      
+      <wux-tab wx:if="{{show}}" key="30" title="30天内"></wux-tab>
+      <wux-tab wx:if="{{show}}" key="60" title="60天内"></wux-tab>
+      <wux-tab wx:if="{{show}}" key="90" title="90天内"></wux-tab>
+      <wux-tab wx:if="{{show}}" key="100" title="90天后"></wux-tab>
+      <wux-tab key="110" title="{{show == false? '展开':'收起'}}" ></wux-tab>
+    </wux-tabs>
+  </view>
+
+  <wux-refresher id="wux-refresher" bind:pulling="listPull" bind:refresh="listRefresh" bind:loadmore="listLoadmore" scrollTop="{{ scrollTop }}">
+    <view class="list" wx:if="{{ list && !loading && list.length > 0 }}">
+      <view class="list_box" wx:for="{{ list }}" wx:for-item="item" wx:key="goods_id">
+        <view class="title flex flex_mj">
+          <text>订单编号：{{ item.order_no }}</text>
+          <!-- <text class="red">回收: {{ item.recovery_price_msg }}</text> -->
+          <text class="red" wx:if="{{ tab == 10 }}">{{ item.recovery_status == 20 ? '回收成功' : '回收中' }}</text>
+          <text class="red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">待收件</text>
+        </view>
+        <view class="inf flex flex_ma mgt_20">
+          <image mode="widthFix" src="{{ item.image }}"></image>
+          <view>
+            <text class="bold">{{ item.name }}</text>
+            <text class="block">
+              <text wx:for="{{ item.sku_properties_name }}" wx:for-item="item2" wx:for-index="index2" wx:key="k_id">{{ item2.k }}:{{ item2.v }}</text> ￥{{ item.price }}</text>
+            <text>收货时间：{{ item.success_time_txt }}</text>
+          </view>
+        </view>
+        <view class="bottom flex flex_mj flex_cc mgt_15">
+          <text wx:if="{{ timeList.length > 0 &&  tab == 0 }}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
+          <text wx:if="{{ tab == 10 }}">回收 ¥{{ item.recovery_price * 1 + item.express_price * 1 }}/件</text>
+
+          <!-- <button class="btn btn_text {{ timeList[index].d < 7 ? 'disabled':'' }}" bindtap="goTo" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" hidden="{{ tab == 10 }}">回收 {{ item.recovery_price }}元</button> -->
+          <button class="btn btn_text" bindtap="goTo" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}" hidden="{{ tab == 10 }}">回收  ¥{{ item.recovery_price }}/件</button>
+          <button class="btn btn_text" bindtap="goTo2" data-id="{{ item.rec_order_id }}" hidden="{{ tab == 0 }}">查看详情</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="list list_no tac" wx:elif="{{ !loading }}">
+      <image mode="widthFix" src="../../assets/img/order_no.png"></image>
+      <text class="tips block tac">{{ tab2 > 0 ? ( tab2 == 100 ? '90天以上' : tab2 + '天内' ) + '暂无回收衣物清单':'暂无回收衣物清单' }}</text>
+      <text class="mgt_10" style="color: #FF7C64; font-size: 26rpx;">衣橱无忧平台的订单将会在确认收货7天后显示</text>
+      <button type="primary" class="btn mgt_75" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" wx:if="{{ !isLogin }}">登录衣橱无忧账户</button>
+
+      <block wx:if="{{ tab == 0 && tab2 == 0 }}">
+      <view class="mgt_45 mgl_100 mgr_100"><wux-divider text="与衣橱无忧一起创造旧衣零抛弃计划" /></view>
+      <navigator url="../../pages/intro/intro"><image mode="widthFix" src="../../assets/img/order_nopic.jpg" class="bigimg"></image></navigator>
+      </block>
+    </view>
+  </wux-refresher>
+
+  <view class="nav flex flex_mc">
+    <navigator url="../../pages/index/index" open-type="redirect" class="cur"><text class="iconfont icon-yiwuhuishou-heise"></text>衣物回收</navigator>
+    <navigator url="../../pages/user/user" open-type="redirect"><text class="iconfont icon-youhuiquan-heise-"></text>我的优惠券</navigator>
+  </view>
+
+  <view class="popRules" wx:if="{{ popRules }}" bindtap="rulesToggle">
+    <view class="wrap flex flex_dt flex_mc flex_cc">
+      <view class="content" catchtap>
+        <view class="title tac">回收计价规则</view>
+        <view class="text">
+          <view>平台根据用户已购买衣物订单确认收货时间开始计算，按不同回收周期对应不同额度的优惠券返还至用户的优惠券账户，可进行平台全类商品的购买抵扣，不可提现。</view>
+          <view>具体回收周期对应的优惠券返还，如下：</view>
+          <text class="cur block mgt_10">• 30天内按平台订单售价的{{ rules.percent.percent_30 }}%；
+          • 60天内按平台订单售价的{{ rules.percent.percent_60 }}%；
+          • 90天内按平台订单售价的{{ rules.percent.percent_90 }}%；
+          • 90天后按平台订单售价的{{ rules.percent.percent_100 }}%。</text>
+        </view>
+      </view>
+      <view class="close mgt_100 tac" catchtap="rulesToggle">
+        <text class="iconfont icon-jiaocha-"></text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+/* pages/intro/intro.wxss */
+.ycwy-container {
+  background: #FFFFFF;
+  overflow: hidden;
+  padding-bottom: 30rpx;
+}
+
+.title {
+  padding: 60rpx 55rpx 40rpx;
+  color: #333333;
+  font-size: 45rpx;
+  letter-spacing: 3rpx;
+}
+.p {
+  display: block;
+  padding: 30rpx 55rpx;
+  color: #3e3e3e;
+  font-size: 26rpx;
+  line-height: 2.5;
+  letter-spacing: 5rpx;
+}
+.p image {
+  width: 640rpx;
+  height: auto;
+}
+.orange {
+  color: #ed7b49;
+}
+.black {
+  color: #3e3e3e;
+}
+.link {
+  padding: 2rpx 5rpx;
+  background: #ed7b49;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  line-height: 1.2;
+}

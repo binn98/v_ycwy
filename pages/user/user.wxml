@@ -1,0 +1,66 @@
+<!--pages/user/user.wxml-->
+<view class="ycwy-container">
+  <view class="header">
+    <view class="flex flex_mj">
+      <view class="flex flex_cc" style="height: 210rpx;">
+        <view class="hdimg"><image mode="widthFix" src="{{ info.avatar_url }}"></image></view>
+        <view class="text flex flex_dt mgl_20" wx:if="{{ isLogin }}">
+          {{ info.nick_name }}<text>衣橱无忧账户：{{ info.mobile }}</text>
+        </view>
+        <button class="text flex flex_dt btn_text" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" wx:else style="background: none; border: none; padding-left: 20rpx;">登录/注册</button>
+      </view>
+      <view class="ques mgt_45" bindtap="goTo">常见问题</view>
+    </view>
+  </view>
+
+  <view class="total tac">
+    <text class="title pdt_45">优惠券账户额度可用</text>
+    <block wx:if="{{ total.usable_money }}">
+    <text class="all">￥<text>{{ total.usable_money }}</text>/{{ total.usable_num }}张</text>
+    <text class="new">最新：{{ total.new_create_time }} 划入通兑优惠券:￥{{ total.new_money }}</text>
+    </block>
+    <text class="block tac pdt_80" wx:else>暂无数据</text>
+  </view>
+
+  <view class="list mgt_20">
+    <wux-tabs defaultCurrent="{{ tab }}" bind:change="tabChange" class="tabs" data-tab="tab">
+      <wux-tab key="10" title="未使用"></wux-tab>
+      <wux-tab key="20" title="已使用"></wux-tab>
+      <wux-tab key="30" title="已失效"></wux-tab>
+    </wux-tabs>
+
+    <view class="wrap mgt_30" wx:if="{{ list.length > 0 && !loading }}">
+      <view class="ticket {{ tab != 10 ? 'disabled' : '' }}" style="background-image: url({{ tab == 10 ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArIAAADmCAYAAAAp+WZIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQTE5MDM5RDEwMUMxMUVBQTFBN0VBMkE2M0JCQTI4OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQTE5MDM5RTEwMUMxMUVBQTFBN0VBMkE2M0JCQTI4OSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBBMTkwMzlCMTAxQzExRUFBMUE3RUEyQTYzQkJBMjg5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBBMTkwMzlDMTAxQzExRUFBMUE3RUEyQTYzQkJBMjg5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+LQJncAAACPFJREFUeNrs3d2PlFcd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' : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArIAAADmCAYAAAAp+WZIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyNDlBMzkwNzEwMUMxMUVBOUYxNDkyRTYzMzEzRjU0RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyNDlBMzkwODEwMUMxMUVBOUYxNDkyRTYzMzEzRjU0RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI0OUEzOTA1MTAxQzExRUE5RjE0OTJFNjMzMTNGNTRGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI0OUEzOTA2MTAxQzExRUE5RjE0OTJFNjMzMTNGNTRGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+CSckUAAACNZJREFUeNrs3UtvnFcZ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' }})" wx:for="{{ list }}" wx:key="id" wx:for-item="item">
+        <view class="wrap flex flex_mj flex_cc">
+          <view class="price mgl_40 tar">￥<text>{{ item.recovery_money * 1 + item.express_money * 1 }}</text><text class="block" style="font-size: 24rpx;">通兑优惠券</text></view>
+          <view class="all mgr_20">
+            <text class="tt" style="color: #181818; font-size: 28rpx;">划入：{{ item.create_time_txt }}</text>
+            <text>来源订单：{{ item.order_no }}</text>
+            <text>有效期：{{ item.effect_sday }} 至 {{ item.effect_eday }}</text>
+          </view>
+        </view>
+        <view class="title flex flex_mj flex_cc">
+          <text>(回收价:￥{{ item.recovery_money * 1 }} + 快递费: ￥{{ item.express_money * 1 }})</text>
+          <text>优惠券编号：{{ item.yz_code }}</text>
+        </view>
+        <view class="fixed" wx:if="{{ tab == 20 }}"><image mode="widthFix" src="../../assets/img/ico-used.png"></image></view>
+        <view class="fixed" wx:elif="{{ tab == 30 }}"><image mode="widthFix" src="../../assets/img/ico-end.png"></image></view>
+      </view>
+    </view>
+
+    <view class="list list_no tac" wx:if="{{ !list.length && !loading }}">
+      <image mode="widthFix" src="../../assets/img/order_no.png"></image>
+      <text class="tips block tac">暂无数据</text>
+
+      <block wx:if="{{ list.length == 0 && !total.usable_money }}">
+      <view class="mgt_50 mgl_100 mgr_100"><wux-divider text="与衣橱无忧一起创造旧衣零抛弃计划" /></view>
+      <navigator url="../../pages/intro/intro"><image mode="widthFix" src="../../assets/img/order_nopic.jpg" class="bigimg"></image></navigator>
+      </block>
+    </view>
+  </view>
+
+  <view class="nav flex flex_mc">
+    <navigator url="../../pages/index/index" open-type="redirect"><text class="iconfont icon-yiwuhuishou-heise"></text>衣物回收</navigator>
+    <navigator url="../../pages/user/user" open-type="redirect" class="cur"><text class="iconfont icon-youhuiquan-heise-"></text>我的优惠券</navigator>
+  </view>
+</view>

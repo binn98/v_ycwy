@@ -1,0 +1,42 @@
+/* pages/logistics/logistics.wxss */
+.ycwy-container {
+  background: #F6F6F6;
+  overflow: hidden;
+  padding-bottom: 30rpx;
+}
+
+
+
+.info {
+  height: 150rpx;
+  margin: 40rpx 30rpx 20rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+  color: #262626;
+  font-size: 28rpx;
+}
+.info .logo {
+  width: 100rpx;
+  height: 100rpx;
+  background: #D70C19;
+  border-radius: 50%; 
+  color: #FFFFFF;
+  font-size: 50rpx;
+  line-height: 2;
+  text-align: center;
+}
+.info .fwb {
+  font-size: 30rpx;
+}
+
+
+
+.timeWrap {
+  margin: 0 30rpx;
+  padding: 50rpx 30rpx 0;
+  background: #FFFFFF;
+}
+.timeWrap .text {
+  color: #262626;
+  font-size: 24rpx;
+}

@@ -1,0 +1,11 @@
+<!--pages/rules/rules.wxml-->
+<view class="ycwy-container">
+  <wux-accordion-group title="" label="" accordion="{{ true }}">
+    <wux-accordion title="{{ (index + 1) + '、' + item.question }}" wx:for="{{ list }}" wx:key="id" wx:for-item="item" wx:for-index="index"><text style="color: #999999; font-size: 26rpx;" decode="{{ true }}">{{ item.answer }}</text></wux-accordion>
+  </wux-accordion-group>
+
+  <!-- <view class="nav flex flex_mc">
+    <navigator url="../../pages/index/index" open-type="redirect"><text class="iconfont icon-yiwuhuishou-heise"></text>衣物回收</navigator>
+    <navigator url="../../pages/user/user" open-type="redirect" class="cur"><text class="iconfont icon-youhuiquan-heise-"></text>我的优惠券</navigator>
+  </view> -->
+</view>

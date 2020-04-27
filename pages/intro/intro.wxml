@@ -1,0 +1,32 @@
+<!--pages/intro/intro.wxml-->
+<view class="ycwy-container">
+  <view class="title">衣橱无忧:我们想和时下年轻人一起改变穿衣消费观念</view>
+  <wux-divider show-text="{{ false }}" style="display: block; width: 600rpx; margin: 0 auto;" />
+  <text class="p">想必很多人都有这样的体验：家里的衣服不少，质量也都不错，但是一遇到好看的、喜欢的，就又没忍住剁手。</text>
+  <text class="p">可是新衣服的穿着频率往往不高，甚至有一些还没来得及穿就过时了。导致我们在衣物上的支出越来越多，衣服逐渐成为了快消品。</text>
+  <view class="p"><image mode="widthFix" src="https://yunimg1.yichuwuyou.com/20/0109/m5e16c4c4c25bb1578550468.jpg"></image></view>
+  <text class="p orange fwb">“随着人们日常买衣服越来越频繁，如何处理旧衣物也变得令人头痛起来。</text>
+  <text class="p">囤在家里不现实，用不上还占空间;直接当垃圾处理了，又会直接造成严重的资源浪费;而扔进旧衣回收箱，很多朋友又会担心衣服的去向问题。”衣橱无忧平台首席运营官秦波这样说道。</text>
+  <text class="p">据不完全统计，我国每年的纤维加工总量约为5000万吨，产生超过2000万吨废旧纺织品，而<text class="orange fwb">回收利用率却不足10%</text>。</text>
+  <text class="p black fwb">每年大量的废旧衣物只能通过填埋或者焚烧的方式来处理。这样一来，不仅浪费资源，同时也对自然环境造成了极大的伤害。</text>
+  <view class="p"><image mode="widthFix" src="https://yunimg1.yichuwuyou.com/20/0109/m5e16c4dc8ee541578550492.jpg"></image></view>
+  <text class="p">在这样的现状下，许多旧衣回收机构应运而生。</text>
+  <view class="p"><text class="link orange fwb"> 衣橱无忧(www.yichuwuyou.com) \n</text> 作为一个服装换购平台，不同于许多传统的旧衣回收机构。</view>
+  <text class="p">平台首席运营官秦波说:“与其他的旧衣回收机构单纯回收旧衣物的做法不同，我们衣橱无忧团队的初心，是想<text class="orange fwb">搭建一个理想的个人衣物消费换购平台</text>。</text>
+  <text class="p">每个人都可以在咱们这个平台，开通<text class="orange fwb">以旧换新包年服务。</text>秦波这样解释道。</text>
+  <view class="p"><image mode="widthFix" src="https://yunimg1.yichuwuyou.com/20/0109/m5e16c4e3d74d61578550499.jpg"></image></view>
+  <text class="p">“除了<text class="orange fwb">大众熟知的品牌</text>，我们还和很多<text class="orange fwb">优秀的设计师品牌合作</text>，我们的用户可以随心所欲地在
+我们平台选购自己喜爱的衣物。</text>
+  <text class="p"><text class="orange fwb">如果衣服穿腻了，又完全可以用旧衣来我们平台换购新款。</text>这样一来,我们的用户购衣成本就极大地被缩减了。</text>
+  <text class="p">这对很多追求时尚潮流的人来说，都是再好不过的事情。更重要的是，<text class="fwb">人们购买新款的欲望得到满足的同时，旧衣又得到了妥当的处理。</text></text>
+  <view class="p"><image mode="widthFix" src="https://yunimg1.yichuwuyou.com/20/0109/m5e16c4ebae1b71578550507.jpg"></image></view>
+  <text class="p">如今的很多旧衣回收平台会对低价回收的旧衣物进行二次销售。</text>
+  <text class="p">针对这一点，秦波说:“<text class="fwb">衣橱无忧主要将会致力于公益，不会出现旧衣物二次销售的情况，</text>我们目前计划一年捐赠10万件衣物给山区。”.</text>
+  <text class="p">而提及平台创建的初衷，作为衣橱无忧平台首席运营官，秦波认真地做出了解释:</text>
+  <text class="p">“我们平台和团队从一开始就坚守的，正是最有利于消费者、更具价值的衣物消费模式，<text class="orange fwb">有效降低消费者的穿衣成本和解决闲置衣物处理的页恼</text>，同时将可再次使用的衣服<text class="orange fwb">捐献给更多有需要的人</text>，让世间回归美好本质。</text>
+  <view class="p"><image mode="widthFix" src="https://yunimg1.yichuwuyou.com/20/0109/m5e16c4f8caeba1578550520.jpg"></image></view>
+  <text class="p">“这几年，极简生活观受到越来越多年轻人的推崇。<text class="fwb">花最少的钱，尽可能提升生活的质感，同时又不给环境带来负担，这一切和我们在做的事不谋而合。</text></text>
+  <text class="p">我们很开心从事这样一份对社会有所贡献的事业。”他继续说道。</text>
+  <text class="p">秦波表示，目前衣橱无忧已经有<text class="orange fwb">超过1000家服装品牌供货，将来也会继续致力于打造一个更加完善的换购系统。</text></text>
+  <view class="p"><image mode="widthFix" show-menu-by-longpress="true" src="https://yunimg1.yichuwuyou.com/20/0109/m5e16c501aed251578550529.jpg"></image></view>
+</view>

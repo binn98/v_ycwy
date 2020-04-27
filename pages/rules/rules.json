@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "常见问题",
+  "usingComponents": {
+    "wux-accordion-group": "../../component/accordion-group/index",
+    "wux-accordion": "../../component/accordion/index"
+  }
+}
