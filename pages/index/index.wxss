@@ -27,11 +27,13 @@
 }
 .tabs .wux-tabs__tab--balanced .wux-tabs__tab-bar {
   background: #FF7C64;
+  
 }
 .secTabs .wux-tabs {
   height: 100rpx;
   line-height: 100rpx;
   background: #F6F6F6;
+  /* margin-bottom: 20rpx; */
 }
 .secTabs .wux-tabs__tab {
   color: #181818;
@@ -41,12 +43,14 @@
 }
 .secTabs .wux-tabs__tab--balanced .wux-tabs__tab-bar {
   background: none;
+  /* background-color: #FF7C64;
+  margin-top: -20rpx; */
 }
 .SecTabs{
-  display: flex !important;
-  width: 100%;
+  /* display: flex !important;
+  width: 100%; */
   /* justify-content: space-between !important; */
-  align-items: center !important;
+  /* align-items: center !important; */
   /* padding: 0 15rpx; */
 }
 

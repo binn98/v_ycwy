@@ -5,7 +5,7 @@
       <wux-tab key="0">可回收清单<text class="iconfont icon-wenhao mgl_20" style="font-size: 36rpx;" catchtap="rulesToggle"></text></wux-tab>
       <wux-tab key="10" title="已回收清单"></wux-tab>
     </wux-tabs>
-    <wux-tabs defaultCurrent="{{ tab2 }}" bind:change="tabChange" class="secTabs" wux-class="{secTabs:!show,SecTabs:show}" data-tab="tab2">
+    <wux-tabs defaultCurrent="{{ tab2 }}" bind:change="tabChange" class="secTabs" data-tab="tab2">
       <wux-tab key="0" title="全部"></wux-tab>
       
       <wux-tab wx:if="{{show}}" key="30" title="30天内"></wux-tab>
