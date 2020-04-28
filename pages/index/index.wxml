@@ -7,7 +7,6 @@
     </wux-tabs>
     <wux-tabs defaultCurrent="{{ tab2 }}" bind:change="tabChange" class="secTabs" data-tab="tab2">
       <wux-tab key="0" title="全部"></wux-tab>
-      
       <wux-tab wx:if="{{show}}" key="30" title="30天内"></wux-tab>
       <wux-tab wx:if="{{show}}" key="60" title="60天内"></wux-tab>
       <wux-tab wx:if="{{show}}" key="90" title="90天内"></wux-tab>

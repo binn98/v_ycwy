@@ -257,6 +257,7 @@ Page({
     
       return false;
     } else if (!_that.data.cVal) {
+      // console.log(_that.data.cVal);
       wx.showToast({
         title: "请选择快递公司",
         icon: "none",
@@ -347,8 +348,8 @@ Page({
   },
   radioChange(e) {
     this.setData({
-      cVal: e.target.dataset.value,
-      cName: e.target.dataset.name,
+      cVal: e.currentTarget.dataset.value,
+      cName: e.currentTarget.dataset.name,
     });
     this.popClose();
   },

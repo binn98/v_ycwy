@@ -5,8 +5,6 @@
   padding-bottom: 100rpx;
 }
 
-
-
 .tabWrap {
   position: fixed;
   top: 0;
