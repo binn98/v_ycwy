@@ -172,6 +172,7 @@ Page({
                 title: '授权成功',
                 icon: 'success'
               })
+              console.log(res);
               setTimeout(() => {
                 wx.redirectTo({
                   url: '/pages/index/index'

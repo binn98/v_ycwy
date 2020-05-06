@@ -94,6 +94,7 @@ Page({
     app.ajax('coupon/list', {
       status: _that.data.tab
     }).then(res => {
+      console.log(res);
       _that.setData({
         loading: false,
         list: res.data.list,

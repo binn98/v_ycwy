@@ -7,15 +7,16 @@
   width:  357rpx;
 }
 .slogan {
-  color: #E3805C;
+  color: #FF5E62;
   font-size: 30rpx;
   padding-top: 8vh;
 }
 
 
 
+
 .process {
-  padding-top: 10vh;
+  padding-top: 188rpx;
 }
 .process text {
   color: #999999;
@@ -32,8 +33,16 @@
 
 
 .btn {
-  background-color: #7ED321 !important;
+  background-color: #FF5E62 !important;
   margin: 15vh 45rpx 0;
+  margin-bottom: 14rpx;
+  margin-top: 100rpx;
+  font-size: 36rpx;
+}
+.rule{
+  color: #999999;
+  text-align: center;
+  font-size: 26rpx;
 }
 
 

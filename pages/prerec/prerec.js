@@ -26,6 +26,7 @@ Page({
     },
     popRules: false,
     rules: {},
+    cur:''
   },
 
   /**
@@ -55,7 +56,7 @@ Page({
       "date.options": [
         {
           value: _that.formatTime(day),
-          label: _that.formatTime(day) + "（今日）",
+          label:"今日",
           isLeaf: false,
           children: [
             {
@@ -82,7 +83,7 @@ Page({
         },
         {
           value: _that.formatTime(day2),
-          label: _that.formatTime(day2) + "（" + week[day2.getDay()] + "）",
+          label:  week[day2.getDay()],
           isLeaf: false,
           children: [
             {
@@ -105,7 +106,7 @@ Page({
         },
         {
           value: _that.formatTime(day3),
-          label: _that.formatTime(day3) + "（" + week[day3.getDay()] + "）",
+          label: week[day3.getDay()],
           isLeaf: false,
           children: [
             {
@@ -128,7 +129,7 @@ Page({
         },
         {
           value: _that.formatTime(day4),
-          label: _that.formatTime(day4) + "（" + week[day4.getDay()] + "）",
+          label: week[day4.getDay()],
           isLeaf: false,
           children: [
             {
@@ -151,7 +152,12 @@ Page({
         },
       ],
     });
-
+   
+    this.data.date.options.map(v=>{
+      v.label= v.label.substr(-3,2)
+    })
+    
+    
     app
       .ajax("logistics/receiving")
       .then((res) => {
@@ -169,6 +175,7 @@ Page({
         _that.setData({
           company: res.data.list,
         });
+        // console.log(this.data.company);
       })
       .catch((res) => {
         console.log(res);
@@ -184,6 +191,7 @@ Page({
       .catch((res) => {
         console.log(res);
       });
+     console.log(this.data.date.options); 
   },
 
   /**
@@ -408,4 +416,10 @@ Page({
       h: hour,
     };
   },
+  getdate(e){
+    // console.log(e);
+    this.setData({
+      cur:e.target.dataset.key
+    })
+  }
 });

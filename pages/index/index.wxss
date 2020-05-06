@@ -1,30 +1,200 @@
 /* pages/index/index.wxss */
 .ycwy-container {
-  background: #F6F6F6;
+  background: #fff;
   overflow: hidden;
-  padding-bottom: 100rpx;
+  /* padding-bottom: 100rpx; */
+}
+.information{
+  height: 540rpx;
+  width: 750rpx;
+  z-index: 999;
+  position: relative;
+}
+.information .per_details{
+  height: 200rpx;
+  width: 750rpx;
+  /* background-color: springgreen; */
+  /* background-image: image('../../assets//img/index_banner.png'); */
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+.per_details .per_header{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  /* background-color: skyblue; */
+  margin-left: 32rpx;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+.per_details .per_header .per_img{
+  width: 120rpx;
+  height: 120rpx;
+}
+.per_details .per_info{
+  color: #fff;
+  font-size: 32rpx;
+}
+.per_details .per_info .id{
+  font-size: 26rpx;
+}
+.per_details .Rec_rules{
+  flex: 1;
+  color: #fff;
+  position: relative;
+}
+.per_details .Rec_rules .rule{
+  font-size: 24rpx;
+  width: 132rpx;
+  height: 43rpx;
+  background-color: rgba(0,0,0,0.15);
+  border-radius:22rpx 0rpx 0rpx 22rpx;
+  text-align: center;
+  line-height: 43rpx;
+  position: absolute;
+  right: 0;
+  top: -32rpx
+}
+.information .coupon{
+  height: 340rpx;
+  width: 750rpx;
+  background-color: #fff;
+}
+.information .coupon>view{
+  text-align: center;
+}
+.information .coupon>view>view{
+  display: inline-block;
+}
+.information .coupon .c_amount{
+  padding-top: 30rpx;
+  color: #181818;
+  font-weight: bold;
+  font-size: 30rpx;
+  text-align: left;
+  padding-left: 32rpx;
+}
+.information .coupon .c_frame{
+  margin-top: 37rpx;
+  color: #181818;
+  font-size: 26rpx;
+}
+.c_frames{
+  color: #FF5E62;
+  margin-top: 37rpx;
+  font-size: 26rpx;
+}
+.information .coupon .c_frame .c_rmb,
+.information .coupon .c_frames .c_rmb{
+  font-size: 60rpx;
+  height: 47rpx;
+}
+.check{
+  margin-top: 21rpx;
+  color: #666666;
+  font-size: 26rpx;
+  margin-bottom: 75rpx;
+  
+}
+.check .iconfont{
+  vertical-align:1rpx;
+  font-size:26rpx;
+}
+.ative{
+  color: #FF5E62;
+}
+.inf .block .block_{
+  width:120rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  text-align: center;
+  color: #999999;
+  background-color: #f9f9f9;
+  display: inline-block;
+} 
+.xiaoxi{
+  font-size: 26rpx;
+  color: #FF5E62;
+}
+.xiaoxi .iconfont{
+  vertical-align: -1rpx;
+  margin-right: 10rpx;
 }
 
+
+
 .tabWrap {
+  width: 100%;
+  /* height: 200rpx; */
+  z-index: 999;
+  position: relative
+}
+.tabWraps{
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 12;
-  width: 100%;
-  height: 200rpx;
+  left:0;
+}
+.tabWrap .tabs_{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60rpx;
+  padding-top: 28rpx;
+  font-size: 26rpx;
+  background-color: #fff;
+}
+.tabWrap .tabs_>text{
+  display: inline-block;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 25rpx;
+  background-color: #F5F5F5;
+}
+.tabWrap .tabs_ .tabs_q{
+  margin-bottom: 16rpx;
+}
+.tabs_s{
+  z-index: 901;
+}
+.tabs_h{
+  z-index: 901;
+  height: 0rpx;
+  transition: height 0.5s;
+  overflow: hidden;
+  background-color: #F7F7F7;
+  position: relative;
+}
+.tabs_h>text{
+  display: inline-block;
+  line-height: 104rpx;
+  width: 25%;
+  text-align: center;
+  font-size: 26rpx;
+}
+.show{
+  height: 104rpx;
+}
+.clor{
+  color: #FF5E62;
 }
 .tabs .wux-tabs {
-  height: 100rpx;
-  line-height: 100rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color:#fff4f4;
+  /* background:rgba(255,182,185,0.51); */
 }
 .tabs .wux-tabs__tab {
-  color: #181818;
+  color: #888888;
+  font-size: 30rpx;
 }
 .tabs .wux-tabs__tab--balanced.wux-tabs__tab--current {
-  color: #FF7C64;
+  color: #181818;
+  font-size: 30rpx;
 }
 .tabs .wux-tabs__tab--balanced .wux-tabs__tab-bar {
-  background: #FF7C64;
+  background: #FF5E62;
   
 }
 .secTabs .wux-tabs {
@@ -55,18 +225,19 @@
 
 
 .list {
-  margin-top: 200rpx;
-  padding-bottom: 20rpx;
+  /* margin-top: 200rpx; */
+  padding-bottom: 120rpx;
 }
 .list_box {
   width: 690rpx;
-  height: 320rpx;
+  height: 385rpx;
   margin: 0 auto 20rpx;
   background: #FFFFFF;
   border-radius: 20rpx;
+  border: 1rpx solid #f1f1f1;
 }
 .list_box .title {
-  height: 65rpx;
+  height: 60rpx;
   padding: 0 18rpx;
   border-bottom: 1rpx solid #EEEEEE;
   color: #999999;
@@ -78,12 +249,12 @@
   font-size: 24rpx;
 }
 .list_box .inf {
-  height: 140rpx;
+  height: 200rpx;
   overflow: hidden;
 }
 .list_box .inf image {
-  width: 140rpx;
-  height: 140rpx;
+  width: 180rpx;
+  height: 180rpx;
 }
 .list_box .inf>view {
   width: 430rpx;
@@ -100,7 +271,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 
 }
@@ -117,16 +288,18 @@
 .list_box .btn {
   width: 220rpx;
   height: 60rpx;
-  background: #E3805B;
+  background: #FF5E62;
   color: #FFFFFF;
   font-size: 30rpx;
   line-height: 2;
+  text-align: center;
 }
 .list_box .btn.disabled {
   display: none;
 }
 .list_no {
-  min-height: calc(100vh - 320rpx);
+  /* min-height: calc(100vh - 320rpx); */
+  padding-bottom: 135rpx;
   background: #FFFFFF;
 }
 .list_no image {
@@ -151,6 +324,50 @@
   background: #7ED321 !important;
   font-size: 26rpx;
   line-height: 80rpx;
+}
+ .bot_Submit{
+  width: 750rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+.bot_Submit .submit{
+  flex: 4;
+  background-color:#eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-size: 32rpx;
+}
+
+.bot_Submit .shuoming{
+  flex: 6;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+.bot_Submit .shuoming .shuoming_{
+  /* display: flex; */
+  flex: 2;
+  padding: 0 30rpx;
+}
+.bot_Submit .shuoming .shuoming_ .shuoming_gold{
+  font-size: 26rpx;
+  color: #181818;
+}
+.bot_Submit .shuoming .shuoming_gold_count{
+  font-size: 24rpx;
+  color: #999999;
+}
+.bot_Submit .shuoming .rmb{
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 36rpx;
+  color: #FF5E62;
 }
 
 
@@ -206,7 +423,7 @@
   height: 110rpx;
   background: #E3805C;
   color: #FFFFFF;
-  font-size: 36rpx;
+  font-size: 28rpx;
   line-height: 110rpx;
 }
 .popRules .content .text {
@@ -232,4 +449,15 @@
   color: #FFFFfF;
   font-size: 30rpx;
   line-height: 80rpx;
+}
+
+.mask{
+  width: 750rpx;
+  height: 100vh;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  opacity: 0.7;
+  z-index: 900;
 }

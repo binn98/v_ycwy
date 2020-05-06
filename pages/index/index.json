@@ -3,6 +3,7 @@
     "wux-tabs": "../../component/tabs/index",
     "wux-tab": "../../component/tab/index",
     "wux-divider": "../../component/divider/index",
-    "wux-refresher": "../../component/refresher/index"
+    "wux-refresher": "../../component/refresher/index",
+    "wux-popup": "../../component/popup/index"
   }
 }

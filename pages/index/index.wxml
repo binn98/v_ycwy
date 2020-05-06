@@ -1,26 +1,63 @@
 <!--pages/index/index.wxml-->
 <view class="ycwy-container">
-  <view class="tabWrap">
-    <wux-tabs defaultCurrent="{{ tab }}" bind:change="tabChange" class="tabs" data-tab="tab">
-      <wux-tab key="0">可回收清单<text class="iconfont icon-wenhao mgl_20" style="font-size: 36rpx;" catchtap="rulesToggle"></text></wux-tab>
-      <wux-tab key="10" title="已回收清单"></wux-tab>
-    </wux-tabs>
-    <wux-tabs defaultCurrent="{{ tab2 }}" bind:change="tabChange" class="secTabs" data-tab="tab2">
-      <wux-tab key="0" title="全部"></wux-tab>
-      <wux-tab wx:if="{{show}}" key="30" title="30天内"></wux-tab>
-      <wux-tab wx:if="{{show}}" key="60" title="60天内"></wux-tab>
-      <wux-tab wx:if="{{show}}" key="90" title="90天内"></wux-tab>
-      <wux-tab wx:if="{{show}}" key="100" title="90天后"></wux-tab>
-      <wux-tab key="110" title="{{show == false? '展开':'收起'}}" ></wux-tab>
-    </wux-tabs>
+    <view class="information">
+  <!-- 个人信息 -->
+  <view class="per_details" style="background-image: url(../../assets//img/index_banner.png)" >
+    <view class="per_header">
+      <image class="per_img" src="{{info.avatar_url}}" mode="widthFix"></image>
+    </view>
+    <view class="per_info">
+      {{info.nick_name}}
+      <view class="id">
+        账号:{{info.mobile}}
+      </view>
+    </view>
+    <view class="Rec_rules">
+      <view class="rule">
+        回收规则
+      </view>
+    </view>
   </view>
+  <!-- 优惠券 -->
+  <view class="coupon">
+   <view class="c_amount">
+    旧衣回收优惠券金额
+   </view> 
+   <view class="{{totals>-1? 'c_frames' :'c_frame'}}">
+     <view class="c_rmb">
+       {{ total.usable_money || 0 }}
+     </view>
+     元/{{ total.usable_num ||0}}张
+   </view>
+   <view class="check">
+     查看明细 <text class="iconfont icon-jiantou-right" ></text>
+   </view>
+   <view class="xiaoxi" wx:if="{{total.new_create_time}}">
+     <text class="iconfont icon-weibiaoti1"></text>最新:{{total.new_create_time}} 划入通兑优惠券:{{total.new_money}}元
+   </view>
+  </view>
+    </view>
+    <view class="tabWrap {{scrollTop>200? 'tabWraps':''}}">
+    	<wux-tabs defaultCurrent="{{ tab }}" bind:change="tabChange" class="tabs" data-tab="tab">
+      		<wux-tab key="0">可回收清单</wux-tab>
+      		<wux-tab key="10" title="已回收清单"></wux-tab>
+    	</wux-tabs>
+    	<view class="tabs_" wx:if="{{tab!=10}}">
+      		<text class="tabs_q {{ative==false? 'ative':''}}"  bindtap="getAllList">全部</text>
+      		<text class="tabs_s {{ative!=false? 'ative':''}}" bindtap="filterList"> {{tabs==''? '筛选':tabs}} <text    class="iconfont {{show==false? 'icon-RectangleCopy':'icon-RectangleCopy1'}}"  ></text></text>
+      </view>
+      <view class="tabs_h {{show==true? 'show':''}}">
+        <text class="{{tab2==30? 'clor':''}}" bindtap="getfilterList" data-day="30" data-value="30天内">30天内</text>
+        <text class="{{tab2==60? 'clor':''}}" bindtap="getfilterList" data-day="60" data-value="60天内">60天内</text>
+        <text class="{{tab2==90? 'clor':''}}" bindtap="getfilterList" data-day="90" data-value="90天内">90天内</text>
+        <text class="{{tab2==100? 'clor':''}}" bindtap="getfilterList" data-day="100" data-value="90天内">90天后</text>
+        </view>
+	</view>
 
-  <wux-refresher id="wux-refresher" bind:pulling="listPull" bind:refresh="listRefresh" bind:loadmore="listLoadmore" scrollTop="{{ scrollTop }}">
     <view class="list" wx:if="{{ list && !loading && list.length > 0 }}">
       <view class="list_box" wx:for="{{ list }}" wx:for-item="item" wx:key="goods_id">
         <view class="title flex flex_mj">
           <text>订单编号：{{ item.order_no }}</text>
-          <!-- <text class="red">回收: {{ item.recovery_price_msg }}</text> -->
           <text class="red" wx:if="{{ tab == 10 }}">{{ item.recovery_status == 20 ? '回收成功' : '回收中' }}</text>
           <text class="red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">待收件</text>
         </view>
@@ -29,39 +66,53 @@
           <view>
             <text class="bold">{{ item.name }}</text>
             <text class="block">
-              <text wx:for="{{ item.sku_properties_name }}" wx:for-item="item2" wx:for-index="index2" wx:key="k_id">{{ item2.k }}:{{ item2.v }}</text> ￥{{ item.price }}</text>
-            <text>收货时间：{{ item.success_time_txt }}</text>
+              <text class="block_" wx:for="{{ item.sku_properties_name }}" wx:for-item="item2" wx:for-index="index2" wx:key="k_id">{{ item2.v }}
+              </text> 
+              ￥{{ item.price }}
+            </text>
+            <text>入手时间：{{ item.success_time_txt }}</text>
           </view>
         </view>
         <view class="bottom flex flex_mj flex_cc mgt_15">
-          <text wx:if="{{ timeList.length > 0 &&  tab == 0 }}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
-          <text wx:if="{{ tab == 10 }}">回收 ¥{{ item.recovery_price * 1 + item.express_price * 1 }}/件</text>
-
-          <!-- <button class="btn btn_text {{ timeList[index].d < 7 ? 'disabled':'' }}" bindtap="goTo" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" hidden="{{ tab == 10 }}">回收 {{ item.recovery_price }}元</button> -->
-          <button class="btn btn_text" bindtap="goTo" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}" hidden="{{ tab == 10 }}">回收  ¥{{ item.recovery_price }}/件</button>
+          <text style="color: #FF5E62;" wx:if="{{ timeList.length > 0 &&  tab == 0 }}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
+          <text style="color: #FF5E62;" wx:if="{{ tab == 10 }}">回收 ¥{{ item.recovery_price * 1 + item.express_price * 1 }}/件</text>
+          <button  class="btn btn_text" bindtap="goTo" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}" hidden="{{ tab == 10 }}">回收  ¥{{ item.recovery_price }}/件</button>
           <button class="btn btn_text" bindtap="goTo2" data-id="{{ item.rec_order_id }}" hidden="{{ tab == 0 }}">查看详情</button>
         </view>
       </view>
     </view>
 
     <view class="list list_no tac" wx:elif="{{ !loading }}">
+     
       <image mode="widthFix" src="../../assets/img/order_no.png"></image>
-      <text class="tips block tac">{{ tab2 > 0 ? ( tab2 == 100 ? '90天以上' : tab2 + '天内' ) + '暂无回收衣物清单':'暂无回收衣物清单' }}</text>
-      <text class="mgt_10" style="color: #FF7C64; font-size: 26rpx;">衣橱无忧平台的订单将会在确认收货7天后显示</text>
+      <text class="tips block tac" wx:if="{{tab2 > 0}}">{{  tab2 == 100 ? '90天以上' : tab2 + '天内'  + '暂无回收衣物清单'}}</text>
+      <text class="tips block tac" wx:else="{{tab2<0}}">
+        暂时没有衣物可回收喔,去 
+          <text style="color: #FF5E62; display: inline;">
+            看看新衣吧~ 
+          </text>       
+      </text>
       <button type="primary" class="btn mgt_75" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" wx:if="{{ !isLogin }}">登录衣橱无忧账户</button>
-
-      <block wx:if="{{ tab == 0 && tab2 == 0 }}">
-      <view class="mgt_45 mgl_100 mgr_100"><wux-divider text="与衣橱无忧一起创造旧衣零抛弃计划" /></view>
-      <navigator url="../../pages/intro/intro"><image mode="widthFix" src="../../assets/img/order_nopic.jpg" class="bigimg"></image></navigator>
-      </block>
     </view>
-  </wux-refresher>
-
-  <view class="nav flex flex_mc">
-    <navigator url="../../pages/index/index" open-type="redirect" class="cur"><text class="iconfont icon-yiwuhuishou-heise"></text>衣物回收</navigator>
-    <navigator url="../../pages/user/user" open-type="redirect"><text class="iconfont icon-youhuiquan-heise-"></text>我的优惠券</navigator>
-  </view>
-
+    <view class="bot_Submit" wx:if="{{tab==0}}">
+      <view class="shuoming" >
+       <view class="shuoming_" >
+        <view class="shuoming_gold">
+          旧衣回收优惠券金额
+         </view>
+         <view class="shuoming_gold_count">
+          （由0张优惠券组成）
+         </view>
+       </view>
+       <view class="rmb">
+        ￥0
+       </view>
+      </view>
+      <view class="submit">
+        提交回收
+      </view>
+    </view>
+    <view class="mask" wx:if="{{show}}"></view> 
   <view class="popRules" wx:if="{{ popRules }}" bindtap="rulesToggle">
     <view class="wrap flex flex_dt flex_mc flex_cc">
       <view class="content" catchtap>

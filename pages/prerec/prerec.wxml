@@ -117,7 +117,41 @@
     </view>
   </view>
 
-  <wux-cascader visible="{{ date.visible }}" defult-value="{{ date.value }}" title="选择预约回收时间" options="{{ date.options }}" bind:close="dateClose" bind:change="dateChange" />
+  <!-- <wux-cascader visible="{{ date.visible }}" defult-value="{{ date.value }}" title="选择预约回收时间" options="{{ date.options }}" bind:close="dateClose" bind:change="dateChange" /> -->
+  <wux-popup position="bottom" visible="{{ date.visible }}" bind:close="dateClose" bind:closed="popClosed" class="company">
+    <view class="company-wrap">
+      <view class="">
+        <!-- 选择上门日期 -->
+        <view class="date">
+          <view class="choose_date">
+            请选择上门日期 <text class="" selectable="false" space="false" decode="false">左滑选择其他日期</text>
+          </view>
+          <view class="sc_x">
+            <scroll-view class="scro_x" scroll-x="true">
+              <view class="scro_ {{cur == item1.label? 'cur_x':''}}" wx:for="{{date.options}}" wx:for-item="item1" data-key="{{item1.label}}" bindtap="getdate">
+                {{item1.label}}<view class="{{cur == item1.label? 'cur_x1':'scro_1'}}"data-key="{{item1.label}}" bindtap="getdate">{{item1.value}}</view>
+              </view>
+            </scroll-view>
+          </view>
+          
+        </view>
+        <!-- 选择上门时段 -->
+        <view class="time">
+          <h3>请选择上门时间段:</h3>
+          <text class="" selectable="false" space="false" decode="false">
+            疫情期间......
+          </text>
+          <view class="time_slot">
+            <view class="time_c" wx:for='ajdksd'>
+              
+            </view>
+             按钮
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </wux-popup>
 
   <wux-popup position="bottom" visible="{{ pop }}" bind:close="popClose" bind:closed="popClosed" class="company">
     <view class="company-wrap">

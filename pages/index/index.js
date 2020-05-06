@@ -13,6 +13,7 @@ Page({
     loading: true,
     tab: 0,
     tab2: 0,
+    tabs:'',
     popRules: false,
     rules: {},
     scrollTop: 0,
@@ -21,26 +22,44 @@ Page({
     total_page: 1,
     timeList: [],
     // show:false,
-    show:true
+    show:false,
+    ative:false,
+    info:{},
+    number:10,
+    total: {},
+    lists: [],
+    totals:-1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // computed(this, {
-    //   test: function () {
-    //     return (new Date()).getTime()
-    //   }
-    // })
-    // watch(this, {
-    //   tab: function (newVal) {
-    //     console.log('change:' + newVal)
-    //     console.log(this.data.tab)
-    //     this.getList()
-    //   }
-    // })
-
+    const _that = this
+    app.ajax('user/info').then(res => {
+      _that.setData({
+        info: res.data
+        // isLogin: res.data.login_code == 200
+      })
+      app.globalData.isLogin = res.data.login_code == 200
+      // console.log(res);
+    }).catch(res => {
+      console.log(res)
+    })
+    app.ajax('coupon/list', {
+      status: _that.data.number
+    }).then(res => {
+      console.log(res);
+      _that.setData({
+        loading: false,
+        lists: res.data.list,
+        total: res.data.usable_new,
+        totals:res.data.total
+      })
+      console.log(_that.data.totals);
+    }).catch(res => {
+      console.log(res)
+    })
     timer = setInterval(() => {
       if (!this.data.list) return false
       let list = this.data.list.map(val =>{
@@ -51,8 +70,8 @@ Page({
         timeList: list
       })
     }, 1000)
-
-    const _that = this
+    
+    
     app.ajax('explain/recoveryrule').then(res => {
       _that.setData({
         rules: res.data
@@ -119,32 +138,66 @@ Page({
   onPageScroll(e) {
     this.setData({
       scrollTop: e.scrollTop
-      
     })
     // console.log(e.scrollTop);
-    
+    if(e.scrollTop>600){
+      this.listLoadmore()
+    }
     
   },
 
   /**
    * 页面方法
    */
-  
+  filterList(){
+    const that = this;
+    that.setData({
+      ative:true,
+      show:!that.data.show
+    })
+  },
+  getfilterList(e){
+    const that = this;
+    // console.log(e.target.dataset.day);
+    
+   that.setData({
+     tab2:e.target.dataset.day,
+     tabs:e.target.dataset.value,
+     show:false
+   })
+   console.log(that.data.tab2);
+   that.getList(1)
+  },
+  getAllList(){
+    const that = this;
+    that.setData({
+      ative:false,
+      tabs:'',
+      tab2:0
+    })
+    that.getList(1)
+  },
+  onClose1(){
+    const that = this;
+    that.setData({
+      show:false
+    })
+  },
   tabChange(e) {
     const key = e.target.dataset.tab
-    // console.log(e);
-    if(e.detail.key == 110){
-      this.setData({
-        show:!this.data.show
-      })
-      return
-    }
+    // console.log(e.detail.key);
+    // if(e.detail.key == 110){
+    //   this.setData({
+    //     show:!this.data.show
+    //   })
+    //   return
+    // }
     this.setData({
-      [key]: e.detail.key
+      [key]: e.detail.key,
+      show:false
     })
     this.getList(1)
     // console.log(this.data)
-    $stopWuxLoader()
     wx.pageScrollTo({
       scrollTop: 0
     })
@@ -156,11 +209,14 @@ Page({
   },
   getList(page) {
     const _that = this
+    console.log(_that.data.tab);
+    console.log(_that.data.tab2);
     app.ajax('order/goods', {
       status: _that.data.tab,
       time: _that.data.tab2,
       page: page || 1
     }, 'POST').then(res => {
+      console.log(res);
       if (page <= res.data.total_page || !res.data.total_page) {
         let list
         if (page == 1) {
@@ -210,10 +266,10 @@ Page({
       if (this.data.page < this.data.total_page) {
         // console.log(this.data.page)
         this.getList(++this.data.page)
-        $stopWuxLoader()
+        // $stopWuxLoader()
       } else {
-        // console.log('没有更多数据')
-        $stopWuxLoader('#wux-refresher', this, true)
+        console.log('没有更多数据')
+        // $stopWuxLoader('#wux-refresher', this, true)
       }
     }, 1500)
   },

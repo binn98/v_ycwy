@@ -6,6 +6,8 @@
     "wux-cascader": "../../component/cascader/index",
     "wux-popup": "../../component/popup/index",
     "wux-input": "../../component/input/index",
-    "wux-selectable": "../../component/selectable/index"
+    "wux-selectable": "../../component/selectable/index",
+    "wux-button": "../../component/button/index",
+    "wux-icon": "../../component/icon/index"
   }
 }
