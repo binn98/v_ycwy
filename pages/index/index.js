@@ -28,7 +28,10 @@ Page({
     number:10,
     total: {},
     lists: [],
-    totals:-1
+    totals:-1,
+    dataList:[],
+    Rmb:0,
+    active:[]
   },
 
   /**
@@ -49,14 +52,14 @@ Page({
     app.ajax('coupon/list', {
       status: _that.data.number
     }).then(res => {
-      console.log(res);
+      // console.log(res);
       _that.setData({
         loading: false,
         lists: res.data.list,
         total: res.data.usable_new,
         totals:res.data.total
       })
-      console.log(_that.data.totals);
+      // console.log(_that.data.totals);
     }).catch(res => {
       console.log(res)
     })
@@ -78,7 +81,29 @@ Page({
       })
     }).catch(res => {
       console.log(res)
-    })
+    }),
+      wx.getStorage({
+        key: 'datalist',
+        success (res) {
+          // console.log(res);
+          let moeny = 0;
+          let ative = []
+          res.data.map(v=>{
+            moeny+= +v.num,
+            ative.push(v.id)
+          })
+          _that.setData({
+            Rmb:moeny.toFixed(2),
+            dataList:res.data,
+            active:ative
+          })
+          // console.log(_that.data.active);
+          setTimeout(() => {
+            _that.ative()
+          }, 1500);
+        }
+        
+      })
   },
 
   /**
@@ -159,13 +184,14 @@ Page({
   getfilterList(e){
     const that = this;
     // console.log(e.target.dataset.day);
+    that.ative()
     
    that.setData({
      tab2:e.target.dataset.day,
      tabs:e.target.dataset.value,
      show:false
    })
-   console.log(that.data.tab2);
+  //  console.log(that.data.tab2);
    that.getList(1)
   },
   getAllList(){
@@ -197,7 +223,7 @@ Page({
       show:false
     })
     this.getList(1)
-    // console.log(this.data)
+    console.log(this.data.tab)
     wx.pageScrollTo({
       scrollTop: 0
     })
@@ -209,14 +235,14 @@ Page({
   },
   getList(page) {
     const _that = this
-    console.log(_that.data.tab);
-    console.log(_that.data.tab2);
+    // console.log(_that.data.tab);
+    // console.log(_that.data.tab2);
     app.ajax('order/goods', {
       status: _that.data.tab,
       time: _that.data.tab2,
       page: page || 1
     }, 'POST').then(res => {
-      console.log(res);
+      // console.log(res);
       if (page <= res.data.total_page || !res.data.total_page) {
         let list
         if (page == 1) {
@@ -230,7 +256,7 @@ Page({
           page: page,
           loading: false
         })
-
+        _that.ative()
         if (res.data.login_code == 200) {
           app.globalData.isLogin = true
           _that.setData({
@@ -273,17 +299,94 @@ Page({
       }
     }, 1500)
   },
-  goTo(e) {
-    
-    if (e.target.dataset.status == 10) {
-      wx.navigateTo({
-        url: '../../pages/detail/detail?id=' + e.target.dataset.rid
-      })
-    } else {
-      wx.navigateTo({
-        url: '../../pages/prerec/prerec?id=' + e.target.dataset.id + '&name=' + e.target.dataset.name + '&num=' + e.target.dataset.num + '&ep=' + e.target.dataset.ep
+  goTo(e) {    
+    // console.log(e);
+    if(e.currentTarget.dataset.moeny==0){
+      wx.showToast({
+        title: '请先选择',
+        icon: 'none',
+        duration: 2000
       })
     }
+    // if (e.target.dataset.status == 10) {
+    //   wx.navigateTo({
+    //     url: '../../pages/detail/detail?id=' + e.target.dataset.rid
+    //   })
+    // } else {
+    //   wx.navigateTo({
+    //     url: '../../pages/prerec/prerec?id=' + e.target.dataset.id + '&name=' + e.target.dataset.name + '&num=' + e.target.dataset.num + '&ep=' + e.target.dataset.ep
+    //   })
+    // }
+  },
+  ative(){
+    const _that = this
+    let ative3 = _that.data.dataList
+    let ative2 = _that.data.list
+    let ative4 = ative2.map(v=>{
+      return v.goods_id
+     })
+    ative3.map(v=>{ 
+      if(ative4.indexOf(v.id)>-1){
+        ative4[ative4.indexOf(v.id)] = true
+      }
+    })
+    _that.setData({
+      active:ative4
+    })
+    // console.log(_that.data.ative);
+   
+ 
+    
+    // console.log(ative4.indexOf(ative6));
+    // console.log(ative4);
+  },
+  Checked(e){
+    let arr = []
+    const that = this
+    let ative = that.data.active
+    let arr2 = true
+    let index = 0
+    let moeny = 0
+    arr = that.data.dataList
+   
+    
+      arr.map((v,i)=>{
+        if(v.id==e.currentTarget.dataset.id){
+          arr2 = false
+          index = i
+        }
+      })
+     
+      if(arr2){
+          arr.push(e.currentTarget.dataset)
+          ative[e.currentTarget.dataset.index] = true
+          that.setData({
+            dataList:arr,
+            active:ative
+          })
+          arr2=true
+          console.log(ative);
+      }else{
+        ative[e.currentTarget.dataset.index]=false
+        arr.splice(index,1)
+        that.setData({
+          dataList:arr,
+          active:ative
+        })
+        console.log(ative);
+      }
+      // console.log( that.data.dataList);
+      that.data.dataList.map(v=>{
+        moeny+= +v.num
+      })
+      // console.log(moeny.toFixed(2));
+      that.setData({
+        Rmb:moeny.toFixed(2)
+      })
+      wx.setStorage({
+        key:"datalist",
+        data:that.data.dataList
+      })
   },
   goTo2(e) {
     wx.navigateTo({
