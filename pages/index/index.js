@@ -199,7 +199,8 @@ Page({
     that.setData({
       ative:false,
       tabs:'',
-      tab2:0
+      tab2:0,
+      show:!that.data.show
     })
     that.getList(1)
   },
@@ -365,7 +366,7 @@ Page({
             active:ative
           })
           arr2=true
-          console.log(ative);
+          // console.log(ative);
       }else{
         ative[e.currentTarget.dataset.index]=false
         arr.splice(index,1)
@@ -373,7 +374,7 @@ Page({
           dataList:arr,
           active:ative
         })
-        console.log(ative);
+        // console.log(ative);
       }
       // console.log( that.data.dataList);
       that.data.dataList.map(v=>{

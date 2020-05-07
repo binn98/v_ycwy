@@ -76,7 +76,7 @@
           <text style="color: #FF5E62;" wx:if="{{ timeList.length > 0 &&  tab == 0 }}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
           <text style="color: #FF5E62;" wx:if="{{ tab == 10 }}">回收 ¥{{ item.recovery_price * 1 + item.express_price * 1 }}/件</text>
 
-          <view wx:if="{{ tab == 0 }}" class="{{ active[index] == true? 'btns':'btn'}}" bindtap="Checked" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-index="{{index}}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}">回收  ¥{{ item.recovery_price }}/件
+          <view wx:if="{{ tab == 0 }}" class="{{ active[index] == true? 'btns':'btn'}}" bindtap="Checked" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-index="{{index}}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}">{{active[index] == true? '取消选择':'回收¥'+ item.recovery_price +'/件'}}
           </view>
           <view class="btn" bindtap="goTo2" data-id="{{ item.rec_order_id }}" wx:if="{{ tab == 10 }}">查看详情</view>
         </view>
