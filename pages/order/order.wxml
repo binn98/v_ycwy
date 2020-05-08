@@ -4,7 +4,16 @@
   <view class="address">
     <text>寄件地址</text>
     <view class="address_check" bindtap="goAddress">
-      <text class="address_chenked">请选择或新建地址</text>
+      <view wx:if="{{show}}" class="content">
+        <view class="info">
+          <text class="info_user">{{userInfo.link_name}}</text>
+          <text class="numbers">{{userInfo.mobile}}</text>  
+        </view>
+        <view class="user_address">
+          <text>{{userInfo.address}}</text> 
+        </view>  
+      </view>
+      <text wx:if="{{!show}}" class="address_chenked">请选择或新建地址</text>
       <text class="iconfont icon-jiantou-right"></text>
     </view>
   </view>

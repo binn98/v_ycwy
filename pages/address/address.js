@@ -98,9 +98,11 @@ Page({
   },
   changeAddress(e) {
     app.globalData.address_cur = e.currentTarget.dataset.id
-    wx.navigateBack({
-      delta: 1
-    })
+    console.log(e.currentTarget.dataset.id);
+    
+    // wx.navigateBack({
+    //   delta: 1
+    // })
   },
   addAddress() {
     wx.navigateTo({

@@ -1,30 +1,32 @@
 <view class="ycwy-container">
-  <view class="my_add">
+  <view wx:for="{{list}}" wx:key="index" class="my_add">
     <view class="top">
       <view class="add_box">
         <view class="box_inf">
-          <text>收货人</text>
-          <text>12345678910</text>
+          <text>{{item.link_name}}</text>
+          <text>{{item.mobile}}</text>
         </view>
         <view class="ico">
-          <text class="iconfont icon-bianji-"></text>
+          <text bindtap="revise" data-id="{{item.id}}" class="iconfont icon-bianji-"></text>
         </view>
-	  </view>
-	 <text class="address">广东省广州市番禺区万达广场B4座3320室</text>
+      </view>
+      <text class="address">{{item.address}}</text>
     </view>
     <view class="default">
-		<view class="ico_def">
-			<text class="iconfont icon-dagou-"></text>
-			<text>设为默认</text>
-		</view>
-		<view class="del">
-			<text class="iconfont icon-shanchu-copy"></text>
-		</view>
-	</view>
+      <view class="ico_def" bindtap="def" data-id="{{item.id}}"data-link_name="{{item.link_name}}"data-mobile="{{item.mobile}}" data-province="{{item.province}}" data-city="{{item.city}}" data-area="{{item.area}}" data-address="{{item.address}}">
+        <text class="iconfont icon-dagou- {{item.is_default==is_default? 'color':''}}"></text>
+        <text>设为默认</text>
+      </view>
+      <view class="del">
+        <text bindtap="del" data-id="{{item.id}}" class="iconfont icon-shanchu-copy"></text>
+      </view>
+    </view>
   </view>
-  <!-- 添加地址按钮 -->
-  <view class="btn">
-	  <text class="iconfont icon-jiahao"></text>
-	  <text>新增地址</text>
+  <!-- 添加地址按钮 --> 
+  <view class="bttom"> 
+    <view class="btn" bindtap="goedit">
+      <text class="iconfont icon-jiahao"></text>
+      <text>新增地址</text>
+    </view>
   </view>
 </view>

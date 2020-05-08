@@ -18,15 +18,34 @@ text{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100rpx;
+  /* height: 100rpx; */
   border-bottom:1rpx solid #CCCCCC ;
   margin-bottom: 40rpx;
+}
+.content{
+  padding-bottom: 40rpx;
+  padding-top: 40rpx;
+}
+.content .info>text{
+  color: #181818;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.content .info .numbers{
+  margin-left: 30rpx;
+}
+
+.content .user_address>text{
+  font-size: 24rpx;
+  color: #666;
 }
 .address .address_check>text{
   font-size: 28rpx;
 }
 .address .address_check .address_chenked{
   color: #FF5E62;
+  display: inline-block;
+  padding: 40rpx 0;
 }
 .address .address_check .iconfont{
   color: #CCCCCC;

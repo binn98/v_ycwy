@@ -1,10 +1,12 @@
 .ycwy-container{
   padding: 20rpx 30rpx;
+  padding-bottom: 160rpx;
 }
 .my_add{
   padding: 35rpx 30rpx;
   /* border: 1rpx solid #eee; */
-  box-shadow:2rpx -3rpx 10rpx #ddd
+  box-shadow:2rpx -3rpx 10rpx #ddd;
+  margin-bottom: 20rpx;
 }
 .top{
   font-size: 30rpx;
@@ -57,13 +59,23 @@
   align-items: center;
   font-size: 36rpx;
   color: #fff;
-  position: fixed;
-  bottom: 30rpx;
-  left: 24%;
+  margin-bottom: 30rpx;
 }
 .btn .iconfont{
   color: #fff;
   /* background-color: #FF5E62; */
   font-size: 36rpx;
   margin-right: 17rpx;
+}
+.bttom{
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+}
+.color{
+  color:#FF5E62 ;
 }

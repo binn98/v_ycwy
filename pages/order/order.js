@@ -2,7 +2,8 @@
 const app = getApp()
 Page({
   data: {
-    
+      userInfo:{},
+      show:false
   },
   //options(Object)
   onLoad: function(options){
@@ -16,7 +17,12 @@ Page({
       console.log(res)
     })
     app.ajax('address/details').then(res=>{
-      console.log(res);
+      
+      this.setData({
+        userInfo:res.data,
+        show:!this.data.show
+      })
+      console.log(this.data.userInfo);
     })
   },
 
