@@ -141,6 +141,34 @@ id | int |  |  地址id
 status | int |  |  回收状态(0,可回收 10,已回收) |
 time | sting |  |  时间区间(30/60/90) |
 
+***
+#### 删除订单
+#### 请求url 
+- `https://devapi.yichuwuyou.com/wmrecovery/1.2.0/order/del`
+
+参数 | 类型|长度| 描述|备注|
+---|---|---|---|---|
+id | int |  |  订单ID |
+
+#### 返回示例
+
+成功信息：
+```json
+{
+    "code": 0,
+    "message": "",
+    "data": null
+}
+```
+
+失败信息：
+```json
+{
+    "code": -404,
+    "message": "订单不存在",
+    "data": null
+}
+```
 
 ***
 #### 衣物回收 预约回收&自行寄回
@@ -149,14 +177,11 @@ time | sting |  |  时间区间(30/60/90) |
 
 参数 | 类型| 是否必填 | 长度 |  描述|备注|
 ---|---|---|---|---|---|
-addr_id | int | | |  用户地址id | 预约回收类型传参 |
-goods_id | int | 是 | |  商品id | |
-logistic_id | int | 是 | |  快递公司id | |
-logistic_num | string |  | |  快递单号 | 自行寄送类型传参 |
+addr_id | int | 是 | |  用户地址id | 预约回收类型传参 |
+goods_id | int[] | 是 | |  商品id | |
 rec_id | int | 是 | |  回收收货地址id | |
-time | string |  | |  预约上门取件时间 | 预约回收类型传参 |
+time | string | 是 | |  预约上门取件时间 | 预约回收类型传参 |
 remark | string |  | | 备注  | |
-rec_type | int | 是  | |  回收类型  | 10,预约回收 20,自行寄送 |
 
 
 ***
@@ -209,6 +234,8 @@ status | int |  |  使用状态 | 10,未使用 20,已使用 30,已失效
 - usable_new: 可用优惠券统计
 - usable_new.usable_num: 可用优惠券总数
 - usable_new.usable_money: 可用优惠券总额
+- usable_new.new_create_time: 可用优惠券最新记录时间
+- usable_new.new_money: 可用优惠券最新记录金额
 
 
 ***
