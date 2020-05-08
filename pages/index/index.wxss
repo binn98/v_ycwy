@@ -117,6 +117,7 @@
 .xiaoxi{
   font-size: 26rpx;
   color: #FF5E62;
+  margin-bottom: 20rpx;
 }
 .xiaoxi .iconfont{
   vertical-align: -1rpx;
@@ -245,9 +246,11 @@
   font-size: 22rpx;
   line-height: 65rpx;
 }
-.list_box .title .red {
+.red {
   color: #E3805B;
   font-size: 24rpx;
+  display: inline-block;
+  margin-left: 80rpx;
 }
 .list_box .inf {
   display: flex;
@@ -292,6 +295,9 @@
   color: #999999;
   font-size: 24rpx;
   border-radius: 10rpx;
+}
+.list_box .inf .text .block{
+  
 }
 .list_box .inf .text :nth-child(2){
   text-align: end;

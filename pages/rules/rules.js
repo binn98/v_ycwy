@@ -16,12 +16,14 @@ Page({
   onLoad: function (options) {
     const _that = this
     app.ajax('explain/couponrule').then(res => {
+      console.log(res.data.list);
       _that.setData({
         list: res.data.list
       })
     }).catch(res => {
       console.log(res)
     })
+    
   },
 
   /**

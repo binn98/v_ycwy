@@ -58,27 +58,31 @@
       <view class="list_box" wx:for="{{ list }}" wx:for-item="item" wx:key="goods_id">
         <view class="title flex flex_mj">
           <text>订单编号：{{ item.order_no }}</text>
-          <text class="red" wx:if="{{ tab == 10 }}">{{ item.recovery_status == 20 ? '回收成功' : '回收中' }}</text>
-          <text class="red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">待收件</text>
+         
         </view>
         <view class="inf">
          <view class="img">
             <image mode="widthFix" src="{{ item.image }}"></image>
          </view>
           <view class="text">
-            <text class="bold wux-ellipsis--l2">{{ item.name }}你哈喽垃圾垃圾捡垃圾了解了了解哈伦裤聚隆科技</text>
+            <text class="bold wux-ellipsis--l2">{{ item.name }}</text>
               <text class="block_" wx:for="{{ item.sku_properties_name }}" wx:for-item="item2" wx:for-index="index2" wx:key="k_id">{{ item2.v }}</text>
             ￥{{ item.price }}
-            <text class="block" bindtap="ative">入手时间：{{ item.success_time_txt }}</text>
+            <text class="block">
+              <text>入手时间：{{ item.success_time_txt }}</text>
+              <text class="red" wx:if="{{ tab == 10 && item.recovery_status == 20}}">回收成功</text>
+              
+            </text>
           </view>
         </view>
         <view class="bottom">
           <text style="color: #FF5E62;" wx:if="{{ timeList.length > 0 &&  tab == 0 }}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
           <text style="color: #FF5E62;" wx:if="{{ tab == 10 }}">回收 ¥{{ item.recovery_price * 1 + item.express_price * 1 }}/件</text>
 
-          <view wx:if="{{ tab == 0 }}" class="{{ active[index] == true? 'btns':'btn'}}" bindtap="Checked" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-index="{{index}}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}">{{active[index] == true? '取消选择':'回收¥'+ item.recovery_price +'/件'}}
+          <view wx:if="{{ tab == 0 && item.logistic_status < 10 }}" class="{{ active[index] == true? 'btns':'btn'}}" bindtap="Checked" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-index="{{index}}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}">{{active[index] == true? '取消':'¥'+ item.recovery_price +' '+'回收'}}
           </view>
-          <view class="btn" bindtap="goTo2" data-id="{{ item.rec_order_id }}" wx:if="{{ tab == 10 }}">查看详情</view>
+          <text class="block red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">待收件</text>
+          <!-- <view class="btn" bindtap="goTo2" data-id="{{ item.rec_order_id }}" wx:if="{{ tab == 10 }}">查看详情</view> -->
         </view>
       </view>
     </view>

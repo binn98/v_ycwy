@@ -1,0 +1,99 @@
+.ycwy-container{
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #181818;
+}
+.admin{
+  display: flex;
+  height: 115rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #ccc;
+}
+.admin>text{
+  flex: 1;
+}
+.admin>input{
+  flex: 3;
+}
+.mobile{
+  display: flex;
+  height: 115rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #ccc;
+}
+.mobile>text{
+  flex: 1;
+}
+.mobile>input{
+  flex: 3;
+}
+.add{
+  display: flex;
+  height: 115rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #ccc;
+}
+.color{
+  color: #181818;
+  flex: 3;
+}
+.add>.er{
+  flex: 1;
+}
+.add>.chengshi{
+  flex: 3;
+  color: #808080;
+}
+.address{
+  display: flex;
+  height: 115rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #ccc;
+}
+.address>text{
+  flex: 1;
+}
+.address>input{
+  flex: 3;
+}
+
+.default{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+}
+
+.wx-switch-input::before{
+  width:100rpx !important;
+  height: 45rpx !important;
+}
+.wx-switch-input::after{
+  width: 50rpx !important;
+  height: 45rpx !important;
+}
+.wx-switch-input{
+  width:100rpx !important;
+  height:45rpx !important;
+  background: #FF5E62 !important;
+}
+
+.btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  font-size: 34rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_no{
+  background-color: #EEEEEE;
+  color: #999;
+}
+.btn_sub{
+  background-color: #FF5E62;
+  color: #fff;
+}

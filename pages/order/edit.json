@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "预约回收",
+  "usingComponents": {
+    "wux-cascader": "../../component/cascader/index",
+    "wux-divider": "../../component/divider/index",
+    "wux-input": "../../component/input/index",
+    "wux-selectable": "../../component/selectable/index"
+  }
+}

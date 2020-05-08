@@ -31,7 +31,8 @@ Page({
     totals:-1,
     dataList:[],
     Rmb:0,
-    active:[]
+    active:[],
+    goods_id:[]
   },
 
   /**
@@ -251,12 +252,17 @@ Page({
         } else {
           list = [..._that.data.list, ...res.data.list]
         }
+        list.map(v=>{
+           v.success_time_txt = v.success_time_txt.slice(0,10).split('-').join('.')
+         })
         _that.setData({
           list: list,
           total_page: res.data.total_page,
           page: page,
           loading: false
         })
+        // console.log(_that.data.list);
+        console.log(_that.data.list);
         _that.ative()
         if (res.data.login_code == 200) {
           app.globalData.isLogin = true
@@ -348,8 +354,8 @@ Page({
     let arr2 = true
     let index = 0
     let moeny = 0
+    let goods_id = []
     arr = that.data.dataList
-   
     
       arr.map((v,i)=>{
         if(v.id==e.currentTarget.dataset.id){
@@ -378,11 +384,14 @@ Page({
       }
       // console.log( that.data.dataList);
       that.data.dataList.map(v=>{
-        moeny+= +v.num
+        moeny+= +v.num,
+        goods_id.push(v.id)
       })
       // console.log(moeny.toFixed(2));
+      // console.log(goods_id);
       that.setData({
-        Rmb:moeny.toFixed(2)
+        Rmb:moeny.toFixed(2),
+        goods_id:goods_id
       })
       wx.setStorage({
         key:"datalist",

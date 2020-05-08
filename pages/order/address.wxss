@@ -1,0 +1,69 @@
+.ycwy-container{
+  padding: 20rpx 30rpx;
+}
+.my_add{
+  padding: 35rpx 30rpx;
+  /* border: 1rpx solid #eee; */
+  box-shadow:2rpx -3rpx 10rpx #ddd
+}
+.top{
+  font-size: 30rpx;
+  color: #262626;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 27rpx;
+}
+.top .address{
+  color: #999;
+}
+.top .add_box{
+  display: flex;
+  justify-content: space-between;
+}
+.top .add_box .box_inf{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.top .add_box .ico{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.default{
+  display: flex;
+  justify-content: space-between;
+  /* height: 75rpx; */
+  margin-top: 36rpx;
+  font-size: 26rpx;
+}
+.default .ico_def .iconfont{
+  margin-right: 15rpx;
+  font-size: 26rpx;
+}
+.iconfont{
+  font-size: 26rpx;
+  color: #999;
+}
+
+.btn{
+  width: 375rpx;
+  height: 90rpx;
+  background-color: #FF5E62;
+  border-radius: 45rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  color: #fff;
+  position: fixed;
+  bottom: 30rpx;
+  left: 24%;
+}
+.btn .iconfont{
+  color: #fff;
+  /* background-color: #FF5E62; */
+  font-size: 36rpx;
+  margin-right: 17rpx;
+}

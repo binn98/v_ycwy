@@ -7,7 +7,7 @@ Page({
    */
   data: {
     tab: 10,
-    id: "",
+    id: [],
     name: "",
     price: "",
     ep: "",
@@ -49,9 +49,13 @@ Page({
     const day4 = new Date(new Date().setDate(new Date().getDate() + 3));
     const now = _that.getTimeObj(day);
     _that.setData({
+      // 商品id
       id: options.id,
+      // 商品名称
       name: options.name,
+      // 商品价格
       price: Number(options.num),
+      // 运费
       ep: Number(options.ep),
       "date.options": [
         {
@@ -152,7 +156,12 @@ Page({
         },
       ],
     });
-   
+   wx.getStorage({
+     key:'datalist',
+     success(res){
+       console.log(res);
+     }
+   })
     this.data.date.options.map(v=>{
       v.label= v.label.substr(-3,2)
     })

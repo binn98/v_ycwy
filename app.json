@@ -12,7 +12,11 @@
     "pages/rules/rules",
     "pages/logistics/logistics",
     "pages/guide/guide",
-    "pages/intro/intro"
+    "pages/intro/intro",
+    "pages/rec/rec",
+    "pages/order/order",
+    "pages/order/edit",
+    "pages/order/address"
   ],
   "permission": {
     "scope.userLocation": {

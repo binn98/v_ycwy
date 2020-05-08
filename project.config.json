@@ -111,6 +111,34 @@
 					"id": -1,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "rec",
+					"pathName": "pages/rec/rec",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/order",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/edit",
+					"pathName": "pages/order/edit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/address",
+					"pathName": "pages/order/address",
 					"scene": null
 				}
 			]

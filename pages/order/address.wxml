@@ -1,0 +1,30 @@
+<view class="ycwy-container">
+  <view class="my_add">
+    <view class="top">
+      <view class="add_box">
+        <view class="box_inf">
+          <text>收货人</text>
+          <text>12345678910</text>
+        </view>
+        <view class="ico">
+          <text class="iconfont icon-bianji-"></text>
+        </view>
+	  </view>
+	 <text class="address">广东省广州市番禺区万达广场B4座3320室</text>
+    </view>
+    <view class="default">
+		<view class="ico_def">
+			<text class="iconfont icon-dagou-"></text>
+			<text>设为默认</text>
+		</view>
+		<view class="del">
+			<text class="iconfont icon-shanchu-copy"></text>
+		</view>
+	</view>
+  </view>
+  <!-- 添加地址按钮 -->
+  <view class="btn">
+	  <text class="iconfont icon-jiahao"></text>
+	  <text>新增地址</text>
+  </view>
+</view>
