@@ -7,6 +7,7 @@
     "pages/address/address",
     "pages/address/edit",
     "pages/detail/detail",
+    "pages/detail/yuyue",
     "pages/handle/handle",
     "pages/user/user",
     "pages/rules/rules",

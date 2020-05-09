@@ -139,6 +139,13 @@
 					"id": -1,
 					"name": "pages/order/address",
 					"pathName": "pages/order/address",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/detail/yuyue",
+					"pathName": "pages/detail/yuyue",
 					"scene": null
 				}
 			]

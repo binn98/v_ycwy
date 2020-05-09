@@ -1,157 +1,109 @@
-/* pages/detail/detail.wxss */
-.ycwy-container {
-  background: #F6F6F6;
-  overflow: hidden;
-  padding-bottom: 100rpx;
+.banner{
+  width: 100%;
+  height: 280rpx;
+  background-size: cover;
+  padding-top:57rpx;
+  padding-left: 63rpx;
 }
-
-
-
-.info {
-  margin: 40rpx 30rpx 0;
-  background: #FFFFFF;
-  border-radius: 10rpx;
+.banner .delivery{
+  color: #fff;
+  font-size:36rpx;
+  display: block;
+  font-weight: Bold;
 }
-.info .icon-dagou- {
-  color: #04C160;
-  font-size: 100rpx;
+.banner>text{
+  font-size: 26rpx;
+  color: #fff;
 }
-.info .msg {
-  color: #04C160;
+.data{
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  margin-top: -80rpx;
+  padding:0 30rpx;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+  border: 1rpx solid #eee;
+}
+.data .data_info{
   font-size: 36rpx;
-  padding: 20rpx 0;
+  color: #181818;
+  display: inline-block;
+  line-height: 80rpx;
+  font-weight: bold;
 }
-.info .tips {
+.data .sender{
+  padding-top:20rpx;
+  padding-bottom: 40rpx;
+  font-size: 28rpx;
+  color: #181818;
+  font-weight: bold;
+}
+.data .sender .user_sender .phone{
+  padding-left: 20rpx;
+}
+.data .sender .add{
+  font-weight: 500;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.flow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flow_info .huise{
+  font-size: 26rpx;
+  color: #666;
+}
+.flow_info .heise{
+  font-size: 26rpx;
+  color: #181818;
+  font-weight: bold;
+  padding-left: 12.077rpx;
+}
+.flow .abrogate{
+  width: 150rpx;
+  height: 50rpx;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color: #F5F5F5;
+  color: #181818;
+  font-size: 26rpx;
+  border-radius:25rpx ;
+}
+.logistics{
+  width: 690rpx;
+  border: 1rpx solid #ccc;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  padding-bottom: 40rpx;
+  margin-top: 20rpx;
+}
+.wuliu .huise{
+  font-size: 26rpx;
+  color: #666;
+}
+.wuliu .heise{
+  font-size: 26rpx;
+  color: #181818;
+  font-weight: bold;
+  padding-left: 12.077rpx;
+}
+
+.xinxi>text{
+  font-size: 36rpx;
+  color: #181818;
+  display: inline-block;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+.sec{
   color: #181818;
   font-size: 28rpx;
-}
-.info .detail {
-  position: relative;
-  padding-top: 30rpx;
-  color: #999999;
-  font-size: 24rpx;
-}
-.info .detail text,
-.info .detail .tal {
-  padding: 15rpx 55rpx;
-  display: block;
-  text-align: left;
-}
-.info .detail wux-input {
-  display: inline-block;
-  width: 300rpx;
-  padding: 10rpx;
-  border: 1rpx solid #D4D3D3;
-}
-.info .detail .wux-input__item {
-  font-size: 24rpx;
-  line-height: 58rpx;
-}
-.info .detail .btn {
-  display: inline-block;
-  width: 100rpx;
-  height: 58rpx;
-  margin-left: 20rpx;
-  background: #FF7C64;
-  border-radius: 5rpx;
-  color: #FFFFFF;
-  font-size: 24rpx;
-  line-height: 58rpx;
-  text-align: center;
-  vertical-align: top;
-}
-.info .detail .fixed {
-  position: absolute;
-  bottom: 0;
-  right: 40rpx;
-  z-index: 12;
-  width: 180rpx;
-  height: 60rpx;
-  background: #FF7C64;
-  border-radius: 5rpx;
-  color: #FFFFFF;
-  font-size: 24rpx;
-  line-height: 60rpx;
-  text-align: center;
-}
-
-
-
-.ticket {
-  height: 240rpx;
-  margin: 20rpx 30rpx 0;
-  background-size: 100% auto;
-  background-position: center center;
-}
-.ticket .title {
-  height: 72rpx;
-  padding: 0 30rpx;
-  color: #FFFFFF;
-  font-size: 26rpx;
-}
-.ticket .title .btn {
-  padding: 8rpx 10rpx;
-  border: 1rpx solid #FFFFFF;
-  border-radius: 8rpx;
-}
-.ticket .wrap {
-  height: 170rpx;
-}
-.ticket .wrap .price {
-  color: #FDB9A0;
-  font-size: 36rpx;
-}
-.ticket .price text {
-  font-size: 80rpx;
-}
-.ticket .wrap .all {
-  color: #181818;
-  font-size: 24rpx;
-}
-.ticket .all text {
-  display: block;
-}
-.ttips {
-  padding: 20rpx 40rpx;
-  color: #999999;
-  font-size: 24rpx;
-}
-
-
-
-.address2 {
-  margin: 20rpx 30rpx 0;
-}
-.address2>text {
-  color: #262626;
-  font-size: 26rpx;
-}
-.address2 .wrap {
-  width: 100%;
-  height: 150rpx;
-  background: #FFFFFF;
-  border-radius: 10rpx;
-}
-.address2 .iconfont {
-  color: #E3805B;
-  font-size: 60rpx;
-  margin: 0 30rpx;
-}
-.address2 .info {
-  margin-top: 0;
-  width: 460rpx;
-  color: #262626;
-  font-size: 30rpx;
-}
-.address2 .info text {
-  font-size: 26rpx;
-}
-.address2 .info .light {
-  color: #999999;
-  font-size: 26rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  font-weight: bold;
 }

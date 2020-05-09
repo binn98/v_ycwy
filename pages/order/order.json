@@ -2,6 +2,8 @@
   "navigationBarTitleText": "回收规则",
   "usingComponents": {
     "wux-accordion-group": "../../component/accordion-group/index",
-    "wux-accordion": "../../component/accordion/index"
+    "wux-accordion": "../../component/accordion/index",
+    "wux-popup": "../../component/popup/index",
+    "wux-button": "../../component/button/index"
   }
 }

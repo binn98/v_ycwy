@@ -1,0 +1,43 @@
+.ycwy-container{
+
+}
+.banner{
+  width: 100%;
+  height: 280rpx;
+  background-size: cover;
+  padding-top:57rpx;
+  padding-left: 63rpx;
+}
+.banner .delivery{
+  color: #fff;
+  font-size:36rpx;
+  display: block;
+  font-weight: Bold;
+}
+.banner>text{
+  font-size: 26rpx;
+  color: #fff;
+}
+.data{
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  margin-top: -80rpx;
+  padding:0 30rpx;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+  border: 1rpx solid #eee;
+}
+.data .data_info{
+  font-size: 36rpx;
+  color: #181818;
+  display: inline-block;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+.data .img{
+  width: 100%;
+}
+.data .img >image{
+  width: 100%;
+}

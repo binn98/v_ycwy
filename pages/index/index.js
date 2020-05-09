@@ -262,7 +262,7 @@ Page({
           loading: false
         })
         // console.log(_that.data.list);
-        console.log(_that.data.list);
+        // console.log(_that.data.list);
         _that.ative()
         if (res.data.login_code == 200) {
           app.globalData.isLogin = true
@@ -314,15 +314,18 @@ Page({
         icon: 'none',
         duration: 2000
       })
+    }else{
+
+      wx.navigateTo({
+        url: '../../pages/order/order'
+      })
     }
     // if (e.target.dataset.status == 10) {
     //   wx.navigateTo({
     //     url: '../../pages/detail/detail?id=' + e.target.dataset.rid
     //   })
     // } else {
-    //   wx.navigateTo({
-    //     url: '../../pages/prerec/prerec?id=' + e.target.dataset.id + '&name=' + e.target.dataset.name + '&num=' + e.target.dataset.num + '&ep=' + e.target.dataset.ep
-    //   })
+      
     // }
   },
   ative(){
@@ -356,7 +359,7 @@ Page({
     let moeny = 0
     let goods_id = []
     arr = that.data.dataList
-    
+    // console.log(e);
       arr.map((v,i)=>{
         if(v.id==e.currentTarget.dataset.id){
           arr2 = false
@@ -388,7 +391,7 @@ Page({
         goods_id.push(v.id)
       })
       // console.log(moeny.toFixed(2));
-      // console.log(goods_id);
+      console.log(goods_id);
       that.setData({
         Rmb:moeny.toFixed(2),
         goods_id:goods_id
@@ -397,6 +400,11 @@ Page({
         key:"datalist",
         data:that.data.dataList
       })
+      wx.setStorage({
+        key:"goods_id",
+        data:that.data.goods_id
+      })
+      // console.log(that.data.goods_id);
   },
   goTo2(e) {
     wx.navigateTo({

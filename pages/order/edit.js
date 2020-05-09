@@ -11,6 +11,7 @@ Page({
    */
   data: {
     id: '',
+    alter:false,
     form: {
       link_name: '',
       mobile: '',
@@ -40,26 +41,14 @@ Page({
       id: options.id  
     })
     var myAmapFun = new amapFile.AMapWX({key:'400d5b5684c1cbe95c669e6e6f37988a'});
-    myAmapFun.getRegeo({
-      success: function(data){
-        //成功回调
-        const addres = data[0].regeocodeData
-        // console.log(data);
-        // console.log(addres.addressComponent);
-        _that.setData({
-          ['city.value']:addres.addressComponent.province +' '+ addres.addressComponent.city +' '+addres.addressComponent.district,
-          ['form.province']:addres.addressComponent.province,
-          ['form.city']:addres.addressComponent.city,
-          ['form.area']:addres.addressComponent.district
-        })
-      }
-    })
-    console.log(options.id)
+    
+    // console.log(options.id)
     
     if (options.id) {
       app.ajax('address/details', {
         id: options.id
       }).then(res => {
+        console.log(res);
         _that.setData({
           'form.id': options.id,
           'form.link_name': res.data.link_name,
@@ -70,10 +59,29 @@ Page({
           'form.address': res.data.address,
           'form.is_default': res.data.is_default,
           'city.value': res.data.province + ' ' + res.data.city + ' ' + res.data.area,
-          btn: true
-        })
+           btn: true,
+           alter:true
+        });
+        if(res.data.is_default==2){
+          // _that.isDefault(2)
+        }
       }).catch(res => {
         console.log(res)
+      })
+    }else{
+      myAmapFun.getRegeo({
+        success: function(data){
+          //成功回调
+          const addres = data[0].regeocodeData
+          // console.log(data);
+          // console.log(addres.addressComponent);
+          _that.setData({
+            ['city.value']:addres.addressComponent.province +' '+ addres.addressComponent.city +' '+addres.addressComponent.district,
+            ['form.province']:addres.addressComponent.province,
+            ['form.city']:addres.addressComponent.city,
+            ['form.area']:addres.addressComponent.district
+          })
+        }
       })
     }
   },
@@ -89,7 +97,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
@@ -213,21 +220,21 @@ Page({
     // if (!this.data.btn) return false
     app.ajax('address/setting', this.data.form).then(res => {
       console.log(res);
-    //   wx.showToast({
-    //     title: '提交成功',
-    //     icon: 'success'
-    //   })
-    //   setTimeout(() => {
-    //     wx.navigateBack({
-    //       delta: 1
-    //     })
-    //   }, 1500)
-    // }).catch(res => {
-    //   console.log(res)
+      wx.showToast({
+        title: '提交成功',
+        icon: 'success'
+      })
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1
+        })
+      }, 1500)
+    }).catch(res => {
+      console.log(res)
     })
   },
   isDefault(e){
-    let no = e.detail.value 
+    let no = e.detail.value;
     if(!no){
       this.setData({
         ['form.is_default']:1
@@ -237,7 +244,6 @@ Page({
         ['form.is_default']:2
       })
     }
-    console.log(this.data.form.is_default);
   },
   phoneRules(e){
     console.log(e.detail.value);
@@ -254,20 +260,37 @@ Page({
           duration: 2000
       })
     }
+    this.rule()
   },
   checkAdd(){
     this.setData({
       ["city.visible"]:!this.data.visible
     })
+    this.rule()
   },
   Address(e){
     this.setData({
       ['form.address']:e.detail.value
     })
+    this.rule()
   },
   name(e){
     this.setData({
       ['form.link_name']:e.detail.value
     })
+    this.rule()
+  },
+  rule(){
+    let arr = this.data.form
+    if(arr.link_name!=''&&arr.mobile!=''&&arr.province!=''&&arr.city!=''&&arr.area!=''&&arr.address!=''){
+      this.setData({
+        btn:true
+      })
+      // console.log('进来了');
+    }else{
+      this.setData({
+        btn:false
+      })
+    }
   }
 })

@@ -1,0 +1,12 @@
+<view class="ycwy-container">
+  <view class="banner"style="background-image: url(../../assets//img/yuyue.png)">
+    <text class="delivery">预约成功</text>
+    <text>快递揽收成功后，优惠券立即到账</text>
+  </view>
+  <view class="data">
+    <text class="data_info">订单进度</text>
+    <view class="img">
+      <image class="imag" src="../../assets/img/yuyuebanner.png" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

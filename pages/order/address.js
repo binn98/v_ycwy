@@ -7,18 +7,23 @@ Page({
   },
   //options(Object)
   onLoad: function(options){
-    app.ajax('address/list').then(res=>{
-      this.setData({
-        list:res.data.list
-      })
-      console.log(this.data.list);
-    })
+    // app.ajax('address/list').then(res=>{
+    //   this.setData({
+    //     list:res.data.list
+    //   })
+    //   console.log(this.data.list);
+    // })
   },
   onReady: function(){
     
   },
   onShow: function(){
-    
+    app.ajax('address/list').then(res=>{
+      this.setData({
+        list:res.data.list
+      })
+      // console.log(this.data.list);
+    })
   },
   onHide: function(){
 

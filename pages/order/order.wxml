@@ -24,7 +24,7 @@
       <text>物品信息</text><text>穿旧回收衣物</text>
     </view>
     <view class="now" >
-      <text>预约时间</text><text class="red">请选择时间<text class="iconfont icon-jiantou-right"></text></text>
+      <text>预约时间</text><text class="{{day==''? 'red':'black'}}" bindtap="checkTime">{{day + now ||'请选择时间'}}<text class="iconfont icon-jiantou-right"></text></text>
     </view>
   </view>
   <!-- 常见问题 -->
@@ -37,7 +37,42 @@
     </view>
   </view>
   <!-- 回收按钮 -->
-  <view class="btn">
+  <view class="btn" bindtap="submitRecycle">
     预约回收
   </view>
+  <wux-popup position="bottom" visible="{{ date.visible }}" bind:close="dateClose" bind:closed="popClosed" class="company">
+    <view class="company-wrap">
+      <view class="wrap_c">
+        <!-- 选择上门日期 -->
+        <view class="date">
+          <view class="choose_date">
+            <text>请选择上门日期</text><text class="tx2">左滑选择其他日期</text>
+          </view>
+          <view class="sc_x">
+            <scroll-view class="scro_x" scroll-x="true">
+              <view class="scro_ {{cur == item1.label? 'cur_x':''}}" wx:for="{{date.options}}" wx:for-item="item1" data-key="{{item1.label}}" wx:key="{{index}}" data-value="{{item1.value}}" bindtap="getdate" data-time="{{item1.children}}">
+                {{item1.value}}<view class="{{ cur == item1.label? 'cur_x1':'scro_1'}}"data-key="{{item1.label}}" data-value="{{item1.value}}" bindtap="getdate" data-time="{{item1.children}}">{{item1.label}}</view>
+              </view>
+            </scroll-view>
+          </view>
+          
+        </view>
+        <!-- 选择上门时段 -->
+        <view class="time">
+          <view class="shangmen">
+            <text class="now">请选择预约时间</text>
+          </view>
+          <view class="time_slot">
+            <view wx:for="{{children}}" bindtap="selectTime" data-disabled="{{item2.disabled}}" data-label="{{item2.label}}" wx:for-item="item2" class="time_c {{now == item2.label? 'cur_x':''}} {{item2.disabled==true? 'color':''}}">
+              {{item2.value}}
+            </view>
+          </view>
+        </view>
+        <view class="btn" bindtap="closePop">
+            确定
+        </view>
+      </view>
+    </view>
+
+  </wux-popup>
 </view>
