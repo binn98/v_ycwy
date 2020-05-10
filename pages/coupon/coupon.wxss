@@ -1,0 +1,127 @@
+.ycwy-container{
+
+}
+
+.tab{
+    width: 750rpx;
+    height: 90rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-bottom: 1rpx solid #CCCCCC;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 20;
+}
+.tab .tabs{
+    width: 33.33%;
+    line-height: 90rpx;
+    display: inline-block;
+    text-align: center;
+    background-color: #fff;
+}
+.coupon{
+    width: 100%;
+    padding: 30rpx;
+    box-sizing: border-box;
+    padding-top: 130rpx;
+}
+.coupon_red{
+    height: 199rpx;
+    margin-bottom: 20rpx;
+}
+.coupon_red > image{
+    width: 688rpx;
+    height: 199rpx;
+    z-index: -1;
+    position: absolute;
+}
+
+.coupon_info{
+    height: 199rpx; 
+    position: relative;
+}
+.coupon_info .in-block{
+    display: inline-block;
+    width: 84rpx;
+    height: 199rpx;
+    font-size: 26rpx;
+    color: #fff;
+    /* text-align: center; */
+    padding: 10rpx 28rpx;
+    /* word-wrap: break-word; */
+    box-sizing: border-box;
+    text-align: justify;
+    text-justify: newspaper;
+    word-break: break-all;
+}
+.coupon_info .in-block_text{
+    display: inline-block;
+    height: 199rpx;
+    position: absolute;
+    left: 84;
+    padding-left: 25rpx;
+    /* box-sizing: border-box; */
+}
+.in-block_text .code{
+    display: inline-block;
+    height: 46rpx;
+    line-height: 46rpx;
+    font-size: 22rpx;
+    color: #999999;
+    margin-top: -15rpx;
+}
+.in-block_text .yuan{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.yuan .left .txt_b{
+    color: #2E2E2E;
+    font-weight: bold;
+    font-size: 30rpx;
+    display: block;
+    margin-bottom: 20rpx;
+    margin-top: 20rpx;
+}
+.yuan .left text{
+    color: #999999;
+    font-size: 22rpx;
+    display: block;
+}
+
+.yuan .right>text{
+    display: block;
+}
+.yuan .right .rmb{
+    font-size: 48rpx;
+    color: #FF5E62;
+}
+.yuan .right{
+    text-align: center;
+    margin-left: 65rpx;
+}
+.yuan .right .rmb .sa{
+    font-size: 35rpx;
+}
+.yuan .right .btn{
+    width: 150rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    border-radius: 25rpx;
+    font-size: 26rpx;
+    color: #FF5E62;
+    border: 1rpx solid #FF5E62;
+    margin-top: 20rpx;
+}
+.red{
+    color: #FF5E62;
+}
+
+
+
+
+
+

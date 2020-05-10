@@ -17,7 +17,8 @@
     "pages/rec/rec",
     "pages/order/order",
     "pages/order/edit",
-    "pages/order/address"
+    "pages/order/address",
+    "pages/coupon/coupon"
   ],
   "permission": {
     "scope.userLocation": {

@@ -86,7 +86,7 @@ Page({
       wx.getStorage({
         key: 'datalist',
         success (res) {
-          // console.log(res);
+          console.log(res);
           let moeny = 0;
           let ative = []
           res.data.map(v=>{
@@ -180,6 +180,12 @@ Page({
     that.setData({
       ative:true,
       show:!that.data.show
+    })
+  },
+  dd(){
+    wx.setStorage({
+      key:"datalist",
+      data:[]
     })
   },
   getfilterList(e){
@@ -306,6 +312,11 @@ Page({
       }
     }, 1500)
   },
+  goCoupon(){
+    wx.navigateTo({
+      url:'../coupon/coupon'
+    })
+  },
   goTo(e) {    
     // console.log(e);
     if(e.currentTarget.dataset.moeny==0){
@@ -327,6 +338,13 @@ Page({
     // } else {
       
     // }
+  },
+  godetilt(e){
+    console.log(e.currentTarget.dataset);
+    
+    wx.navigateTo({
+      url:'../detail/detail?id='+e.currentTarget.dataset.id
+    })
   },
   ative(){
     const _that = this

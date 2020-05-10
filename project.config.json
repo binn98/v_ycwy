@@ -146,6 +146,13 @@
 					"id": -1,
 					"name": "pages/detail/yuyue",
 					"pathName": "pages/detail/yuyue",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/coupon/coupon",
+					"pathName": "pages/coupon/coupon",
 					"scene": null
 				}
 			]

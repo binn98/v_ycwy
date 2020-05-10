@@ -7,10 +7,10 @@
     <text class="data_info">取件信息</text>
     <view class="sender">
       <view class="user_sender">
-        <text>寄件方</text>
-        <text class="phone">13377746233</text>
+        <text>{{detail.sender_name}}</text>
+        <text class="phone">{{detail.sender_mobile}}</text>
       </view>
-      <text class="add">广东省广州市番禺区万达广场B4栋3320室</text>
+      <text class="add">{{detail.sender_province+detail.sender_city+detail.sender_area}}</text>
     </view>
     <view class="flow">
       <view class="flow_info">
@@ -18,13 +18,13 @@
           <text class="huise">物品信息:</text><text class="heise">穿旧回收衣物</text>
         </view>
         <view class="order">
-          <text class="huise">下单时间:</text><text class="heise">4月28日 00:16:45</text>
+          <text class="huise">下单时间:</text><text class="heise">{{detail.create_time_txt}}</text>
         </view>
         <view class="subscribe">
-          <text class="huise">预约时间:</text><text class="heise">4月28日 09:00-11:00</text>
+          <text class="huise">预约时间:</text><text class="heise">{{detail.time_txt}}</text>
         </view>
       </view>
-      <view class="abrogate">取消预约</view>
+      <view class="abrogate"  bindtap="cancel">取消预约</view>
     </view>
   </view>
   <!-- 物流信息 -->
@@ -42,4 +42,16 @@
     </view> -->
     <text class="sec">等待确认</text>
   </view>
+  <view class="mask" wx:if="{{show}}">
+  </view>
+  <view class="btn" wx:if="{{show}}">
+    <text class="in_block" hover-class="blue" hover-start-time="1000" hover-stay-time="1000">提醒您</text>
+    <text class="in_block_">确定取消本次预约吗？
+    </text>
+     <view class="btn_">
+       <text class="l" bindtap="cls">取消</text>
+       <text class="r" bindtap="sub">确定</text>
+     </view> 
+  </view> 
+    
 </view>

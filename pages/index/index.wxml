@@ -20,7 +20,7 @@
   </view>
   <!-- 优惠券 -->
   <view class="coupon">
-   <view class="c_amount">
+   <view class="c_amount" bindtap="dd">
     旧衣回收优惠券金额
    </view> 
    <view class="{{totals>-1? 'c_frames' :'c_frame'}}">
@@ -29,8 +29,8 @@
      </view>
      元/{{ total.usable_num ||0}}张
    </view>
-   <view class="check">
-     查看明细 <text class="iconfont icon-jiantou-right" ></text>
+   <view class="check" bindtap="goCoupon">
+     查看明细 <text class="iconfont icon-jiantou-right"  ></text>
    </view>
    <view class="xiaoxi" wx:if="{{total.new_create_time}}">
      <text class="iconfont icon-weibiaoti1"></text>最新:{{total.new_create_time}} 划入通兑优惠券:{{total.new_money}}元
@@ -81,7 +81,7 @@
 
           <view wx:if="{{ tab == 0 && item.logistic_status < 10 }}" class="{{ active[index] == true? 'btns':'btn'}}" bindtap="Checked" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-index="{{index}}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}">{{active[index] == true? '取消':'¥'+ item.recovery_price +' '+'回收'}}
           </view>
-          <text class="block red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">待收件</text>
+          <text data-id="{{ item.rec_order_id }}" bindtap="godetilt" class="block red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">待收件</text>
           <!-- <view class="btn" bindtap="goTo2" data-id="{{ item.rec_order_id }}" wx:if="{{ tab == 10 }}">查看详情</view> -->
         </view>
       </view>

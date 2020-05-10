@@ -302,6 +302,17 @@ Page({
       rec_type:10
     }).then(res=>{
       console.log(res);
+      wx.setStorage({
+        key:"goods_id",
+        data:[]
+      })
+      wx.setStorage({
+        key:"datalist",
+        data:[]
+      })
+      wx.navigateTo({
+        url:'../detail/yuyue'
+      })
     })
   },
   onReady: function(){

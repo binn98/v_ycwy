@@ -1,0 +1,35 @@
+<view class="ycwy-container">
+    <view class="tab">
+        <text class="tabs {{cur==10? 'red':''}}" bindtap="ative" data-index="{{10}}">未使用</text>
+        <text class="tabs {{cur==20? 'red':''}}" bindtap="ative" data-index="{{20}}">已使用</text>
+        <text class="tabs {{cur==30? 'red':''}}" bindtap="ative" data-index="{{30}}">已过期</text>
+    </view>
+    <view class="coupon">
+        <view class="coupon_red" wx:for="{{list}}" wx:key="index">
+            <image wx:if="{{cur==10}}" src="../../assets/img/coupon_red.png" mode="aspectFit|aspectFill|widthFix" />
+            <image wx:if="{{cur==20}}" src="../../assets/img/coupon_hui.png" mode="aspectFit|aspectFill|widthFix" />
+            <image wx:if="{{cur==30}}" src="../../assets/img/coupon_guo.png" mode="aspectFit|aspectFill|widthFix" />
+            <view class="coupon_info">
+                <view class="in-block">无门槛使用</view>
+                <view class="in-block_text">
+                    <text class="code">优惠券编码：{{item.yz_code}}</text>
+                    <view class="yuan">
+                        <view class="left">
+                           <text class="txt_b">衣橱无忧商城全品类优惠券</text>
+                           <text>{{item.effect_sday}} 至 {{item.effect_eday}}</text>
+                           <text>不可与其他优惠叠加使用</text>
+                        </view>
+                        <view class="right">
+                            <text class="rmb">50<text class="sa">元</text> </text>
+                            <text class="btn" wx:if="{{cur==10}}">立即使用</text>   
+                        </view>
+                            
+                    </view>
+                </view>
+
+            </view>
+
+        </view>
+    </view>
+
+</view>
