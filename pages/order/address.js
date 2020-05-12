@@ -44,6 +44,13 @@ Page({
       })
     })
   },
+  goorder(e){
+    // console.log(e.currentTarget.dataset);
+    
+    wx.navigateTo({
+      url:'./order?id='+  e.currentTarget.dataset.id
+    })
+  },
   del(e){
     app.ajax('address/del',{id:e.currentTarget.dataset.id}).then(res=>{
       console.log(res);

@@ -155,9 +155,9 @@ Page({
       wx.login({
         success: res => {
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
-          // console.log(res.code)
+          console.log(res.code)
           app.ajax('reglogin/gettoken', {
-            code: res.code
+            code: res.code 
           }).then(res => {
             wx.setStorageSync('token_' + app.globalData.v, res.data.token)
             app.globalData.token = res.data.token

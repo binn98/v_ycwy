@@ -1,5 +1,6 @@
 .ycwy-container{
   padding: 0 30rpx;
+  box-sizing: border-box;
 }
 .img{
   width: 690rpx;
@@ -193,10 +194,12 @@ text{
 }
 
 .wrap_c .time .time_slot{
+  text-align: left;
 
 }
 .wrap_c .time .time_slot .time_c{
-
+  text-align: center;
+  box-sizing: border-box;
 }
 .wrap_c .btn{
   width: 690rpx;
@@ -211,4 +214,26 @@ text{
 }
 .color{
   color: #ccc;
+}
+
+.common .wux-accordion__hd{
+  font-size: 30rpx;
+  color: #181818;
+}
+.common .wux-cell-group__bd::after{
+  border: none;
+}
+.common .wux-accordion--current > .wux-accordion__bd {
+  background-color: #F7F7F7 !important;
+  margin: 30rpx;
+  padding: 20rpx 30rpx;
+  border-radius: 15rpx;
+  color: #999;
+  font-size: 26rpx;
+}
+.sc_x ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+    background-color: transparent;
 }

@@ -2,17 +2,20 @@
 <view class="ycwy-container">
     <view class="information">
   <!-- 个人信息 -->
-  <view class="per_details" style="background-image: url(../../assets//img/index_banner.png)" >
+  <view class="per_details" style="background-image: url(data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/4QMqaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjUtYzAxNCA3OS4xNTE0ODEsIDIwMTMvMDMvMTMtMTI6MDk6MTUgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NjI3MjA3Qzk5M0Y1MTFFQThBNEFBMTlBQ0E4QzNGMEYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NjI3MjA3Q0E5M0Y1MTFFQThBNEFBMTlBQ0E4QzNGMEYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2MjcyMDdDNzkzRjUxMUVBOEE0QUExOUFDQThDM0YwRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2MjcyMDdDODkzRjUxMUVBOEE0QUExOUFDQThDM0YwRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEAAICAgICAgICAgIDAgICAwQDAgID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)" >
     <view class="per_header">
       <image class="per_img" src="{{info.avatar_url}}" mode="widthFix"></image>
     </view>
-    <view class="per_info">
+    <view class="per_info" wx:if="{{isLogin}}">
       {{info.nick_name}}
       <view class="id">
         账号:{{info.mobile}}
       </view>
     </view>
-    <view class="Rec_rules">
+    <view class="per_info" wx:if="{{isLogin==false}}">
+      <button  class="_btn" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" wx:if="{{ !isLogin }}">注册/登录</button>
+    </view>
+    <view class="Rec_rules" bindtap="gorules">
       <view class="rule">
         回收规则
       </view>
@@ -23,7 +26,7 @@
    <view class="c_amount" bindtap="dd">
     旧衣回收优惠券金额
    </view> 
-   <view class="{{totals>-1? 'c_frames' :'c_frame'}}">
+   <view class="{{totals>0? 'c_frames' :'c_frame'}}">
      <view class="c_rmb">
        {{ total.usable_money || 0 }}
      </view>
@@ -32,9 +35,9 @@
    <view class="check" bindtap="goCoupon">
      查看明细 <text class="iconfont icon-jiantou-right"  ></text>
    </view>
-   <view class="xiaoxi" wx:if="{{total.new_create_time}}">
+   <!-- <view class="xiaoxi" wx:if="{{total.new_create_time}}">
      <text class="iconfont icon-weibiaoti1"></text>最新:{{total.new_create_time}} 划入通兑优惠券:{{total.new_money}}元
-   </view>
+   </view> -->
   </view>
     </view>
     <view class="tabWrap {{scrollTop>200? 'tabWraps':''}}">
@@ -50,15 +53,14 @@
         <text class="{{tab2==30? 'clor':''}}" bindtap="getfilterList" data-day="30" data-value="30天内">30天内</text>
         <text class="{{tab2==60? 'clor':''}}" bindtap="getfilterList" data-day="60" data-value="60天内">60天内</text>
         <text class="{{tab2==90? 'clor':''}}" bindtap="getfilterList" data-day="90" data-value="90天内">90天内</text>
-        <text class="{{tab2==100? 'clor':''}}" bindtap="getfilterList" data-day="100" data-value="90天内">90天后</text>
+        <text class="{{tab2==100? 'clor':''}}" bindtap="getfilterList" data-day="100" data-value="90天以上">90天以上</text>
         </view>
 	</view>
 
     <view class="list" wx:if="{{ list && !loading && list.length > 0 }}">
       <view class="list_box" wx:for="{{ list }}" wx:for-item="item" wx:key="goods_id">
-        <view class="title flex flex_mj">
+        <view class="title">
           <text>订单编号：{{ item.order_no }}</text>
-         
         </view>
         <view class="inf">
          <view class="img">
@@ -66,47 +68,51 @@
          </view>
           <view class="text">
             <text class="bold wux-ellipsis--l2">{{ item.name }}</text>
-              <text class="block_" wx:for="{{ item.sku_properties_name }}" wx:for-item="item2" wx:for-index="index2" wx:key="k_id">{{ item2.v }}</text>
-            ￥{{ item.price }}
-            <text class="block">
-              <text>入手时间：{{ item.success_time_txt }}</text>
-              <text class="red" wx:if="{{ tab == 10 && item.recovery_status == 20}}">回收成功</text>
-              
+            <text class="block_" wx:for="{{ item.sku_properties_name }}"wx:for-item="item2" wx:for-index="index2" wx:key="k_id">{{item2.v }}
             </text>
+            <view class="price_">
+              <view class="left">
+                <text class="price">商品售价￥{{ item.price }}</text>
+                <text class="huisoujia">回收价 ￥ <text class="rmb">{{item.recovery_price}}</text></text>
+              </view>
+              <view wx:if="{{ tab == 0 && item.logistic_status < 10 }}" class="{{ active[index] == true? 'btns':'btn'}}" bindtap="Checked" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-index="{{index}}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}">{{active[index] == true? '取消':'回收'}}
+              </view>
+              <view class="reds" wx:if="{{ tab == 10}}">回收成功</view>
+              <view data-id="{{ item.rec_order_id }}" bindtap="godetilt" class="red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">等待收件>></view>
+            </view>  
           </view>
         </view>
-        <view class="bottom">
-          <text style="color: #FF5E62;" wx:if="{{ timeList.length > 0 &&  tab == 0 }}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
-          <text style="color: #FF5E62;" wx:if="{{ tab == 10 }}">回收 ¥{{ item.recovery_price * 1 + item.express_price * 1 }}/件</text>
-
-          <view wx:if="{{ tab == 0 && item.logistic_status < 10 }}" class="{{ active[index] == true? 'btns':'btn'}}" bindtap="Checked" data-id="{{ item.goods_id }}" data-name="{{ item.name }}" data-index="{{index}}" data-num="{{ item.recovery_price }}" data-ep="{{ item.express_price }}" data-status="{{ item.logistic_status }}" data-rid="{{ item.rec_order_id }}">{{active[index] == true? '取消':'¥'+ item.recovery_price +' '+'回收'}}
-          </view>
-          <text data-id="{{ item.rec_order_id }}" bindtap="godetilt" class="block red" wx:if="{{ tab == 0 && item.logistic_status == 10 }}">待收件</text>
-          <!-- <view class="btn" bindtap="goTo2" data-id="{{ item.rec_order_id }}" wx:if="{{ tab == 10 }}">查看详情</view> -->
-        </view>
+        <view class="rushoutime">
+          <text wx:if="{{tab==0}}">
+           <text>入手时间：{{ item.success_time_txt }}</text>
+         </text>
+         <text style="color: #FF5E62;" wx:if="{{ timeList.length > 0 &&  tab == 0}}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
+         <text style="color: #FF5E62;" wx:if="{{ tab == 10 }}">已到账优惠券 {{ item.recovery_price * 1 + item.express_price * 1 }}元</text>
+         <text class="delid" wx:if="{{tab == 10}}" data-id="{{item.goods_id}}" bindtap="del">删除订单</text>
+       </view>
       </view>
     </view>
 
     <view class="list list_no tac" wx:elif="{{ !loading }}">
-     
       <image mode="widthFix" src="../../assets/img/order_no.png"></image>
       <text class="tips block tac" wx:if="{{tab2 > 0}}">{{  tab2 == 100 ? '90天以上' : tab2 + '天内'  + '暂无回收衣物清单'}}</text>
-      <text class="tips block tac" wx:else="{{tab2<0}}">
+      <text bindtap="goOther" class="tips block tac" wx:else="{{tab2<0}}">
         暂时没有衣物可回收喔,去 
-          <text style="color: #FF5E62; display: inline;">
-            看看新衣吧~ 
-          </text>       
+          <text style="color: #FF5E62; display: inline;">看看新衣吧~</text>       
+          <!-- <navigator target="miniProgram" open-type="navigate" app-id="wx369fe22d2a942bdc" path="pages/commonank-page/index" version="release"><text style="color: #FF5E62; display: inline-block; padding-bottom:130rpx;">
+            看看新衣吧~</text>
+          </navigator> -->
       </text>
       <button type="primary" class="btn mgt_75" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" wx:if="{{ !isLogin }}">登录衣橱无忧账户</button>
     </view>
-    <view class="bot_Submit" wx:if="{{tab==0}}">
+    <view class="bot_Submit" wx:if="{{tab==0&&list.length>0}}">
       <view class="shuoming" >
        <view class="shuoming_" >
         <view class="shuoming_gold">
           旧衣回收优惠券金额
          </view>
          <view class="shuoming_gold_count">
-          （由0张优惠券组成）
+          （由{{goods_id.length}}张优惠券组成）
          </view>
        </view>
        <view class="rmb">
@@ -118,22 +124,4 @@
       </view>
     </view>
     <view class="mask" wx:if="{{show}}"></view> 
-  <view class="popRules" wx:if="{{ popRules }}" bindtap="rulesToggle">
-    <view class="wrap flex flex_dt flex_mc flex_cc">
-      <view class="content" catchtap>
-        <view class="title tac">回收计价规则</view>
-        <view class="text">
-          <view>平台根据用户已购买衣物订单确认收货时间开始计算，按不同回收周期对应不同额度的优惠券返还至用户的优惠券账户，可进行平台全类商品的购买抵扣，不可提现。</view>
-          <view>具体回收周期对应的优惠券返还，如下：</view>
-          <text class="cur block mgt_10">• 30天内按平台订单售价的{{ rules.percent.percent_30 }}%；
-          • 60天内按平台订单售价的{{ rules.percent.percent_60 }}%；
-          • 90天内按平台订单售价的{{ rules.percent.percent_90 }}%；
-          • 90天后按平台订单售价的{{ rules.percent.percent_100 }}%。</text>
-        </view>
-      </view>
-      <view class="close mgt_100 tac" catchtap="rulesToggle">
-        <text class="iconfont icon-jiaocha-"></text>
-      </view>
-    </view>
-  </view>
 </view>

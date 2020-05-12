@@ -1,8 +1,8 @@
 <view class="ycwy-container">
-  <view wx:for="{{list}}" wx:key="index" class="my_add">
+  <view wx:for="{{list}}" wx:key="index" class="my_add" data-id="{{item.id}}">
     <view class="top">
       <view class="add_box">
-        <view class="box_inf">
+        <view class="box_inf" bindtap="goorder">
           <text>{{item.link_name}}</text>
           <text>{{item.mobile}}</text>
         </view>

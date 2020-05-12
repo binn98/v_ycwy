@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText":"穿旧换新",
   "usingComponents": {
     "wux-popup": "../../component/popup/index",
     "wux-input": "../../component/input/index"

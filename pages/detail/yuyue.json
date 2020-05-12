@@ -1,6 +1,9 @@
-{
-  "navigationBarTitleText": "提交快递信息",
-  "usingComponents": {
-    "wux-input": "../../component/input/index"
-  }
-}
+
+
+
+ {
+    "navigationBarTitleText": "提交快递信息",
+    "usingComponents": {
+      "wux-input": "../../component/input/index"
+    }
+  } 

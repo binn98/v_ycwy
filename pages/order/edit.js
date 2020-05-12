@@ -3,7 +3,7 @@ const app = getApp()
 const isTel = (value) => !/^1[34578]\d{9}$/.test(value)
 import data from './data'
 // 高德地图js
-var amapFile = require("../../lib/amap-wx");
+// var amapFile = require("../../lib/amap-wx");
 Page({
 
   /**
@@ -40,7 +40,7 @@ Page({
     _that.setData({
       id: options.id  
     })
-    var myAmapFun = new amapFile.AMapWX({key:'400d5b5684c1cbe95c669e6e6f37988a'});
+    // var myAmapFun = new amapFile.AMapWX({key:'400d5b5684c1cbe95c669e6e6f37988a'});
     
     // console.log(options.id)
     
@@ -69,20 +69,29 @@ Page({
         console.log(res)
       })
     }else{
-      myAmapFun.getRegeo({
-        success: function(data){
-          //成功回调
-          const addres = data[0].regeocodeData
-          // console.log(data);
-          // console.log(addres.addressComponent);
-          _that.setData({
-            ['city.value']:addres.addressComponent.province +' '+ addres.addressComponent.city +' '+addres.addressComponent.district,
-            ['form.province']:addres.addressComponent.province,
-            ['form.city']:addres.addressComponent.city,
-            ['form.area']:addres.addressComponent.district
-          })
-        }
+      app.ajax('user/ipaddress').then(res=>{
+        console.log(res.data);
+        _that.setData({
+          ['city.value']:res.data.province +' '+ res.data.city +' '+ res.data.district,
+          ['form.province']:res.data.province,
+          ['form.city']:res.data.city,
+          ['form.area']:res.data.district
+        })
       })
+      // myAmapFun.getRegeo({
+      //   success: function(data){
+      //     //成功回调
+      //     const addres = data[0].regeocodeData
+      //     // console.log(data);
+      //     // console.log(addres.addressComponent);
+      //     _that.setData({
+      //       ['city.value']:addres.addressComponent.province +' '+ addres.addressComponent.city +' '+addres.addressComponent.district,
+      //       ['form.province']:addres.addressComponent.province,
+      //       ['form.city']:addres.addressComponent.city,
+      //       ['form.area']:addres.addressComponent.district
+      //     })
+      //   }
+      // })
     }
   },
 
@@ -97,6 +106,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // app.ajax('user/ipaddress').then(res=>{
+    //   console.log(res);
+    // })
   },
 
   /**
@@ -218,6 +230,13 @@ Page({
   subAddress() {
     console.log(this.data.btn);
     // if (!this.data.btn) return false
+    if(this.data.form.address.length<7){
+      wx.showToast({
+        title: '详细地址不能少于7个字',
+        icon: 'none'
+      })
+      return
+    }
     app.ajax('address/setting', this.data.form).then(res => {
       console.log(res);
       wx.showToast({

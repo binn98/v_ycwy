@@ -1,5 +1,5 @@
 <view class="ycwy-container">
-  <image class="img" src="../../assets/img/oder_banner.png" mode="widthFix"></image>
+  <image class="img" src="../../assets/img/oder_banner.jpg" mode="widthFix"></image>
   <!-- 寄件地址 -->
   <view class="address">
     <text>寄件地址</text>
@@ -32,7 +32,7 @@
     <text>常见问题</text>
     <view class="common">
       <wux-accordion-group title="" label="" accordion="{{ true }}">
-        <wux-accordion title="{{ (index + 1) + '、' + item.question }}" wx:for="{{ list }}" wx:key="id" wx:for-item="item" wx:for-index="index"><text style="color: #999999; font-size: 26rpx;" decode="{{ true }}">{{ item.answer }}</text></wux-accordion>
+        <wux-accordion title="{{item.title }}" wx:for="{{ list }}" wx:key="id" wx:for-item="item" wx:for-index="index"><text style="color: #999999; font-size: 26rpx;" decode="{{ true }}">{{ item.content }}</text></wux-accordion>
       </wux-accordion-group>
     </view>
   </view>
@@ -50,7 +50,7 @@
           </view>
           <view class="sc_x">
             <scroll-view class="scro_x" scroll-x="true">
-              <view class="scro_ {{cur == item1.label? 'cur_x':''}}" wx:for="{{date.options}}" wx:for-item="item1" data-key="{{item1.label}}" wx:key="{{index}}" data-value="{{item1.value}}" bindtap="getdate" data-time="{{item1.children}}">
+              <view class="scro_ {{cur == item1.label? 'cur_x':''}}" wx:for="{{date.options}}" wx:for-key="index3" wx:for-item="item1" data-key="{{item1.label}}" wx:key="index3" data-value="{{item1.value}}" bindtap="getdate" data-time="{{item1.children}}">
                 {{item1.value}}<view class="{{ cur == item1.label? 'cur_x1':'scro_1'}}"data-key="{{item1.label}}" data-value="{{item1.value}}" bindtap="getdate" data-time="{{item1.children}}">{{item1.label}}</view>
               </view>
             </scroll-view>
@@ -63,7 +63,7 @@
             <text class="now">请选择预约时间</text>
           </view>
           <view class="time_slot">
-            <view wx:for="{{children}}" bindtap="selectTime" data-disabled="{{item2.disabled}}" data-label="{{item2.label}}" wx:for-item="item2" class="time_c {{now == item2.label? 'cur_x':''}} {{item2.disabled==true? 'color':''}}">
+            <view wx:for="{{children}}" wx:for-key="index2" wx:key="index2" bindtap="selectTime" data-disabled="{{item2.disabled}}" data-label="{{item2.label}}" wx:for-item="item2" class="time_c {{now == item2.label? 'cur_x':''}} {{item2.disabled==true? 'color':''}}">
               {{item2.value}}
             </view>
           </view>

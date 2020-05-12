@@ -66,13 +66,6 @@
 					"scene": null
 				},
 				{
-					"id": 1,
-					"name": "prerec",
-					"pathName": "pages/prerec/prerec",
-					"query": "",
-					"scene": null
-				},
-				{
 					"id": 2,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
@@ -95,29 +88,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/address/address",
-					"pathName": "pages/address/address",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/address/edit",
-					"pathName": "pages/address/edit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "rec",
-					"pathName": "pages/rec/rec",
 					"query": "",
 					"scene": null
 				},
@@ -153,6 +125,14 @@
 					"id": -1,
 					"name": "pages/coupon/coupon",
 					"pathName": "pages/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/guide/guide",
+					"pathName": "pages/guide/guide",
+					"query": "",
 					"scene": null
 				}
 			]

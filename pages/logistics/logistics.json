@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "物流信息",
-  "usingComponents": {
-    "wux-timeline": "../../component/timeline/index",
-    "wux-timeline-item": "../../component/timeline-item/index"
-  }
-}

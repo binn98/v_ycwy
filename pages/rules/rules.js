@@ -15,8 +15,8 @@ Page({
    */
   onLoad: function (options) {
     const _that = this
-    app.ajax('explain/couponrule').then(res => {
-      console.log(res.data.list);
+    app.ajax('explain/wxprotocol').then(res => {
+      // console.log(res.data.content);
       _that.setData({
         list: res.data.list
       })

@@ -1,7 +1,7 @@
 <!--pages/rules/rules.wxml-->
 <view class="ycwy-container">
   <wux-accordion-group title="" label="" accordion="{{ true }}">
-    <wux-accordion title="{{ (index + 1) + '、' + item.question }}" wx:for="{{ list }}" wx:key="id" wx:for-item="item" wx:for-index="index"><text style="color: #999999; font-size: 26rpx;" decode="{{ true }}">{{ item.answer }}</text></wux-accordion>
+    <wux-accordion title="{{item.title }}" wx:for="{{ list }}" wx:key="id" wx:for-item="item" wx:for-index="index"><text style="color: #999999; font-size: 26rpx;" decode="{{ true }}">{{ item.content }}</text></wux-accordion>
   </wux-accordion-group>
 
   <!-- <view class="nav flex flex_mc">

@@ -66,15 +66,15 @@
 
 .wx-switch-input::before{
   width:100rpx !important;
-  height: 45rpx !important;
+  height: 50rpx !important;
 }
 .wx-switch-input::after{
   width: 50rpx !important;
-  height: 45rpx !important;
+  height: 50rpx !important;
 }
 .wx-switch-input{
   width:100rpx !important;
-  height:45rpx !important;
+  height:50rpx !important;
   background: #FF5E62 !important;
 }
 

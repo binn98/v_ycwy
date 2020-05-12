@@ -12,6 +12,7 @@ Page({
             this.setData({
                 list:res.data.list
             })
+            console.log(res.data.list);
         })
     },
     onReady: function() {

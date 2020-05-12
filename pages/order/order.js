@@ -31,6 +31,10 @@ Page({
           value: "15:00-17:00",
           label: "15:00-17:00",
         },
+        {
+          value: "17:00-19:00",
+          label: "17:00-19:00",
+        }
       ],
       now:'',
       day:'',
@@ -40,7 +44,24 @@ Page({
   //options(Object)
   onLoad: function(options){
 
-    
+    console.log(options.id);
+    if(options.id){
+      app.ajax('address/details',{id: options.id}).then(res=>{
+          console.log(res);
+          this.setData({
+            userInfo:res.data,
+            show:!this.data.show
+          })
+      })
+    }else{
+      app.ajax('address/details').then(res=>{
+        if(res.data==null) return;
+        this.setData({
+          userInfo:res.data,
+          show:!this.data.show
+        })
+      })
+    }
     const _that = this;
     const week = new Array(
       "周日",
@@ -74,23 +95,28 @@ Page({
             {
               value: "09:00-11:00",
               label: "09:00-11:00",
-              disabled: now.h > 11 ? true : false,
+              disabled: now.h > 8 ? true : false,
             },
             {
               value: "11:00-13:00",
               label: "11:00-13:00",
-              disabled: now.h > 13 ? true : false,
+              disabled: now.h > 10 ? true : false,
             },
             {
               value: "13:00-15:00",
               label: "13:00-15:00",
-              disabled: now.h > 15 ? true : false,
+              disabled: now.h > 12 ? true : false,
             },
             {
               value: "15:00-17:00",
               label: "15:00-17:00",
-              disabled: now.h > 17 ? true : false,
+              disabled: now.h > 14 ? true : false,
             },
+            {
+              value: "17:00-19:00",
+              label: "17:00-19:00",
+              disabled: now.h > 16 ? true : false,
+            }
           ],
         },
         {
@@ -114,6 +140,10 @@ Page({
               value: "15:00-17:00",
               label: "15:00-17:00",
             },
+            {
+              value: "17:00-19:00",
+              label: "17:00-19:00",
+            }
           ],
         },
         {
@@ -137,6 +167,10 @@ Page({
               value: "15:00-17:00",
               label: "15:00-17:00",
             },
+            {
+              value: "17:00-19:00",
+              label: "17:00-19:00",
+            }
           ],
         },
         {
@@ -160,6 +194,10 @@ Page({
               value: "15:00-17:00",
               label: "15:00-17:00",
             },
+            {
+              value: "17:00-19:00",
+              label: "17:00-19:00",
+            }
           ],
         },
       ],
@@ -169,16 +207,7 @@ Page({
     })
     
     
-    app
-      .ajax("logistics/receiving")
-      .then((res) => {
-        _that.setData({
-          address2: res.data.list[0],
-        });
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+    
 
     app
       .ajax("logistics/company")
@@ -208,7 +237,7 @@ Page({
 
 
     // const _that = this
-    app.ajax('explain/couponrule').then(res => {
+    app.ajax('explain/wxquestion').then(res => {
       // console.log(res.data.list);
       _that.setData({
         list: res.data.list
@@ -274,7 +303,7 @@ Page({
       day:e.target.dataset.value.split('-').join('月')+'日' + e.target.dataset.key,
       days:e.target.dataset.value
     })
-    console.log(this.data.day);
+    // console.log(this.data.day);
   },
   selectTime(e){
     // console.log(e.currentTarget.dataset.disabled);
@@ -295,38 +324,55 @@ Page({
     // console.log(this.data.date.visible);
   },
   submitRecycle(){
-    app.ajax('order/recovery',{
-      addr_id:this.data.userInfo.id,
-      goods_id:this.data.goods_id.join(','),
-      time:'2020-'+this.data.days+' '+this.data.now,
-      rec_type:10
-    }).then(res=>{
-      console.log(res);
-      wx.setStorage({
-        key:"goods_id",
-        data:[]
+    if(this.data.userInfo.id==undefined){
+      wx.showToast({
+        title: '请选择填写正确的寄件地址',
+        icon: 'none',
+        duration: 2000
       })
-      wx.setStorage({
-        key:"datalist",
-        data:[]
+    }else if(this.data.now == '' || this.data.days=='' ){
+      wx.showToast({
+        title: '请选择上门时段',
+        icon: 'none',
+        duration: 2000
       })
-      wx.navigateTo({
-        url:'../detail/yuyue'
+    }else{
+      app.ajax('order/recovery',{
+        addr_id:this.data.userInfo.id,
+        goods_id:this.data.goods_id.join(','),
+        time:'2020-'+this.data.days+' '+this.data.now,
+        rec_type:10
+      }).then(res=>{
+        console.log(res);
+        wx.setStorage({
+          key:"goods_id",
+          data:[]
+        })
+        wx.setStorage({
+          key:"datalist",
+          data:[]
+        })
+        wx.navigateTo({
+          url:'../detail/yuyue'
+        })
       })
-    })
+    }
   },
   onReady: function(){
     
   },
   onShow: function(){
-    app.ajax('address/details').then(res=>{
-      
-      this.setData({
-        userInfo:res.data,
-        show:!this.data.show
-      })
-      // console.log(this.data.userInfo);
-    })
+   
+    // app
+    //   .ajax("logistics/receiving")
+    //   .then((res) => {
+    //     this.setData({
+    //       address2: res.data.list[0],
+    //     });
+    //   })
+    //   .catch((res) => {
+    //     console.log(res);
+    //   });
   },
   onHide: function(){
 

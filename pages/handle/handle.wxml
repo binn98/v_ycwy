@@ -1,6 +1,0 @@
-<!--pages/hanlde/hanlde.wxml-->
-<view class="ycwy-container">
-  <image mode="widthFix" src="../../assets/img/handle_pic1.png"></image>
-  <image mode="widthFix" src="../../assets/img/handle_pic2.png"></image>
-  <image mode="widthFix" src="../../assets/img/handle_pic3.png"></image>
-</view>

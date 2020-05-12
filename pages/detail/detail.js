@@ -72,6 +72,19 @@ Page({
     })
     app.ajax('order/cancel',{order_id:this.data.detail.order_id}).then(res=>{
       console.log(res);
+      if(res.code==0){
+        wx.showToast({
+          title: '取消成功！',
+          icon: 'none',
+          duration: 2000
+        })
+        setTimeout(() => {
+          wx.navigateTo({
+            url: '../../pages/index/index',
+          });
+        }, 3000);
+      }
+      
       
     })
   },

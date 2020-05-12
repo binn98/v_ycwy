@@ -3,22 +3,14 @@
     "pages/index/index",
     "pages/login/login",
     "pages/logs/logs",
-    "pages/prerec/prerec",
-    "pages/address/address",
-    "pages/address/edit",
     "pages/detail/detail",
     "pages/detail/yuyue",
-    "pages/handle/handle",
-    "pages/user/user",
     "pages/rules/rules",
-    "pages/logistics/logistics",
-    "pages/guide/guide",
-    "pages/intro/intro",
-    "pages/rec/rec",
     "pages/order/order",
     "pages/order/edit",
     "pages/order/address",
-    "pages/coupon/coupon"
+    "pages/coupon/coupon",
+    "pages/guide/guide"
   ],
   "permission": {
     "scope.userLocation": {
@@ -28,7 +20,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "新衣穿旧回收",
+    "navigationBarTitleText": "穿旧换新",
     "navigationBarTextStyle": "black"
   },
   "navigateToMiniProgramAppIdList": [

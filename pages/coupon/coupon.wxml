@@ -6,9 +6,9 @@
     </view>
     <view class="coupon">
         <view class="coupon_red" wx:for="{{list}}" wx:key="index">
-            <image wx:if="{{cur==10}}" src="../../assets/img/coupon_red.png" mode="aspectFit|aspectFill|widthFix" />
-            <image wx:if="{{cur==20}}" src="../../assets/img/coupon_hui.png" mode="aspectFit|aspectFill|widthFix" />
-            <image wx:if="{{cur==30}}" src="../../assets/img/coupon_guo.png" mode="aspectFit|aspectFill|widthFix" />
+            <image wx:if="{{cur==10 && list.length>0}}" src="../../assets/img/coupon_red.jpg" mode="widthFix" />
+            <image wx:if="{{cur==20 && list.length>0}}" src="../../assets/img/coupon_hui.jpg" mode="widthFix" />
+            <image wx:if="{{cur==30 && list.length>0}}" src="../../assets/img/coupon_guo.jpg" mode="widthFix" />
             <view class="coupon_info">
                 <view class="in-block">无门槛使用</view>
                 <view class="in-block_text">
@@ -20,7 +20,7 @@
                            <text>不可与其他优惠叠加使用</text>
                         </view>
                         <view class="right">
-                            <text class="rmb">50<text class="sa">元</text> </text>
+                            <text class="rmb">{{item.money}}<text class="sa">元</text> </text>
                             <text class="btn" wx:if="{{cur==10}}">立即使用</text>   
                         </view>
                             

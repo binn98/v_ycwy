@@ -59,6 +59,7 @@ App({
         _that.ajax('reglogin/gettoken',{
           code: res.code
         }).then(res => {
+          console.log(res);
           wx.setStorageSync('token_' + _that.globalData.v, res.data.token)
           _that.globalData.token = res.data.token
           if (res.data.login_code == 200) {
@@ -124,7 +125,7 @@ App({
   },
   readyCallback: null,
   globalData: {
-    v: 'v1.1.4', //token版本号，修改后清除token缓存
+    v: 'v1.1.5', //token版本号，修改后清除token缓存
     isLogin: false,
     address_cur: '',
     api: 'https://devapi.yichuwuyou.com/wmrecovery/1.2.0/', //API接口公共前缀

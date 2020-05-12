@@ -1,18 +1,26 @@
 /* pages/rules/rules.wxss */
 .ycwy-container {
-  background: #F6F6F6;
+  background: #fff;
   overflow: hidden;
   padding-bottom: 100rpx;
 }
 .ycwy-container .wux-accordion__hd {
-  background: #F6F6F6;
+  background: #fff;
   color: #181818;
   font-size: 28rpx;
+}
+.ycwy-container .wux-accordion--current > .wux-accordion__bd {
+  background-color: #F7F7F7 !important;
+  margin: 30rpx;
+  padding: 20rpx 30rpx;
+  border-radius: 15rpx;
+  color: #999;
+  font-size: 26rpx;
 }
 
 
 
-// .nav {
+/* // .nav {
 //   position: fixed;
 //   bottom: 0;
 //   left: 0;
@@ -35,4 +43,4 @@
 // .nav .cur {
 //   background: #E3805B;
 //   color: #FFFFFF;
-// }
+// } */
