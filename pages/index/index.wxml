@@ -32,12 +32,15 @@
      </view>
      元/{{ total.usable_num ||0}}张
    </view>
-   <view class="check" bindtap="goCoupon">
+   <view class="check" bindtap="goCoupon" wx:if="{{isLogin}}">
      查看明细 <text class="iconfont icon-jiantou-right"  ></text>
    </view>
-   <!-- <view class="xiaoxi" wx:if="{{total.new_create_time}}">
+   <view class="xiaoxi" wx:if="{{total.new_create_time}}">
      <text class="iconfont icon-weibiaoti1"></text>最新:{{total.new_create_time}} 划入通兑优惠券:{{total.new_money}}元
-   </view> -->
+   </view>
+   <view class="xiaoxi" wx:else>
+     
+   </view>
   </view>
     </view>
     <view class="tabWrap {{scrollTop>200? 'tabWraps':''}}">
@@ -60,7 +63,7 @@
     <view class="list" wx:if="{{ list && !loading && list.length > 0 }}">
       <view class="list_box" wx:for="{{ list }}" wx:for-item="item" wx:key="goods_id">
         <view class="title">
-          <text>订单编号：{{ item.order_no }}</text>
+          <text bindtap="forList">订单编号：{{ item.order_no }}</text>
         </view>
         <view class="inf">
          <view class="img">
@@ -68,8 +71,7 @@
          </view>
           <view class="text">
             <text class="bold wux-ellipsis--l2">{{ item.name }}</text>
-            <text class="block_" wx:for="{{ item.sku_properties_name }}"wx:for-item="item2" wx:for-index="index2" wx:key="k_id">{{item2.v }}
-            </text>
+            <text class="block_">{{item.sku_properties_name[1].v }};{{item.sku_properties_name[0].v }}</text>
             <view class="price_">
               <view class="left">
                 <text class="price">商品售价￥{{ item.price }}</text>
@@ -83,27 +85,28 @@
           </view>
         </view>
         <view class="rushoutime">
-          <text wx:if="{{tab==0}}">
+          <text>
            <text>入手时间：{{ item.success_time_txt }}</text>
          </text>
          <text style="color: #FF5E62;" wx:if="{{ timeList.length > 0 &&  tab == 0}}">已使用：{{ timeList[index].d + '天 ' + timeList[index].h + ':' + timeList[index].m + ':' + timeList[index].s}}</text>
-         <text style="color: #FF5E62;" wx:if="{{ tab == 10 }}">已到账优惠券 {{ item.recovery_price * 1 + item.express_price * 1 }}元</text>
-         <text class="delid" wx:if="{{tab == 10}}" data-id="{{item.goods_id}}" bindtap="del">删除订单</text>
+         <!-- <text style="color: #FF5E62;" wx:if="{{ tab == 10 }}">已到账优惠券 {{ item.recovery_price * 1 + item.express_price * 1 }}元</text> -->
+         <text wx:if="{{ tab == 10 }}"></text>
+         <text class="delid" wx:if="{{tab == 10}}" data-id="{{item.rec_order_id}}" bindtap="del">删除订单</text>
        </view>
       </view>
     </view>
 
-    <view class="list list_no tac" wx:elif="{{ !loading }}">
+    <view class="list list_no tac" wx:elif="{{ !loading && isLogin}}">
       <image mode="widthFix" src="../../assets/img/order_no.png"></image>
-      <text class="tips block tac" wx:if="{{tab2 > 0}}">{{  tab2 == 100 ? '90天以上' : tab2 + '天内'  + '暂无回收衣物清单'}}</text>
-      <text bindtap="goOther" class="tips block tac" wx:else="{{tab2<0}}">
+      <text class="tips block tac" wx:if="{{tab2 > 0 }}">{{  tab2 == 100 ? '90天以上' : tab2 + '天内'  + '暂无回收衣物清单'}}</text>
+      <text bindtap="goOther" class="tips block tac" wx:else="{{tab2<0 }}">
         暂时没有衣物可回收喔,去 
           <text style="color: #FF5E62; display: inline;">看看新衣吧~</text>       
-          <!-- <navigator target="miniProgram" open-type="navigate" app-id="wx369fe22d2a942bdc" path="pages/commonank-page/index" version="release"><text style="color: #FF5E62; display: inline-block; padding-bottom:130rpx;">
-            看看新衣吧~</text>
-          </navigator> -->
       </text>
-      <button type="primary" class="btn mgt_75" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" wx:if="{{ !isLogin }}">登录衣橱无忧账户</button>
+    </view>
+    <view class="denglu" wx:if="{{ !isLogin }}">
+      <button class="_btn_bttom" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" >微信授权登录</button>
+      <view class="wenan">登录衣橱无忧商城账户查看</view>
     </view>
     <view class="bot_Submit" wx:if="{{tab==0&&list.length>0}}">
       <view class="shuoming" >

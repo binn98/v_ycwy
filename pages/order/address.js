@@ -35,6 +35,8 @@ Page({
   },
   def(e){
     let is_default = this.data.is_default
+    // console.log(e.currentTarget.dataset,is_default);
+    
     let data = {is_default,...e.currentTarget.dataset}
     app.ajax('address/setting',data).then(res=>{
       app.ajax('address/list').then(res=>{
@@ -45,7 +47,7 @@ Page({
     })
   },
   goorder(e){
-    // console.log(e.currentTarget.dataset);
+    console.log(e.currentTarget.dataset);
     
     wx.navigateTo({
       url:'./order?id='+  e.currentTarget.dataset.id

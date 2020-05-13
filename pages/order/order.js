@@ -14,6 +14,7 @@ Page({
         options: [],
       },
       cur:'',
+      curs:'1',
       children:[
         {
           value: "09:00-11:00",
@@ -52,12 +53,15 @@ Page({
             userInfo:res.data,
             show:!this.data.show
           })
+          
       })
     }else{
-      app.ajax('address/details').then(res=>{
+      app.ajax('address/list',{is_default:2}).then(res=>{
+        console.log(res);
+        
         if(res.data==null) return;
         this.setData({
-          userInfo:res.data,
+          userInfo:res.data.list[0],
           show:!this.data.show
         })
       })
@@ -297,21 +301,34 @@ Page({
     });
   },
   getdate(e){
-    this.setData({
-      cur:e.target.dataset.key,
-      children:e.target.dataset.time,
-      day:e.target.dataset.value.split('-').join('月')+'日' + e.target.dataset.key,
-      days:e.target.dataset.value
-    })
-    // console.log(this.data.day);
+    if(e.target.dataset.key == this.data.cur) return;
+    if(e.target.dataset.time[0].disabled == undefined){
+      this.setData({
+        cur:e.target.dataset.key,
+        children:e.target.dataset.time,
+        day:e.target.dataset.value.split('-').join('月')+'日' + e.target.dataset.key,
+        days:e.target.dataset.value,
+        now:'',
+        curs:e.target.dataset.key
+      })
+      
+    }else{
+      this.setData({
+        cur:e.target.dataset.key,
+        children:e.target.dataset.time,
+        day:e.target.dataset.value.split('-').join('月')+'日' + e.target.dataset.key,
+        days:e.target.dataset.value,
+        now:'',
+        curs:e.target.dataset.key
+      })
+    }
+    // console.log(e.target.dataset.time[0].disabled);
   },
   selectTime(e){
-    // console.log(e.currentTarget.dataset.disabled);
-    if (!e.currentTarget.dataset.disabled) {
+    if (!e.currentTarget.dataset.disabled && this.data.cur!='') {
       this.setData({
         now:e.currentTarget.dataset.label
       })
-      // console.log(this.data.now);
     }else{
       return
     }
@@ -321,7 +338,6 @@ Page({
     this.setData({
       'date.visible':false
     })
-    // console.log(this.data.date.visible);
   },
   submitRecycle(){
     if(this.data.userInfo.id==undefined){
@@ -337,12 +353,16 @@ Page({
         duration: 2000
       })
     }else{
+      wx.showLoading({
+        mask:true
+      })
       app.ajax('order/recovery',{
         addr_id:this.data.userInfo.id,
         goods_id:this.data.goods_id.join(','),
         time:'2020-'+this.data.days+' '+this.data.now,
         rec_type:10
       }).then(res=>{
+        wx.hideLoading()
         console.log(res);
         wx.setStorage({
           key:"goods_id",

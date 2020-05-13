@@ -4,15 +4,17 @@ Page({
     data: {
         cur:10,
         status:10,
-        list:[]
+        list:[],
+        loading:false
     },
     //options(Object)
     onLoad: function(options) {
         app.ajax('coupon/list',{status:this.data.status}).then(res=>{
             this.setData({
-                list:res.data.list
+                list:res.data.list,
+                loading:false
             })
-            console.log(res.data.list);
+            // console.log(res.data.list);
         })
     },
     onReady: function() {
@@ -26,11 +28,13 @@ Page({
     },
     ative(e){
         this.setData({
-            cur:e.currentTarget.dataset.index
+            cur:e.currentTarget.dataset.index,
+            loading:true
         })
         app.ajax('coupon/list',{status:e.currentTarget.dataset.index}).then(res=>{
             this.setData({
-                list:res.data.list
+                list:res.data.list,
+                loading:false
             })
         })
     },

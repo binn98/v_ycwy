@@ -12,6 +12,8 @@ Page({
   data: {
     id: '',
     alter:false,
+    err:false,
+    err_add:false,
     form: {
       link_name: '',
       mobile: '',
@@ -71,6 +73,7 @@ Page({
     }else{
       app.ajax('user/ipaddress').then(res=>{
         console.log(res.data);
+        if(res.data.province==''||res.data.city==''||res.data.district=='') return;
         _that.setData({
           ['city.value']:res.data.province +' '+ res.data.city +' '+ res.data.district,
           ['form.province']:res.data.province,
@@ -229,7 +232,7 @@ Page({
   },
   subAddress() {
     console.log(this.data.btn);
-    // if (!this.data.btn) return false
+    if (!this.data.btn) return 
     if(this.data.form.address.length<7){
       wx.showToast({
         title: '详细地址不能少于7个字',
@@ -265,18 +268,21 @@ Page({
     }
   },
   phoneRules(e){
-    console.log(e.detail.value);
+    // console.log(e.detail.value);
     let phone = e.detail.value
     let on = /^1[34578]\d{9}$/.test(phone)
     if(on){
       this.setData({
-        ['form.mobile']:phone
+        ['form.mobile']:phone,
+        err:false
+      })
+    }else if(phone==''){
+      this.setData({
+        err:false
       })
     }else{
-      wx.showToast({
-          title: '请输入正确的手机号码',
-          icon: 'none',
-          duration: 2000
+      this.setData({
+        err:true
       })
     }
     this.rule()
@@ -288,9 +294,17 @@ Page({
     this.rule()
   },
   Address(e){
-    this.setData({
-      ['form.address']:e.detail.value
-    })
+    if(e.detail.value.length<7){
+      this.setData({
+        err_add:true,
+        ['form.address']:e.detail.value
+      })
+    }else{
+      this.setData({
+        ['form.address']:e.detail.value,
+        err_add:false
+      })
+    }
     this.rule()
   },
   name(e){
@@ -301,15 +315,18 @@ Page({
   },
   rule(){
     let arr = this.data.form
-    if(arr.link_name!=''&&arr.mobile!=''&&arr.province!=''&&arr.city!=''&&arr.area!=''&&arr.address!=''){
+    if(arr.link_name!=''&&arr.mobile.length==11 && arr.province!=''&&arr.city.length!=''&&arr.area!=''&&arr.address.length>=7){
       this.setData({
         btn:true
       })
-      // console.log('进来了');
+      console.log('进来了');
     }else{
       this.setData({
         btn:false
       })
     }
+  },
+  event(e){
+    console.log(e);
   }
 })

@@ -9,6 +9,9 @@
   align-items: center;
   border-bottom: 1rpx solid #ccc;
 }
+.red_border{
+  border-bottom: 1px solid red !important;
+}
 .admin>text{
   flex: 1;
 }
@@ -65,15 +68,16 @@
 }
 
 .wx-switch-input::before{
-  width:100rpx !important;
+  width:90rpx !important;
   height: 50rpx !important;
 }
 .wx-switch-input::after{
   width: 50rpx !important;
-  height: 50rpx !important;
+  height: 45rpx !important;
+  line-height: 45rpx !important;
 }
 .wx-switch-input{
-  width:100rpx !important;
+  width:90rpx !important;
   height:50rpx !important;
   background: #FF5E62 !important;
 }

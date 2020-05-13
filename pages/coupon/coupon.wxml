@@ -5,7 +5,7 @@
         <text class="tabs {{cur==30? 'red':''}}" bindtap="ative" data-index="{{30}}">已过期</text>
     </view>
     <view class="coupon">
-        <view class="coupon_red" wx:for="{{list}}" wx:key="index">
+        <view wx:if="{{list.length>0}}" class="coupon_red" wx:if="{{list&&!loading}}" wx:for="{{list}}" wx:key="index">
             <image wx:if="{{cur==10 && list.length>0}}" src="../../assets/img/coupon_red.jpg" mode="widthFix" />
             <image wx:if="{{cur==20 && list.length>0}}" src="../../assets/img/coupon_hui.jpg" mode="widthFix" />
             <image wx:if="{{cur==30 && list.length>0}}" src="../../assets/img/coupon_guo.jpg" mode="widthFix" />
@@ -22,13 +22,18 @@
                         <view class="right">
                             <text class="rmb">{{item.money}}<text class="sa">元</text> </text>
                             <text class="btn" wx:if="{{cur==10}}">立即使用</text>   
-                        </view>
-                            
+                        </view>    
                     </view>
                 </view>
 
             </view>
 
+        </view>
+        <view class="no_cou" wx:if="{{list.length==0 && !loading}}">
+            <image mode="widthFix" src="../../assets/img/order_no.png"></image>
+            <text wx:if="{{cur==10}}" class="txt">目前没有可用优惠券喔</text>
+            <text wx:if="{{cur==20}}" class="txt">您还没有用过优惠券喔</text>
+            <text wx:if="{{cur==30}}" class="txt">目前没有过期的优惠券喔</text>
         </view>
     </view>
 

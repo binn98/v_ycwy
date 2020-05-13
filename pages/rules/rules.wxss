@@ -17,8 +17,12 @@
   color: #999;
   font-size: 26rpx;
 }
-
-
+.ycwy-container .wux-cell-group__bd::after{
+  border: none;
+}
+.wux-accordion__bd::after{
+  border: none !important;
+}
 
 /* // .nav {
 //   position: fixed;

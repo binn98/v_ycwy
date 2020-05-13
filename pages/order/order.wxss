@@ -82,16 +82,26 @@ text{
 .red{
   color: #FF5E62;
 }
-.black{
+.blacks{
   color: #181818;
+  width: 47%;
+  margin-right: 20rpx;
+  margin-bottom: 30rpx;
+  height: 80rpx;
+  background-color: #F5F5F5;
+  display: inline-block;
+  border-radius: 15rpx;
+  line-height: 80rpx;
+  text-align: center;
+  box-sizing: border-box;
 }
 .question{
-
+  padding-bottom: 200rpx;
 }
 .question .common{
   margin-top: 20rpx;
 }
-.btn{
+.btnss{
   height: 100rpx;
   display: flex;
   justify-content: center;
@@ -100,11 +110,19 @@ text{
   color: #fff;
   font-size: 34rpx;
   border-radius: 50rpx;
-  margin-bottom: 80rpx;
-  margin-top: 60rpx;
+  width: 690rpx;
+  position: fixed;
+  bottom: 20rpx;
+
 }
-
-
+.Btn{
+  width: 690rpx;
+  height: 100rpx;
+  /* position: relative; */
+}
+.wux-accordion__bd::after{
+  border: none !important;
+}
 
 
 .wux-popup__content {
@@ -145,7 +163,9 @@ text{
 .cur_x1{
   color: #FF5E62;
 }
-
+.black{
+  color: #181818;
+}
 .time_slot{
   width: 100%;
   padding: 15rpx;
@@ -159,7 +179,9 @@ text{
   display: inline-block;
   border-radius: 15rpx;
   line-height: 80rpx;
-  color: #181818;
+  /* color: #181818; */
+  color: #ccc;
+  box-sizing: border-box;
 }
 
 .wrap_c{
@@ -211,6 +233,7 @@ text{
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  border-radius: 50rpx;
 }
 .color{
   color: #ccc;

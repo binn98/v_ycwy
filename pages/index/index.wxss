@@ -6,7 +6,7 @@
   /* padding-bottom: 100rpx; */
 }
 .information {
-  height: 540rpx;
+  /* height: 540rpx; */
   width: 750rpx;
   z-index: 999;
   position: relative;
@@ -58,9 +58,10 @@
   top: -32rpx;
 }
 .information .coupon {
-  height: 340rpx;
+  /* height: 340rpx; */
   width: 750rpx;
   background-color: #fff;
+
 }
 .information .coupon > view {
   text-align: center;
@@ -116,11 +117,18 @@
 .xiaoxi {
   font-size: 26rpx;
   color: #ff5e62;
-  margin-bottom: 20rpx;
+  /* -bottom: 20rpx; */
+  padding-bottom: 20rpx;
+  position: relative;
+  background-color: #fff;
+  z-index: 9999999;
 }
 .xiaoxi .iconfont {
   vertical-align: -1rpx;
   margin-right: 10rpx;
+  position: relative;
+  background-color: #fff;
+  z-index: 9999999;
 }
 
 .tabWrap {
@@ -223,6 +231,8 @@
 .list {
   /* margin-top: 200rpx; */
   padding-bottom: 120rpx;
+  padding-top: 20rpx;
+  background-color: #fff;
 }
 .list_box {
   width: 690rpx;
@@ -324,9 +334,10 @@
 }
 .list_box .inf .text .block_ {
   display: inline-block;
-  width: 60rpx;
+  width: 80rpx;
   height: 44rpx;
   line-height: 44rpx;
+  text-align: center;
   background-color: #f9f9f9;
   color: #999999;
   font-size: 24rpx;
@@ -334,9 +345,9 @@
 }
 .list_box .inf .text .block {
 }
-.list_box .inf .text :nth-child(2) {
+/* .list_box .inf .text :nth-child(2) {
   text-align: end;
-}
+} */
 .list_box .bottom {
   padding: 0 25rpx;
   height: 60rpx;
@@ -407,12 +418,12 @@
   align-items: center;
   color: #999;
   font-size: 32rpx;
-  margin-left: 20rpx;
+  padding-left: 20rpx;
 }
 
 .bot_Submit .shuoming {
   flex: 6;
-  background-color: #fff;
+  background-color: #f4f4f4;
   display: flex;
   align-items: center;
 }
@@ -553,6 +564,26 @@
   padding: 0;
 
 }
+.wenan{
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 10rpx;
+  text-align: center;
+  width: 100%;
+}
+._btn_bttom{
+  height: 70rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color:#FF5E62;
+  width: 360rpx;
+  height: 70rpx;
+  margin: 0 auto;
+}
 button::after{
   border: none;
 }
@@ -614,4 +645,8 @@ button::after{
   background-color: black;
   opacity: .7;
   z-index: 99999;
+}
+.denglu{
+  width: 100%;
+  margin-top: 100rpx;
 }

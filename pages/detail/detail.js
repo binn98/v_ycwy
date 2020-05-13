@@ -11,7 +11,8 @@ Page({
     detail: {},
     price: '',
     num: '',
-    show:false
+    show:false,
+    Show:true
   },
 
   /**
@@ -37,8 +38,6 @@ Page({
    */
   onShow: function () {
     const _that = this
-    console.log( _that.data.id);
-    
     app.ajax('order/details', {
       order_id: _that.data.id
     }).then(res => {
@@ -50,7 +49,12 @@ Page({
         detail: res.data,
         price: Number(res.data.rec_price)
       })
-      console.log(res.data);
+      if(this.data.detail.picker_tel==''){
+        _that.setData({
+          Show:false
+        })
+      }
+      // console.log(res.data.can_cancel_logistic);
     }).catch(res => {
       console.log(res)
     })
@@ -59,6 +63,9 @@ Page({
     this.setData({
       show:!this.data.show
     })
+  },
+  ceshi(){
+    console.log(this.data.detail.picker_tel=='');
     
   },
   cls(){
@@ -79,13 +86,11 @@ Page({
           duration: 2000
         })
         setTimeout(() => {
-          wx.navigateTo({
-            url: '../../pages/index/index',
-          });
-        }, 3000);
+          wx.redirectTo({
+            url: '../../pages/index/index'
+          })
+        }, 2000);
       }
-      
-      
     })
   },
   /**

@@ -120,6 +120,19 @@
     color: #FF5E62;
 }
 
+.no_cou>image{
+    width: 267rpx;
+    display: block;
+    margin: 0 auto;
+    margin-top: 49rpx;
+}
+.no_cou>text{
+    color: #999;
+    font-size: 26rpx;
+    display: block;
+    text-align: center;
+}
+
 
 
 

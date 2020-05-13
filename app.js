@@ -93,9 +93,13 @@ App({
               title: '登录已过期，请重新登录',
               icon: 'none'
             })
+            wx.setStorage({
+              key:'token_' + _that.globalData.v,
+              data:''
+            })
             setTimeout(() => {
               wx.redirectTo({
-                url: '/pages/login/login'
+                url: '/pages/index/index'
               })
             }, 1500)
           } else if (res.data.code == -444) {
@@ -105,7 +109,7 @@ App({
             })
             setTimeout(() => {
               wx.redirectTo({
-                url: '/pages/guide/guide'
+                url: '/pages/index/index'
               })
             }, 1500)
           } else {

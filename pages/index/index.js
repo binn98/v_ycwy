@@ -71,7 +71,7 @@ Page({
         timeList: list,
       });
     }, 1000);
-
+    console.log(wx.getStorageSync("token_v1.1.5"));
     // 回收回收规则
     app
       .ajax("explain/recoveryrule")
@@ -96,8 +96,9 @@ Page({
               Rmb: moeny.toFixed(2),
               dataList: res.data,
               active: ative,
+              goods_id:ative
             });
-            // console.log(_that.data.active);
+           
             setTimeout(() => {
               _that.ative();
             }, 1500);
@@ -219,7 +220,7 @@ Page({
     // }
     this.setData({
       [key]: e.detail.key,
-      show: false,
+      show: false
     });
     this.getList(1);
     // console.log(this.data.tab)
@@ -234,8 +235,9 @@ Page({
   },
   getList(page) {
     const _that = this;
-    // console.log(_that.data.tab);
-    // console.log(_that.data.tab2);
+    _that.setData({
+      loading:true
+    })
     app
       .ajax(
         "order/goods",
@@ -342,7 +344,7 @@ Page({
     // }
   },
   godetilt(e) {
-    console.log(e.currentTarget.dataset);
+    // console.log(e.currentTarget.dataset);
 
     wx.navigateTo({
       url: "../detail/detail?id=" + e.currentTarget.dataset.id,
@@ -409,7 +411,7 @@ Page({
       (moeny += +v.num), goods_id.push(v.id);
     });
     // console.log(moeny.toFixed(2));
-    console.log(goods_id);
+    // console.log(goods_id);
     that.setData({
       Rmb: moeny.toFixed(2),
       goods_id: goods_id,
@@ -425,9 +427,9 @@ Page({
     // console.log(that.data.goods_id);
   },
   del(e) {
-    app.ajax("order/delete", { id: e.currentTarget.dataset.id }).then((res) => {
-      console.log(res);
-      this.getList();
+    // console.log(e.currentTarget.dataset.id);
+    app.ajax("order/del", { order_id: e.currentTarget.dataset.id }).then((res) => {
+      this.getList(1);
     });
   },
   goTo2(e) {
@@ -469,19 +471,6 @@ Page({
                 .then((res) => {
                   _that.getList(1);
                   _that.coupon()
-                  // wx.getSetting({
-                  //   success (res){
-                  //     // if (res.authSetting['scope.userInfo']) {
-                  //     //   // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-                  //     //   wx.getUserInfo({
-                  //     //     success: function(res) {
-                  //     //       console.log(res.userInfo)
-                  //     //     }
-                  //     //   })
-                  //     // }
-                  //     console.log(res);
-                  //   }
-                  // })
                   app
                   .ajax("user/info")
                   .then((res) => {
@@ -556,7 +545,7 @@ Page({
           total: res.data.usable_new,
           totals: res.data.total,
         });
-        console.log(this.data.list);
+        // console.log(this.data.list);
       })
       .catch((res) => {
         console.log(res);
@@ -565,7 +554,7 @@ Page({
   goOther(){
     wx.navigateToMiniProgram({
       appId: 'wx369fe22d2a942bdc',
-      path: 'pages/commonank-page/index',
+      path: 'pages/home/dashboard/index'
     })
   },
   offmask(){
@@ -578,5 +567,14 @@ Page({
       pro:true
     })
     console.log(this.data.pro);
+  },
+  forList(){
+    let data = this.data.list;
+    let arr;
+    data.map(v=>{
+      // arr =  v.sku_properties_name[1].v + ';'
+
+    })
+    console.log(data);
   }
 });

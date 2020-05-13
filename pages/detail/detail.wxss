@@ -24,6 +24,7 @@
   box-sizing: border-box;
   padding-bottom: 20rpx;
   border: 1rpx solid #eee;
+  border-radius: 10rpx;
 }
 .data .data_info{
   font-size: 36rpx;
@@ -83,6 +84,7 @@
   padding-left: 30rpx;
   padding-bottom: 40rpx;
   margin-top: 20rpx;
+  border-radius: 10rpx;
 }
 .wuliu .huise{
   font-size: 26rpx;
