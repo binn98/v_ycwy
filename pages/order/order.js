@@ -4,6 +4,7 @@ Page({
   data: {
       userInfo:{},
       show:false,
+      tic:false,
       id: [],
       name: "",
       price: "",
@@ -40,32 +41,12 @@ Page({
       now:'',
       day:'',
       days:'',
-      goods_id:[]
+      goods_id:[],
   },
   //options(Object)
   onLoad: function(options){
 
-    console.log(options.id);
-    if(options.id){
-      app.ajax('address/details',{id: options.id}).then(res=>{
-          console.log(res);
-          this.setData({
-            userInfo:res.data,
-            show:!this.data.show
-          })
-          
-      })
-    }else{
-      app.ajax('address/list',{is_default:2}).then(res=>{
-        console.log(res);
-        
-        if(res.data==null) return;
-        this.setData({
-          userInfo:res.data.list[0],
-          show:!this.data.show
-        })
-      })
-    }
+   
     const _that = this;
     const week = new Array(
       "周日",
@@ -80,6 +61,7 @@ Page({
     const day2 = new Date(new Date().setDate(new Date().getDate() + 1));
     const day3 = new Date(new Date().setDate(new Date().getDate() + 2));
     const day4 = new Date(new Date().setDate(new Date().getDate() + 3));
+    const day5 = new Date(new Date().setDate(new Date().getDate() + 4));
     const now = _that.getTimeObj(day);
     wx.getStorage({
       key: "goods_id",
@@ -180,6 +162,33 @@ Page({
         {
           value: _that.formatTime(day4),
           label: '('+ week[day4.getDay()]+')',
+          isLeaf: false,
+          children: [
+            {
+              value: "09:00-11:00",
+              label: "09:00-11:00",
+            },
+            {
+              value: "11:00-13:00",
+              label: "11:00-13:00",
+            },
+            {
+              value: "13:00-15:00",
+              label: "13:00-15:00",
+            },
+            {
+              value: "15:00-17:00",
+              label: "15:00-17:00",
+            },
+            {
+              value: "17:00-19:00",
+              label: "17:00-19:00",
+            }
+          ],
+        },
+        {
+          value: _that.formatTime(day5),
+          label:'('+ week[day5.getDay()]+')',
           isLeaf: false,
           children: [
             {
@@ -322,7 +331,18 @@ Page({
         curs:e.target.dataset.key
       })
     }
-    // console.log(e.target.dataset.time[0].disabled);
+    let tic = this.data.children
+    // console.log(this.data.children);
+    // console.log(tic[0].disabled&&tic[1].disabled&&tic[2].disabled&&tic[3].disabled&&tic[4].disabled);
+   if(tic[0].disabled&&tic[1].disabled&&tic[2].disabled&&tic[3].disabled&&tic[4].disabled){
+     this.setData({
+       tic:true
+     })
+   }else{
+    this.setData({
+      tic:false
+    })
+   }
   },
   selectTime(e){
     if (!e.currentTarget.dataset.disabled && this.data.cur!='') {
@@ -372,7 +392,7 @@ Page({
           key:"datalist",
           data:[]
         })
-        wx.navigateTo({
+        wx.redirectTo({
           url:'../detail/yuyue'
         })
       })
@@ -382,17 +402,41 @@ Page({
     
   },
   onShow: function(){
-   
-    // app
-    //   .ajax("logistics/receiving")
-    //   .then((res) => {
-    //     this.setData({
-    //       address2: res.data.list[0],
-    //     });
-    //   })
-    //   .catch((res) => {
-    //     console.log(res);
-    //   });
+
+    if(app.globalData.address_cur!=''){
+      app.ajax('address/details',{id: app.globalData.address_cur}).then(res=>{
+          // console.log(res);
+          if(res.data==""||res.data== null){
+            this.setData({
+              show:false
+            })
+          }else{
+
+            this.setData({
+              userInfo:res.data,
+              show:true
+            }) 
+          }
+      })
+    }else{
+      app.ajax('address/list',{is_default:2}).then(res=>{
+        // console.log(res);
+        
+        if(res.data.list==""||res.data.list== null){
+          this.setData({
+            show:false
+          })
+        }else{
+
+          this.setData({
+            userInfo:res.data.list[0],
+            show:true
+          })
+          console.log('没执行return');
+        }
+
+      })
+    }
   },
   onHide: function(){
 

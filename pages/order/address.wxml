@@ -1,30 +1,30 @@
 <view class="ycwy-container">
-  <view wx:for="{{list}}" wx:key="index" class="my_add" >
+  <view wx:for="{{list}}" wx:key="index" class="my_add" data-id="{{item.id}}" bindtap="goorder">
     <view class="top">
       <view class="add_box">
-        <view class="box_inf" data-id="{{item.id}}" bindtap="goorder">
+        <view class="box_inf">
           <text>{{item.link_name}}</text>
           <text>{{item.mobile}}</text>
         </view>
-        <view class="ico">
-          <text bindtap="revise" data-id="{{item.id}}" class="iconfont icon-bianji-"></text>
+        <view class="ico" catchtap="revise" data-id="{{item.id}}">
+          <text class="iconfont icon-bianji-"></text>
         </view>
       </view>
       <text class="address">{{item.address}}</text>
     </view>
     <view class="default">
-      <view class="ico_def" bindtap="def" data-id="{{item.id}}"data-link_name="{{item.link_name}}"data-mobile="{{item.mobile}}" data-province="{{item.province}}" data-city="{{item.city}}" data-area="{{item.area}}" data-address="{{item.address}}">
+      <view class="ico_def" catchtap="def" data-id="{{item.id}}"data-link_name="{{item.link_name}}"data-mobile="{{item.mobile}}" data-province="{{item.province}}" data-city="{{item.city}}" data-area="{{item.area}}" data-address="{{item.address}}">
         <text class="iconfont icon-dagou- {{item.is_default==is_default? 'color':''}}"></text>
         <text>设为默认</text>
       </view>
       <view class="del">
-        <text bindtap="del" data-id="{{item.id}}" class="iconfont icon-shanchu-copy"></text>
+        <text catchtap="del" data-id="{{item.id}}" class="iconfont icon-shanchu-copy"></text>
       </view>
     </view>
   </view>
   <!-- 添加地址按钮 --> 
   <view class="bttom"> 
-    <view class="btn" bindtap="goedit">
+    <view class="btn" data-list="{{list}}" bindtap="goedit">
       <text class="iconfont icon-jiahao"></text>
       <text>新增地址</text>
     </view>

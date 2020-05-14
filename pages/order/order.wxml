@@ -63,6 +63,7 @@
         <view class="time">
           <view class="shangmen">
             <text class="now">请选择预约时间</text>
+            <!-- <text wx:if="{{tic}}">本日暂无可预约时间段</text> -->
           </view>
           <view class="time_slot">
             <view wx:for="{{children}}" wx:for-key="index2" wx:key="index2" bindtap="selectTime" data-disabled="{{item2.disabled}}" data-label="{{item2.label}}" wx:for-item="item2" class="  {{cur == curs? 'blacks':'time_c'}} {{now == item2.label && cur!='' ? 'cur_x':''}} {{item2.disabled==true? 'color':''}}">

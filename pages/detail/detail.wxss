@@ -36,7 +36,7 @@
 .data .sender{
   padding-top:20rpx;
   padding-bottom: 40rpx;
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #181818;
   font-weight: bold;
 }

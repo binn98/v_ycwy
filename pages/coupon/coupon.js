@@ -38,6 +38,12 @@ Page({
             })
         })
     },
+    goOther(){
+        wx.navigateToMiniProgram({
+          appId: 'wx369fe22d2a942bdc',
+          path: 'pages/home/dashboard/index'
+        })
+      },
     onHide: function() {
 
     },

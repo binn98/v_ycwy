@@ -9,6 +9,7 @@
 .address{
   width: 100%;
   /* height: 120rpx; */
+  margin-top: 30rpx;
 }
 text{
   font-size: 36rpx;
@@ -100,6 +101,9 @@ text{
 }
 .question .common{
   margin-top: 20rpx;
+}
+.common .wux-accordion__hd{
+  padding-left: 0;
 }
 .btnss{
   height: 100rpx;
@@ -206,7 +210,7 @@ text{
   padding: 0 30rpx;
 }
 .wrap_c .time .shangmen{
-  padding: 60rpx 0;
+  padding-top: 60rpx
 }
 .wrap_c .time .shangmen .now{
   font-size: 40rpx;

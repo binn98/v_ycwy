@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "回收规则",
+  "navigationBarTitleText": "预约回收",
   "usingComponents": {
     "wux-accordion-group": "../../component/accordion-group/index",
     "wux-accordion": "../../component/accordion/index",

@@ -129,10 +129,11 @@ App({
   },
   readyCallback: null,
   globalData: {
-    v: 'v1.1.5', //token版本号，修改后清除token缓存
+    v: 'v1.1.7', //token版本号，修改后清除token缓存
     isLogin: false,
     address_cur: '',
-    api: 'https://devapi.yichuwuyou.com/wmrecovery/1.2.0/', //API接口公共前缀
+    address_list:'',
+    api: 'https://api.yichuwuyou.com/wmrecovery/1.2.0/', //API接口公共前缀
     token: '',
     userInfo: null
   }

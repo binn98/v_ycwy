@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText":"穿旧换新",
+  "navigationBarTitleText":"新衣穿旧回收",
   "usingComponents": {
     "wux-tabs": "../../component/tabs/index",
     "wux-tab": "../../component/tab/index",

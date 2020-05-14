@@ -43,7 +43,10 @@
    </view>
   </view>
     </view>
-    <view class="tabWrap {{scrollTop>200? 'tabWraps':''}}">
+    <view  hidden="{{scrollTop<250}}" style="height:184rpx">
+      
+    </view>
+    <view class="tabWrap {{scrollTop>250? 'tabWraps':''}}">
     	<wux-tabs defaultCurrent="{{ tab }}" bind:change="tabChange" class="tabs" data-tab="tab">
       		<wux-tab key="0">可回收清单</wux-tab>
       		<wux-tab key="10" title="已回收清单"></wux-tab>
@@ -53,13 +56,13 @@
       		<text class="tabs_s {{ative!=false? 'ative':''}}" bindtap="filterList"> {{tabs==''? '筛选':tabs}} <text    class="iconfont {{show==false? 'icon-RectangleCopy':'icon-RectangleCopy1'}}"  ></text></text>
       </view>
       <view class="tabs_h {{show==true? 'show':''}}">
-        <text class="{{tab2==30? 'clor':''}}" bindtap="getfilterList" data-day="30" data-value="30天内">30天内</text>
-        <text class="{{tab2==60? 'clor':''}}" bindtap="getfilterList" data-day="60" data-value="60天内">60天内</text>
+        <text class="{{tab2==100? 'clor':''}}" bindtap="getfilterList" data-day="100" data-value="90天后">90天后</text>
         <text class="{{tab2==90? 'clor':''}}" bindtap="getfilterList" data-day="90" data-value="90天内">90天内</text>
-        <text class="{{tab2==100? 'clor':''}}" bindtap="getfilterList" data-day="100" data-value="90天以上">90天以上</text>
+        <text class="{{tab2==60? 'clor':''}}" bindtap="getfilterList" data-day="60" data-value="60天内">60天内</text>
+        <text class="{{tab2==30? 'clor':''}}" bindtap="getfilterList" data-day="30" data-value="30天内">30天内</text>
         </view>
 	</view>
-
+  <wux-refresher loadingText="正在加载" loadNoDataText="没有更多数据"  bind:pulling="onPulling" bind:refresh="onRefresh" id="wux-refresher"  bind:loadmore="listLoadmore" scrollTop="{{scrollTop}}">
     <view class="list" wx:if="{{ list && !loading && list.length > 0 }}">
       <view class="list_box" wx:for="{{ list }}" wx:for-item="item" wx:key="goods_id">
         <view class="title">
@@ -95,28 +98,28 @@
        </view>
       </view>
     </view>
-
     <view class="list list_no tac" wx:elif="{{ !loading && isLogin}}">
       <image mode="widthFix" src="../../assets/img/order_no.png"></image>
-      <text class="tips block tac" wx:if="{{tab2 > 0 }}">{{  tab2 == 100 ? '90天以上' : tab2 + '天内'  + '暂无回收衣物清单'}}</text>
-      <text bindtap="goOther" class="tips block tac" wx:else="{{tab2<0 }}">
-        暂时没有衣物可回收喔,去 
-          <text style="color: #FF5E62; display: inline;">看看新衣吧~</text>       
+      <!-- <text class="tips block tac" wx:if="{{tab2 > 0 }}">{{  tab2 == 100 ? '90天以上' : tab2 + '天内'  + '暂无回收衣物清单'}}</text> -->
+      <text bindtap="goOther" class="tips block tac" wx:if="{{tab!=10 && list.length==0}}">
+        暂时没有衣物可回收喔, 
+          <text style="color: #FF5E62; display: inline;">去看看新衣吧~</text>       
+      </text>
+      <text  class="tips block tac" wx:if="{{tab==10 && list.length==0  }}">
+        暂无已回收的衣物
       </text>
     </view>
+  </wux-refresher>  
+   
     <view class="denglu" wx:if="{{ !isLogin }}">
-      <button class="_btn_bttom" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" >微信授权登录</button>
+      <button type='primary' class="_btn_bttom" open-type="getPhoneNumber" bindgetphonenumber="getInfoCallback" >微信授权登录</button>
       <view class="wenan">登录衣橱无忧商城账户查看</view>
     </view>
     <view class="bot_Submit" wx:if="{{tab==0&&list.length>0}}">
       <view class="shuoming" >
        <view class="shuoming_" >
-        <view class="shuoming_gold">
-          旧衣回收优惠券金额
-         </view>
-         <view class="shuoming_gold_count">
-          （由{{goods_id.length}}张优惠券组成）
-         </view>
+        <view class="shuoming_gold">优惠券金额</view>
+         <view class="shuoming_gold_count">（{{goods_id.length}}张优惠券）</view>
        </view>
        <view class="rmb">
         ￥{{Rmb}}

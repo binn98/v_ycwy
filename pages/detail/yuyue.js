@@ -1,45 +1,23 @@
 //Page Object
 Page({
-  data: {
-    
-  },
+  data: {},
   //options(Object)
-  onLoad: function(options){
-    
+  onLoad: function (options) {},
+  onReady: function () {},
+  onShow: function () {},
+  onHide: function () {},
+  gohome() {
+    wx.redirectTo({
+      url: "../../pages/index/index",
+    });
   },
-  onReady: function(){
-    
-  },
-  onShow: function(){
-    
-  },
-  onHide: function(){
-
-  },
-  gohome(){
-    wx.navigateTo({
-            url: '../../pages/index/index'
-         })
-  },
-  onUnload: function(){
-
-  },
-  onPullDownRefresh: function(){
-
-  },
-  onReachBottom: function(){
-
-  },
-  onShareAppMessage: function(){
-
-  },
-  onPageScroll: function(){
-
-  },
+  onUnload: function () {},
+  onPullDownRefresh: function () {},
+  onReachBottom: function () {},
+  onShareAppMessage: function () {},
+  onPageScroll: function () {},
   //item(index,pagePath,text)
-  onTabItemTap:function(item){
-
-  }
+  onTabItemTap: function (item) {},
 });
 // Page({
 //   onClick(e) {

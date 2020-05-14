@@ -22,7 +22,8 @@ Page({
       this.setData({
         list:res.data.list
       })
-      // console.log(this.data.list);
+      app.globalData.address_list= res.data.list==""
+      // console.log(app.globalData.address_list);
     })
   },
   onHide: function(){
@@ -34,6 +35,7 @@ Page({
     })
   },
   def(e){
+    // e.stopPropagtion()
     let is_default = this.data.is_default
     // console.log(e.currentTarget.dataset,is_default);
     
@@ -48,9 +50,9 @@ Page({
   },
   goorder(e){
     console.log(e.currentTarget.dataset);
-    
-    wx.navigateTo({
-      url:'./order?id='+  e.currentTarget.dataset.id
+    app.globalData.address_cur = e.currentTarget.dataset.id
+    wx.navigateBack({
+      delta: 1
     })
   },
   del(e){
@@ -65,6 +67,9 @@ Page({
     })
   },
   revise(e){
+    // e.stopPropagtion()
+    
+    
     wx.navigateTo({
       url:'./edit?id=' + e.currentTarget.dataset.id
     })

@@ -82,8 +82,8 @@
     font-weight: bold;
     font-size: 30rpx;
     display: block;
-    margin-bottom: 20rpx;
-    margin-top: 20rpx;
+    /* margin-bottom: 20rpx; */
+    /* margin-top: 20rpx; */
 }
 .yuan .left text{
     color: #999999;

@@ -3,7 +3,7 @@
 .ycwy-container {
   background: #fff;
   overflow: hidden;
-  /* padding-bottom: 100rpx; */
+  padding-bottom: 100rpx;
 }
 .information {
   /* height: 540rpx; */
@@ -58,10 +58,11 @@
   top: -32rpx;
 }
 .information .coupon {
-  /* height: 340rpx; */
+  height: 352rpx;
   width: 750rpx;
   background-color: #fff;
-
+  position: relative;
+  z-index: 999999999999;
 }
 .information .coupon > view {
   text-align: center;
@@ -141,6 +142,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  /* height: 90rpx; */
 }
 .tabWrap .tabs_ {
   display: flex;
@@ -230,7 +232,6 @@
 
 .list {
   /* margin-top: 200rpx; */
-  padding-bottom: 120rpx;
   padding-top: 20rpx;
   background-color: #fff;
 }
@@ -408,7 +409,7 @@
   bottom: 0;
   left: 0;
   display: flex;
-  background-color: #fff;
+  background-color: #fafafa;
 }
 .submit {
   flex: 4;
@@ -418,14 +419,15 @@
   align-items: center;
   color: #999;
   font-size: 32rpx;
-  padding-left: 20rpx;
+  margin-left: 20rpx;
 }
 
 .bot_Submit .shuoming {
   flex: 6;
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   display: flex;
   align-items: center;
+  text-align:left;
 }
 .bot_Submit .shuoming .shuoming_ {
   /* display: flex; */
@@ -435,6 +437,7 @@
 .bot_Submit .shuoming .shuoming_ .shuoming_gold {
   font-size: 26rpx;
   color: #181818;
+  padding-left: 10rpx;
 }
 .bot_Submit .shuoming .shuoming_gold_count {
   font-size: 24rpx;
@@ -579,7 +582,7 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background-color:#FF5E62;
+  /* background-color:#FF5E62; */
   width: 360rpx;
   height: 70rpx;
   margin: 0 auto;

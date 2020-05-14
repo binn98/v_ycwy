@@ -39,13 +39,15 @@ Page({
     goods_id: [],
     isLogin: false,
     pro:false,
-    avatarUrl:''
+    avatarUrl:'',
+    Tbs:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //  $startWuxRefresher()
     const _that = this;
     app
       .ajax("user/info")
@@ -71,7 +73,7 @@ Page({
         timeList: list,
       });
     }, 1000);
-    console.log(wx.getStorageSync("token_v1.1.5"));
+    // console.log(wx.getStorageSync("token_v1.1.5"));
     // 回收回收规则
     app
       .ajax("explain/recoveryrule")
@@ -158,9 +160,9 @@ Page({
       scrollTop: e.scrollTop,
     });
     // console.log(e.scrollTop);
-    if (e.scrollTop > 600) {
-      this.listLoadmore();
-    }
+    // if (e.scrollTop > 600) {
+    //   this.listLoadmore();
+    // }
   },
 
   /**
@@ -191,6 +193,7 @@ Page({
       show: false,
     });
     //  console.log(that.data.tab2);
+    //  console.log(that.data.tabs);
     that.getList(1);
   },
   getAllList() {
@@ -211,22 +214,27 @@ Page({
   },
   tabChange(e) {
     const key = e.target.dataset.tab;
-    // console.log(e.detail.key);
-    // if(e.detail.key == 110){
-    //   this.setData({
-    //     show:!this.data.show
-    //   })
-    //   return
-    // }
-    this.setData({
-      [key]: e.detail.key,
-      show: false
-    });
-    this.getList(1);
+    console.log(e.detail.key);
+    if(e.detail.key==10){
+      this.setData({
+        tab2:'',
+        tab:e.detail.key
+      })
+      this.getList(1)
+    }else{
+
+      this.setData({
+        [key]: e.detail.key,
+        show: false,
+        loading:true
+      });
+      this.getList(1);
+    }
+    // console.log(this.data.list);
     // console.log(this.data.tab)
-    wx.pageScrollTo({
-      scrollTop: 0,
-    });
+    // wx.pageScrollTo({
+    //   scrollTop: 0,
+    // });
   },
   rulesToggle() {
     this.setData({
@@ -235,9 +243,9 @@ Page({
   },
   getList(page) {
     const _that = this;
-    _that.setData({
-      loading:true
-    })
+    // _that.setData({
+    //   loading:true
+    // })
     app
       .ajax(
         "order/goods",
@@ -245,11 +253,10 @@ Page({
           status: _that.data.tab,
           time: _that.data.tab2,
           page: page || 1,
-        },
-        "POST"
+        }
       )
       .then((res) => {
-        // console.log(res);
+        // console.log(res.data.sl);
         if (page <= res.data.total_page || !res.data.total_page) {
           let list;
           if (page == 1) {
@@ -269,10 +276,11 @@ Page({
             list: list,
             total_page: res.data.total_page,
             page: page,
-            loading: false,
+            loading: false
           });
           // console.log(_that.data.list);
           // console.log(_that.data.list);
+         
           _that.ative();
           if (res.data.login_code == 200) {
             app.globalData.isLogin = true;
@@ -304,16 +312,17 @@ Page({
     }, 1500);
   },
   listLoadmore() {
-    // console.log('onLoadmore')
     // if (!this.data.list) return false
+    // if(this.data.loading==true) return;
+    console.log('onLoadmore')
     setTimeout(() => {
       if (this.data.page < this.data.total_page) {
-        // console.log(this.data.page)
+        console.log(this.data.page)
         this.getList(++this.data.page);
-        // $stopWuxLoader()
+        $stopWuxLoader()
       } else {
         console.log("没有更多数据");
-        // $stopWuxLoader('#wux-refresher', this, true)
+        $stopWuxLoader('#wux-refresher', this, true)
       }
     }, 1500);
   },
@@ -576,5 +585,27 @@ Page({
 
     })
     console.log(data);
-  }
+  },
+
+  // 下拉开始回调
+  onPulling() {
+    // this.setData({
+    //   loading:true
+    // })
+},
+// 下拉完成回调
+onRefresh() {
+  // console.log('onRefresh')
+
+
+  setTimeout(() => {
+      this.getList(1)
+      this.setData({
+        loading:false
+      })
+      // console.log(this.data.list);
+      $stopWuxRefresher()
+  }, 1000)
+},
+// 瀑布流加载
 });

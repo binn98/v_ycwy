@@ -64,6 +64,9 @@ Page({
            btn: true,
            alter:true
         });
+        wx.setNavigationBarTitle({
+          title: '编辑地址'
+       })
         if(res.data.is_default==2){
           // _that.isDefault(2)
         }
@@ -234,6 +237,7 @@ Page({
     console.log(this.data.btn);
     if (!this.data.btn) return 
     if(this.data.form.address.length<7){
+      console.log(this.data.form.address.length);
       wx.showToast({
         title: '详细地址不能少于7个字',
         icon: 'none'
@@ -247,9 +251,15 @@ Page({
         icon: 'success'
       })
       setTimeout(() => {
-        wx.navigateBack({
-          delta: 1
-        })
+        if(app.globalData.address_list){
+          wx.navigateBack({
+            delta: 2
+          })
+        }else{
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       }, 1500)
     }).catch(res => {
       console.log(res)
@@ -272,6 +282,22 @@ Page({
     let phone = e.detail.value
     let on = /^1[34578]\d{9}$/.test(phone)
     if(on){
+      
+    }else{
+      this.setData({
+        err:true
+      })
+      wx.showToast({
+        title: '手机号格式不正确',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+  phoneRuless(e){
+    let phone = e.detail.value
+    let on = /^1[34578]\d{9}$/.test(phone)
+    if(on){
       this.setData({
         ['form.mobile']:phone,
         err:false
@@ -285,7 +311,7 @@ Page({
         err:true
       })
     }
-    this.rule()
+   this.rule()
   },
   checkAdd(){
     this.setData({
@@ -294,6 +320,21 @@ Page({
     this.rule()
   },
   Address(e){
+    if(e.detail.value.length<7){
+    //   this.setData({
+    //     err_add:true,
+    //     ['form.address']:e.detail.value
+    //   })
+      wx.showToast({
+        title: '详细地址不得少于7个字',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+    // this.rule()
+  },
+  Addresss(e){
+    console.log(e);
     if(e.detail.value.length<7){
       this.setData({
         err_add:true,
@@ -315,7 +356,7 @@ Page({
   },
   rule(){
     let arr = this.data.form
-    if(arr.link_name!=''&&arr.mobile.length==11 && arr.province!=''&&arr.city.length!=''&&arr.area!=''&&arr.address.length>=7){
+    if(arr.link_name!=''&&this.data.err==false && arr.province!=''&&arr.city.length!=''&&arr.area!=''&&this.data.err_add==false){
       this.setData({
         btn:true
       })

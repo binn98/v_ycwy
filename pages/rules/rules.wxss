@@ -21,7 +21,7 @@
   border: none;
 }
 .wux-accordion__bd::after{
-  border: none !important;
+  border: none !important;  
 }
 
 /* // .nav {
