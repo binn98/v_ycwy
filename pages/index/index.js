@@ -48,8 +48,33 @@ Page({
    */
   onLoad: function (options) {
     //  $startWuxRefresher()
-    const _that = this;
-    app
+    // const _that = this;
+    timer = setInterval(() => {
+      if (!this.data.list) return false;
+      let list = this.data.list.map((val) => {
+        let time = this.getRemainderTime(Number(val.success_time));
+        return time;
+      });
+      this.setData({
+        timeList: list,
+      });
+    }, 1000);
+    
+     
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {},
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    let _that = this;
+    if(app.globalData.isLogin){
+      app
       .ajax("user/info")
       .then((res) => {
         _that.setData({
@@ -107,25 +132,14 @@ Page({
           }
         },
       });
-     
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    let _that = this;
-    // console.log(app.globalData.token)
-    if (!app.globalData.token) {
-      app.readyCallback = _that.getList;
-    } else {
-      _that.getList(1);
+      // console.log(app.globalData.token)
+      if (!app.globalData.token) {
+        app.readyCallback = _that.getList;
+      } else {
+        _that.getList(1);
+      }
     }
+   
   },
 
   /**
@@ -215,14 +229,16 @@ Page({
   tabChange(e) {
     const key = e.target.dataset.tab;
     console.log(e.detail.key);
+    
     if(e.detail.key==10){
+      
       this.setData({
         tab2:'',
         tab:e.detail.key
       })
       this.getList(1)
     }else{
-
+      
       this.setData({
         [key]: e.detail.key,
         show: false,
@@ -322,6 +338,15 @@ Page({
         $stopWuxLoader()
       } else {
         console.log("没有更多数据");
+        // if(this.data.tab==10&&this.data.list==""){
+        //   $stopWuxLoader('#wux-refresher', this, true)
+        //   return;
+        // } 
+        // wx.showToast({
+        //   title: "没有更多数据了",
+        //   icon: "none",
+        //   duration: 2000,
+        // })
         $stopWuxLoader('#wux-refresher', this, true)
       }
     }, 1500);
@@ -400,6 +425,7 @@ Page({
     if (arr2) {
       arr.push(e.currentTarget.dataset);
       ative[e.currentTarget.dataset.index] = true;
+      // console.log(e.currentTarget.dataset.index);
       that.setData({
         dataList: arr,
         active: ative,
@@ -596,8 +622,9 @@ Page({
 // 下拉完成回调
 onRefresh() {
   // console.log('onRefresh')
-
-
+   this.setData({
+      loading:true
+    })
   setTimeout(() => {
       this.getList(1)
       this.setData({

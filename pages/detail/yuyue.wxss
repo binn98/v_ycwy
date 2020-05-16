@@ -1,6 +1,9 @@
 .ycwy-container{
 
 }
+.ycwy-container .img{
+  width: 100%;
+}
 .banner{
   width: 100%;
   height: 280rpx;

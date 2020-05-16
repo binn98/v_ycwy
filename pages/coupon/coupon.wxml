@@ -6,9 +6,9 @@
     </view>
     <view class="coupon">
         <view wx:if="{{list.length>0}}" class="coupon_red" wx:if="{{list&&!loading}}" wx:for="{{list}}" wx:key="index">
-            <image wx:if="{{cur==10 && list.length>0}}" src="../../assets/img/coupon_red.jpg" mode="widthFix" />
-            <image wx:if="{{cur==20 && list.length>0}}" src="../../assets/img/coupon_hui.jpg" mode="widthFix" />
-            <image wx:if="{{cur==30 && list.length>0}}" src="../../assets/img/coupon_guo.jpg" mode="widthFix" />
+            <image wx:if="{{cur==10 && list.length>0}}" src="../../assets/img/coupon_red.png" mode="widthFix" />
+            <image wx:if="{{cur==20 && list.length>0}}" src="../../assets/img/coupon_hui.png" mode="widthFix" />
+            <image wx:if="{{cur==30 && list.length>0}}" src="../../assets/img/coupon_guo.png" mode="widthFix" />
             <view class="coupon_info">
                 <view class="in-block">无门槛使用</view>
                 <view class="in-block_text">

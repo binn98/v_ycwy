@@ -30,12 +30,14 @@
 .coupon_red{
     height: 199rpx;
     margin-bottom: 20rpx;
+    
 }
 .coupon_red > image{
     width: 688rpx;
     height: 199rpx;
     z-index: -1;
     position: absolute;
+    box-shadow: 0rpx 0rpx 15rpx #CCCCCC;
 }
 
 .coupon_info{
@@ -61,7 +63,7 @@
     height: 199rpx;
     position: absolute;
     left: 84;
-    padding-left: 25rpx;
+    padding-left: 20rpx;
     /* box-sizing: border-box; */
 }
 .in-block_text .code{
@@ -76,6 +78,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.yuan .left {
+    flex: 7;
 }
 .yuan .left .txt_b{
     color: #2E2E2E;
@@ -92,15 +97,20 @@
 }
 
 .yuan .right>text{
-    display: block;
+    /* display: block; */
+    display: inline-block;
 }
 .yuan .right .rmb{
-    font-size: 48rpx;
+    font-size: 40rpx;
     color: #FF5E62;
 }
 .yuan .right{
-    text-align: center;
-    margin-left: 65rpx;
+    text-align: right;
+    /* margin-left: 40rpx; */
+    padding-right: 20rpx;
+    display: inline-block;
+    flex: 3;
+    
 }
 .yuan .right .rmb .sa{
     font-size: 35rpx;

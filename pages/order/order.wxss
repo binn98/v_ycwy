@@ -97,7 +97,7 @@ text{
   box-sizing: border-box;
 }
 .question{
-  padding-bottom: 200rpx;
+  padding-bottom: 100rpx;
 }
 .question .common{
   margin-top: 20rpx;

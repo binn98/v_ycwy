@@ -1,9 +1,16 @@
 .banner{
-  width: 100%;
+  width: 750rpx;
   height: 280rpx;
   background-size: cover;
+  box-sizing: border-box;
   padding-top:57rpx;
   padding-left: 63rpx;
+  margin-top: -280rpx;
+}
+image{
+  width: 750rpx;
+  position: relative;
+  z-index: -2;
 }
 .banner .delivery{
   color: #fff;
@@ -19,7 +26,7 @@
   width: 690rpx;
   margin: 0 auto;
   background-color: #fff;
-  margin-top: -80rpx;
+  margin-top: -75rpx;
   padding:0 30rpx;
   box-sizing: border-box;
   padding-bottom: 20rpx;
@@ -34,8 +41,8 @@
   font-weight: bold;
 }
 .data .sender{
-  padding-top:20rpx;
-  padding-bottom: 40rpx;
+  /* padding-top:20rpx; */
+  padding-bottom: 20rpx;
   font-size: 26rpx;
   color: #181818;
   font-weight: bold;
@@ -78,13 +85,13 @@
 }
 .logistics{
   width: 690rpx;
-  border: 1rpx solid #ccc;
   margin: 0 auto;
   box-sizing: border-box;
   padding-left: 30rpx;
   padding-bottom: 40rpx;
   margin-top: 20rpx;
   border-radius: 10rpx;
+  border: 1rpx solid #eee;
 }
 .wuliu .huise{
   font-size: 26rpx;
